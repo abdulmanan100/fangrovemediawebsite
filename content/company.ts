@@ -17,25 +17,22 @@ export const company = {
     "Fangrove Media is an out-of-home, broadcast and print media company in Lahore. We own and operate large-format sites across Punjab, buy electronic and press media, and run our own printing floor.",
 
   contact: {
-    // TODO: replace with the real UAN / landline
-    phone: "+92 42 0000 0000",
-    phoneHref: "tel:+924200000000",
-    // TODO: replace with the real mobile / WhatsApp number
-    mobile: "+92 300 0000000",
-    mobileHref: "tel:+923000000000",
+    phone: "+92 322 807 2185",
+    phoneHref: "tel:+923228072185",
     email: "hello@fangrovemedia.com", // TODO: confirm mailbox exists
     salesEmail: "sales@fangrovemedia.com", // TODO: confirm mailbox exists
   },
 
   address: {
-    // TODO: replace with the real registered office address
-    line1: "2nd Floor, Al-Hafeez Executive",
-    line2: "Main Boulevard, Gulberg III",
+    line1: "10D Commercial",
+    line2: "Pak Arab Society",
     city: "Lahore",
     region: "Punjab",
-    postalCode: "54660",
     country: "Pakistan",
     countryCode: "PK",
+    // TODO: these coordinates are still the previous Gulberg location and do
+    // not match the address above. They drive the LocalBusiness `geo` block
+    // and the footer readout. Replace with the Pak Arab Society pin.
     coords: [31.5127, 74.3506] as [number, number],
   },
 
