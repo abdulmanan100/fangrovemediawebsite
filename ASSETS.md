@@ -20,22 +20,30 @@ Publishing them as-is would present fabricated client relationships and fabricat
 
 Fourteen invented company names, shown in the marquee on the home and about pages. Replace with real clients — **and only ones who have agreed to be named.**
 
-### Contact details are placeholders
+### Contact details — partly real
 **File:** `content/company.ts`
+
+Confirmed by the client and live on the site:
+
+| Field | Value |
+|---|---|
+| `contact.phone` | **+92 322 807 2185** |
+| `address` | **10D Commercial, Pak Arab Society, Lahore, Pakistan** |
+
+Still outstanding:
 
 | Field | Current | Needs |
 |---|---|---|
-| `contact.phone` / `phoneHref` | `+92 42 0000 0000` | Real UAN / landline |
-| `contact.mobile` / `mobileHref` | `+92 300 0000000` | Real mobile / WhatsApp |
+| `address.coords` | `[31.5127, 74.3506]` | **Wrong — still the old Gulberg pin.** Does not match the Pak Arab Society address. Drives the `geo` block in LocalBusiness structured data and the coordinate readout in the footer and hero. |
 | `contact.email` | `hello@fangrovemedia.com` | A mailbox that exists |
 | `contact.salesEmail` | `sales@fangrovemedia.com` | A mailbox that exists |
-| `address.*` | Al-Hafeez Executive, Gulberg III | Real registered office |
-| `address.coords` | `[31.5127, 74.3506]` | Coordinates of the real office |
 | `legalName` | `Fangrove Media (Pvt.) Ltd.` | Registered legal entity |
 | `founded` | `2014` | Real founding year |
 | `social.*` | Guessed profile URLs | Real profiles, or delete the entries |
 
-Numbers are deliberately all zeros so they cannot dial a stranger. **Do not deploy with them still in place** — they appear in the header, footer, contact page, both structured-data blocks and every site drawer.
+The postal code was removed rather than guessed — add `postalCode` back to `address` if you want it in the structured data, and it will need re-adding to the footer, contact page and `lib/schema.ts`.
+
+To fix the coordinates: open the office location in Google Maps, right-click the pin, copy the `lat, lng` pair, and paste it into `address.coords`.
 
 ### Domain
 **File:** `content/company.ts` → `siteConfig.url`
