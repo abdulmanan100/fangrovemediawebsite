@@ -87,7 +87,7 @@ export function ContactCTA({ index = "06" }: { index?: string }) {
                 <br />
                 {company.address.line2}
                 <br />
-                {company.address.city} {company.address.postalCode}
+                {company.address.city}
                 <br />
                 {company.address.country}
               </address>

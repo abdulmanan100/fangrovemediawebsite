@@ -23,7 +23,7 @@ export function Footer() {
               <br />
               {company.address.line2}
               <br />
-              {company.address.city} {company.address.postalCode}, {company.address.country}
+              {company.address.city}, {company.address.country}
             </address>
           </div>
 
