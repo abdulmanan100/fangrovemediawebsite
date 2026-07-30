@@ -1,0 +1,9 @@
+/** Renders a structured-data block. Server component — never ships to the client. */
+export function JsonLd({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}

@@ -1,0 +1,36 @@
+{
+  "name": "fangrove-media",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fangrove Media — out-of-home, broadcast and print media. Lahore, Pakistan.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "geist": "^1.7.2",
+    "leaflet": "^1.9.4",
+    "lenis": "^1.3.25",
+    "lucide-react": "^1.27.0",
+    "motion": "^12.43.0",
+    "next": "^16.2.12",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-leaflet": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^10.8.0",
+    "eslint-config-next": "^16.2.12",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
+}
