@@ -1,10 +1,10 @@
 /**
  * Single source of truth for company facts.
  *
- * ⚠ PLACEHOLDER DATA — every field marked `TODO` below must be replaced with
- * real Fangrove Media details before this site goes live. Phone numbers are
- * deliberately all-zeros so they cannot dial a real person by accident.
- * See ASSETS.md for the full replacement checklist.
+ * The phone number and postal address are confirmed and real. Every field
+ * still marked `TODO` below — email boxes, legal name, founding year, social
+ * profiles and the map coordinates — must be replaced before launch.
+ * See ASSETS.md for the full checklist.
  */
 
 export const company = {
