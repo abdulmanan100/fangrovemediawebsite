@@ -30,11 +30,8 @@ export function organizationSchema() {
       addressRegion: company.address.region,
       addressCountry: company.address.countryCode,
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: company.address.coords[0],
-      longitude: company.address.coords[1],
-    },
+    // No `geo` block by design — see the note in content/company.ts. Google
+    // geocodes `address` itself, and a guessed coordinate would override it.
     openingHoursSpecification: company.hours.schema.map((slot) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: slot.days,

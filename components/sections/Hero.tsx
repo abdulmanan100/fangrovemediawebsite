@@ -101,9 +101,7 @@ export function Hero() {
             Lahore
           </span>
           <LahoreClock />
-          <span className="hidden sm:inline">
-            {company.address.coords[0].toFixed(4)}°N {company.address.coords[1].toFixed(4)}°E
-          </span>
+          <span className="hidden sm:inline">{company.address.line2}</span>
           <span className="hidden md:inline">Est. {company.founded}</span>
         </motion.div>
 

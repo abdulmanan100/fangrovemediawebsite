@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { company } from "@/content/company";
+import { company, mapsUrl } from "@/content/company";
 
 export const metadata = buildMetadata({
   title: "Contact — rates in an hour",
@@ -39,8 +39,6 @@ const channels = [
 ];
 
 export default function ContactPage() {
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${company.address.coords[0]},${company.address.coords[1]}`;
-
   return (
     <>
       <JsonLd

@@ -30,10 +30,23 @@ export const company = {
     region: "Punjab",
     country: "Pakistan",
     countryCode: "PK",
-    // TODO: these coordinates are still the previous Gulberg location and do
-    // not match the address above. They drive the LocalBusiness `geo` block
-    // and the footer readout. Replace with the Pak Arab Society pin.
-    coords: [31.5127, 74.3506] as [number, number],
+
+    /**
+     * Deliberately no lat/lng.
+     *
+     * Pak Arab Society is not present in OpenStreetMap, Photon or Overpass,
+     * and the surrounding road anchors disagree by several kilometres — so
+     * any coordinate here would be a guess. A wrong `geo` block is worse than
+     * none: it overrides the postal address in Google's local index and pins
+     * the business somewhere it isn't.
+     *
+     * Instead, every map link resolves from the written address below, which
+     * Google geocodes correctly on its own.
+     *
+     * Optional improvement: right-click the office in Google Maps, copy the
+     * `lat, lng`, and add `coords: [lat, lng] as [number, number]` here — then
+     * re-add the `geo` property in lib/schema.ts.
+     */
   },
 
   hours: {
@@ -57,6 +70,20 @@ export const company = {
     printCapacitySqFtDay: 40_000, // TODO: confirm daily flex output
   },
 } as const;
+
+/**
+ * Single, address-based Google Maps target used everywhere on the site.
+ * Google geocodes the written address, so this stays correct without the
+ * site having to hold coordinates of its own.
+ */
+export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  [
+    company.address.line1,
+    company.address.line2,
+    company.address.city,
+    company.address.country,
+  ].join(", "),
+)}`;
 
 export const siteConfig = {
   // TODO: point this at the real production domain before launch

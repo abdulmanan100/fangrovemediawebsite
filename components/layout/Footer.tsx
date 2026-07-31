@@ -121,9 +121,8 @@ export function Footer() {
           <p>
             © {year} {company.legalName}. All rights reserved.
           </p>
-          <p className="nums">
-            {company.address.city}, Pakistan · {company.address.coords[0].toFixed(4)}°N{" "}
-            {company.address.coords[1].toFixed(4)}°E
+          <p>
+            {company.address.line2}, {company.address.city} · {company.hours.label}
           </p>
           <a href={siteConfig.url} className="link-underline hover:text-muted">
             {siteConfig.url.replace("https://", "")}

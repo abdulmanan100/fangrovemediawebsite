@@ -34,7 +34,6 @@ Still outstanding:
 
 | Field | Current | Needs |
 |---|---|---|
-| `address.coords` | `[31.5127, 74.3506]` | **Wrong — still the old Gulberg pin.** Does not match the Pak Arab Society address. Drives the `geo` block in LocalBusiness structured data and the coordinate readout in the footer and hero. |
 | `contact.email` | `hello@fangrovemedia.com` | A mailbox that exists |
 | `contact.salesEmail` | `sales@fangrovemedia.com` | A mailbox that exists |
 | `legalName` | `Fangrove Media (Pvt.) Ltd.` | Registered legal entity |
@@ -43,7 +42,26 @@ Still outstanding:
 
 The postal code was removed rather than guessed — add `postalCode` back to `address` if you want it in the structured data, and it will need re-adding to the footer, contact page and `lib/schema.ts`.
 
-To fix the coordinates: open the office location in Google Maps, right-click the pin, copy the `lat, lng` pair, and paste it into `address.coords`.
+### Map coordinates — intentionally absent
+
+The site holds **no lat/lng**, and this is a deliberate decision rather than an omission.
+
+Pak Arab Society could not be located in any open geodata — it is absent from OpenStreetMap, Photon and Overpass, and the surrounding road anchors (Ferozepur Road, Defence Road, Lahore Race Club) disagree by several kilometres. Any coordinate would have been a guess.
+
+A wrong `geo` block is actively harmful: in `LocalBusiness` structured data it **overrides** the postal address in Google's local index, so a guessed pin would place the business somewhere it isn't. Google geocodes a written address perfectly well on its own.
+
+So instead:
+
+- `lib/schema.ts` publishes `address` with **no `geo` property**
+- every map link resolves through `mapsUrl` in `content/company.ts`, built from the written address
+- the footer and hero show the locality instead of a coordinate readout
+
+**Optional improvement.** If you want a real pin — for a `geo` block, an embedded map, or a coordinate display — open the office in Google Maps, right-click, copy the `lat, lng`, then:
+
+1. add `coords: [lat, lng] as [number, number]` to `address` in `content/company.ts`
+2. re-add the `geo` property in `lib/schema.ts`
+
+Nothing else depends on it.
 
 ### Domain
 **File:** `content/company.ts` → `siteConfig.url`
