@@ -8,9 +8,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema, mediaSiteSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { getSite, sites, sitesInCity } from "@/content/sites";
+import { getSite, sites } from "@/content/sites";
 import { company } from "@/content/company";
-import { BLUR, images } from "@/lib/images";
+import { BLUR } from "@/lib/images";
 import { areaSqFt, dimensions, groupedNumber, mailto } from "@/lib/format";
 
 export function generateStaticParams() {
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!site) return buildMetadata({ title: "Site not found", description: "" });
 
   return buildMetadata({
-    title: `${site.name} — ${site.city}`,
+    title: `${site.name} — ${site.area}, Lahore`,
     description: `${site.format} in ${site.area}, ${site.city}. ${dimensions(site.widthFt, site.heightFt)}, ${site.illumination.toLowerCase()}, approximately ${groupedNumber(site.dailyImpressions)} daily impressions. ${site.facing}.`,
     path: `/network/${site.id}`,
   });
@@ -35,7 +35,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   if (!site) notFound();
 
   const available = site.status === "available";
-  const nearby = sitesInCity(site.city)
+  const nearby = sites.filter((other) => other.area === site.area)
     .filter((other) => other.id !== site.id)
     .slice(0, 3);
 
@@ -44,7 +44,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
     { label: "Dimensions", value: dimensions(site.widthFt, site.heightFt) },
     { label: "Face area", value: `${groupedNumber(areaSqFt(site.widthFt, site.heightFt))} sq ft` },
     { label: "Illumination", value: site.illumination },
-    { label: "City", value: site.city },
+    { label: "Exposure", value: site.faces },
     { label: "Area", value: site.area },
     { label: "Daily impressions", value: groupedNumber(site.dailyImpressions) },
     { label: "Reference", value: site.id.toUpperCase() },
@@ -87,7 +87,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
         <Reveal>
           <div className="relative aspect-16/9 overflow-hidden rounded-[var(--radius-lg)] bg-surface">
             <Image
-              src={images[site.image]}
+              src={site.photo}
               alt={`${site.name} — ${site.format} in ${site.area}, ${site.city}`}
               fill
               priority
@@ -136,6 +136,13 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
               <p className="nums mt-5 text-lg text-ink">
                 {site.coords[0].toFixed(5)}°N, {site.coords[1].toFixed(5)}°E
               </p>
+              {site.pinApprox && (
+                <p className="text-body mt-3 max-w-prose text-subtle">
+                  This pin is placed on the road from the site&apos;s approach description
+                  rather than geotagged exactly. Ask us for the precise location before
+                  planning around it.
+                </p>
+              )}
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${site.coords[0]},${site.coords[1]}`}
                 target="_blank"
@@ -176,7 +183,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             {nearby.length > 0 && (
               <Reveal delay={0.08}>
                 <div className="mt-9">
-                  <h2 className="text-label text-subtle">Also in {site.city}</h2>
+                  <h2 className="text-label text-subtle">Also in {site.area}</h2>
                   <ul className="mt-5">
                     {nearby.map((other) => (
                       <li key={other.id}>
@@ -206,14 +213,14 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
 
             <Reveal delay={0.12}>
               <Link
-                href={`/network?city=${encodeURIComponent(site.city)}`}
+                href={`/network?area=${encodeURIComponent(site.area)}`}
                 className="group mt-9 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
               >
                 <ArrowLeft
                   className="size-4 transition-transform duration-300 group-hover:-translate-x-1"
                   aria-hidden="true"
                 />
-                All {site.city} sites
+                All {site.area} sites
               </Link>
             </Reveal>
           </aside>

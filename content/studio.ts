@@ -7,22 +7,24 @@
  * See ASSETS.md.
  */
 
-/** Marquee roster. Invented names — replace with real clients. */
+/**
+ * Client roster — real brands the company has run campaigns for, carried over
+ * from the previous Omelet Advertising portfolio.
+ *
+ * Add to this list only where there is a campaign to point at. The marquee is
+ * the most-scanned credibility signal on the site.
+ */
 export const clients: readonly string[] = [
-  "Karvaan Mobility",
-  "Riwaj",
-  "Almas Steel",
-  "Chinar Foods",
-  "Nishan Telecom",
-  "Waseeb Agri",
-  "Meraj Developers",
-  "Sahil Bank",
-  "Qandeel Pharma",
-  "Rawal Cement",
-  "Anaya Retail",
-  "Barq Energy",
-  "Sada Logistics",
-  "Noorani Textiles",
+  "Carrefour",
+  "Packages Mall",
+  "Metro Cash & Carry",
+  "IGI Life",
+  "ACCA",
+  "Al Fatah",
+  "Car First",
+  "Condis by Spain",
+  "Zero Carbon Solar",
+  "Asghar Ali Perfumes",
 ];
 
 export type ProcessStep = {
@@ -123,12 +125,19 @@ export const team: readonly TeamMember[] = [
   },
 ];
 
-/** Facts used on the About page timeline. Replace with the real history. */
+/**
+ * About-page timeline.
+ *
+ * ⚠ Only the 2008 start date and the present-day figures are confirmed. The
+ * intermediate years are a plausible reconstruction — replace them with the
+ * real milestones (first structure, first LED screen, first national client)
+ * before launch. See ASSETS.md.
+ */
 export const milestones: readonly { year: string; text: string }[] = [
-  { year: "2014", text: "Founded in Lahore with a single print floor and two roadside faces." },
-  { year: "2017", text: "First gantry structure erected on the Ferozepur Road corridor." },
-  { year: "2019", text: "Broadcast desk opened; first full-service television and radio plans." },
-  { year: "2021", text: "Large-format production brought fully in-house — print and mounting on one schedule." },
-  { year: "2023", text: "First digital LED screens commissioned on Main Boulevard and Johar Town." },
-  { year: "2025", text: "Network extended to five cities across Punjab, Sindh and the capital." },
+  { year: "2008", text: "Founded in Lahore, working with local brands on roadside outdoor." },
+  { year: "2013", text: "First large-format structures on Main Boulevard Gulberg and Model Town." },
+  { year: "2016", text: "Bridge and underpass panels added along Canal Road and Mall Road." },
+  { year: "2019", text: "Large-format production brought in-house — print and mounting on one schedule." },
+  { year: "2022", text: "First digital LED screens commissioned at Hussain Chowk and Model Town." },
+  { year: "2025", text: "Over 250 local and international brands run since founding." },
 ];

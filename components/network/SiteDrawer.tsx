@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { X, ArrowUpRight } from "lucide-react";
 import type { MediaSite } from "@/content/sites";
-import { BLUR, images } from "@/lib/images";
+import { BLUR } from "@/lib/images";
 import { areaSqFt, dimensions, groupedNumber, mailto } from "@/lib/format";
 import { company } from "@/content/company";
 
@@ -60,7 +60,13 @@ export function SiteDrawer({ site, onClose }: Props) {
         { label: "Face area", value: `${groupedNumber(areaSqFt(site.widthFt, site.heightFt))} sq ft` },
         { label: "Illumination", value: site.illumination },
         { label: "Daily impressions", value: groupedNumber(site.dailyImpressions) },
-        { label: "Coordinates", value: `${site.coords[0].toFixed(4)}, ${site.coords[1].toFixed(4)}` },
+        { label: "Exposure", value: site.faces },
+        {
+          label: "Coordinates",
+          value: `${site.coords[0].toFixed(4)}, ${site.coords[1].toFixed(4)}${
+            site.pinApprox ? " (approx.)" : ""
+          }`,
+        },
       ]
     : [];
 
@@ -92,7 +98,7 @@ export function SiteDrawer({ site, onClose }: Props) {
           >
             <div className="relative aspect-16/10 shrink-0 bg-surface">
               <Image
-                src={images[site.image]}
+                src={site.photo}
                 alt=""
                 fill
                 sizes="480px"

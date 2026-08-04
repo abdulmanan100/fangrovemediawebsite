@@ -1,150 +1,128 @@
 # Replacement checklist
 
-Everything on this site that is **not real** is listed here. Work top to bottom.
+What on this site is real, and what still needs replacing. Work top to bottom.
 
-The first two sections are the ones that actually matter legally and commercially — invented case studies and a phone number that does not ring are worse than no website at all.
+Most of the original placeholder content has now been replaced with the company's own material, carried over from the previous Omelet Advertising site during the rebrand.
 
 ---
 
-## 1. Blocking — must be fixed before the site is public
+## ✅ Now real — no action needed
 
-### Case studies are fictional
-**File:** `content/work.ts`
+| What | Source |
+|---|---|
+| **Media estate** — 35 sites: names, areas, face sizes, illumination, approach directions and daily audience figures | The company's own OOH inventory deck |
+| **Site coordinates** | The company's own "OMELET MEDIA LAHORE" Google My Maps export |
+| **Site photography** | The company's own site photography, cropped from the deck |
+| **Client roster** — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Car First, Condis by Spain, Zero Carbon Solar, Asghar Ali Perfumes | Previous portfolio |
+| **Campaigns** — the 11 above | Previous portfolio |
+| **Founded 2008 · 250+ brands · 30+ staff** | Previous about and portfolio pages |
+| **Phone** — +92 322 807 2185 | Client |
+| **Address** — 10D Commercial, Pak Arab Society, Lahore | Client |
 
-All six clients (Karvaan Mobility, Riwaj, Almas Steel, Chinar Foods, Nishan Telecom, Waseeb Agri) are **invented**, and so is every result figure. They exist so the layout could be reviewed with realistic content.
+---
 
-Publishing them as-is would present fabricated client relationships and fabricated outcomes as real. Replace them with genuine work, or delete the entries and remove `/work` from `content/company.ts` → `navigation` until you have some.
+## 1. Blocking — fix before the site is public
 
-### Client roster is fictional
-**File:** `content/studio.ts` → `clients`
-
-Fourteen invented company names, shown in the marquee on the home and about pages. Replace with real clients — **and only ones who have agreed to be named.**
-
-### Contact details — partly real
+### Email addresses
 **File:** `content/company.ts`
 
-Confirmed by the client and live on the site:
-
-| Field | Value |
-|---|---|
-| `contact.phone` | **+92 322 807 2185** |
-| `address` | **10D Commercial, Pak Arab Society, Lahore, Pakistan** |
-
-Still outstanding:
-
-| Field | Current | Needs |
-|---|---|---|
-| `contact.email` | `hello@fangrovemedia.com` | A mailbox that exists |
-| `contact.salesEmail` | `sales@fangrovemedia.com` | A mailbox that exists |
-| `legalName` | `Fangrove Media (Pvt.) Ltd.` | Registered legal entity |
-| `founded` | `2014` | Real founding year |
-| `social.*` | Guessed profile URLs | Real profiles, or delete the entries |
-
-The postal code was removed rather than guessed — add `postalCode` back to `address` if you want it in the structured data, and it will need re-adding to the footer, contact page and `lib/schema.ts`.
-
-### Map coordinates — intentionally absent
-
-The site holds **no lat/lng**, and this is a deliberate decision rather than an omission.
-
-Pak Arab Society could not be located in any open geodata — it is absent from OpenStreetMap, Photon and Overpass, and the surrounding road anchors (Ferozepur Road, Defence Road, Lahore Race Club) disagree by several kilometres. Any coordinate would have been a guess.
-
-A wrong `geo` block is actively harmful: in `LocalBusiness` structured data it **overrides** the postal address in Google's local index, so a guessed pin would place the business somewhere it isn't. Google geocodes a written address perfectly well on its own.
-
-So instead:
-
-- `lib/schema.ts` publishes `address` with **no `geo` property**
-- every map link resolves through `mapsUrl` in `content/company.ts`, built from the written address
-- the footer and hero show the locality instead of a coordinate readout
-
-**Optional improvement.** If you want a real pin — for a `geo` block, an embedded map, or a coordinate display — open the office in Google Maps, right-click, copy the `lat, lng`, then:
-
-1. add `coords: [lat, lng] as [number, number]` to `address` in `content/company.ts`
-2. re-add the `geo` property in `lib/schema.ts`
-
-Nothing else depends on it.
+`hello@fangrovemedia.com` and `sales@fangrovemedia.com` are assumed, not confirmed. They appear on the contact page, in the footer, and in **every** "Enquire about this site" mailto link across 35 site pages and the drawer. If those mailboxes do not exist, every enquiry on the site silently fails.
 
 ### Domain
 **File:** `content/company.ts` → `siteConfig.url`
 
-Currently `https://fangrovemedia.com`. Drives canonical URLs, Open Graph tags, `sitemap.xml` and every JSON-LD `@id`. Set it to the real domain before launch.
+Currently `https://fangrovemedia.com`. Drives canonical URLs, Open Graph tags, `sitemap.xml` and every JSON-LD `@id`.
 
----
-
-## 2. Inventory — the network is illustrative
-
-**File:** `content/sites.ts`
-
-26 sites. The **road names, junctions and coordinates are real places in Pakistan** so the map reads correctly — Kalma Chowk, Thokar Niaz Baig, Canal Bank, Shahrah-e-Faisal and so on. Everything else is invented:
-
-- structures and whether Fangrove owns them
-- dimensions, illumination, direction of approach
-- daily impression counts
-- availability
-
-Replace the array with real inventory. The type is enforced, so a mistake fails the build rather than shipping quietly. Everything downstream updates on its own: the map, the filters, the homepage counters (26 sites / 5 cities / 5.32M impressions), the sitemap, and 26 statically-generated pages.
-
-Also review, in the same file:
-- `CITIES`, `FORMATS`, `ILLUMINATIONS` — the filter vocabularies
-- `content/company.ts` → `stats.printCapacitySqFtDay`
-
----
-
-## 3. Team
-
+### Team
 **File:** `content/studio.ts` → `team`
 
-Four entries, all `Placeholder Name`, with instructions in each `bio` field. The About page renders a flat plate where a portrait goes rather than a stock photo of somebody who does not work at Fangrove — replace both the people and, if you add portraits, the placeholder block in `app/about/page.tsx`.
+Four entries, all `Placeholder Name`, with instructions in each `bio`. The About page renders a flat plate where a portrait goes rather than a stock photo of somebody who does not work here — replace both.
 
-`milestones` in the same file is a plausible invented history. Replace with the real one.
+---
+
+## 2. Needs checking
+
+### Timeline
+**File:** `content/studio.ts` → `milestones`
+
+Only the **2008** start date and the present-day figures are confirmed. The intermediate years are a plausible reconstruction. Replace with real milestones — first structure, first LED screen, first national client.
+
+### Process and principles
+**File:** `content/studio.ts`
+
+Six process steps and four principles, written as commitments the business is making in public. Keep only the ones you will actually honour — particularly *"if it did not run, you do not pay for it"* and the monthly verification pack.
+
+### Legal entity and social profiles
+**File:** `content/company.ts`
+
+`Fangrove Media (Pvt.) Ltd.` and the three social URLs are assumed. Correct or delete.
+
+### Service specifications
+**File:** `content/services.ts`
+
+Sheet sizes, roll widths, gsm ranges, pixel pitches and turnaround times are industry-typical rather than measured from your equipment. Worth a read-through by whoever runs the print floor.
+
+Two structural notes:
+- **Outdoor Media was added** as a service because the estate is mostly static billboards; without it the Network page would show inventory the services never mention.
+- **MOPIS was left out** at your instruction — though the inventory deck calls these **moppies**, and the Bahria Town run of 20 double-sided 5 × 10 ft units is now in the estate as the `Moppie` format. Adding a MOPIS service page is a single entry in `content/services.ts`.
+
+---
+
+## 3. Map coordinates
+
+Site pins come from your own Google My Maps export. **Six** bridge and underpass panels were not in that export — the four Canal Road / Mall Road bridge and underpass faces, and the two Mall Road bridges. Those are placed on the correct road from their approach description and carry `pinApprox: true`, which makes the site page say so rather than imply false precision.
+
+To fix: add them to the My Maps, re-export, and update `coords` in `content/sites.ts`, then drop the `pinApprox` flag.
+
+### The office pin
+
+`content/company.ts` deliberately holds **no** coordinates for the office. Pak Arab Society is absent from OpenStreetMap, Photon and Overpass, and nearby road anchors disagree by kilometres.
+
+A wrong `geo` block is actively harmful — in `LocalBusiness` structured data it **overrides** the postal address in Google's local index. So `lib/schema.ts` publishes the address with no `geo`, and every map link resolves through `mapsUrl`, built from the written address.
+
+Optional: right-click the office in Google Maps, copy the `lat, lng`, add `coords` to `address`, and re-add the `geo` property in `lib/schema.ts`.
 
 ---
 
 ## 4. Photography
 
-**File:** `lib/images.ts` — every image on the site resolves through this one file.
+**File:** `lib/images.ts` — all non-site imagery resolves through this one file.
 
-All fifteen are Unsplash stock, chosen against three rules worth keeping when you replace them:
+Site photography (`public/media/sites/`) is yours. The remaining 15 images are Unsplash stock used for service pages and section backdrops, chosen against three rules worth keeping:
 
-1. **No legible third-party brand names.** An OOH company should not be giving Samsung free impressions on its own website. Several otherwise-good candidates were rejected for this.
+1. **No legible third-party brand names.** An OOH company should not give Samsung free impressions on its own website. Several otherwise-good candidates were rejected for this.
 2. **No non-Pakistani landmarks** in primary positions.
-3. **Dark and low-saturation.** The design system supplies the colour; photography supplies texture.
-
-To swap: drop files into `public/`, change the value in `lib/images.ts` to e.g. `/media/hero-corridor.jpg`, and remove the `images.unsplash.com` entry from `next.config.ts` → `remotePatterns` once nothing references it.
-
-### Shot list
+3. **Dark and low-saturation** — the design system supplies colour, photography supplies texture.
 
 | Key | Used on | What to shoot |
 |---|---|---|
-| `heroCorridor` | Home hero | Night, elevated carriageway with light trails, one of your faces visible. Landscape, room on the left for type. |
-| `billboardBlank` | Outdoor Media, network | A clean unblemished face against dusk sky — ideally one of your own before mounting |
-| `billboardStructure` | Network, galleries | Low angle on the steel and lighting rig. Engineering, not advertising. |
-| `digitalPanel` | DOOH service | One of your LED screens after dark, running |
-| `streetNight` | Network preview | Dark street with a face in silhouette. Texture. |
-| `pressNewsprint` | Print Media | Newsprint coming off the press, motion blur |
-| `pressRollers` | Home print section | Inked rollers, close |
-| `pressOffset` | Flex Printing | The large-format printer mid-run |
-| `pressFloor` | Galleries | The production floor, wide, people working |
-| `paperStock` | Commercial Printing | Stock swatches — the one saturated image on the site |
+| `heroCorridor` | Home hero | Night, elevated carriageway with light trails, one of your faces visible |
+| `billboardBlank` · `billboardStructure` | Outdoor Media | A clean face before mounting; low angle on the steel and lighting rig |
+| `digitalPanel` | DOOH | One of your LED screens after dark, running |
+| `streetNight` | Network preview | Dark street, face in silhouette |
+| `pressNewsprint` · `pressRollers` · `pressOffset` · `pressFloor` · `paperStock` | Print services | Your own print floor |
 | `broadcastStudio` | Electronic Media | A studio or edit suite |
-| `lahoreSkyline` | About | Lahore, unmistakably |
-| `lahoreFort` · `lahoreStreet` · `lahoreBadshahi` | About, galleries | The city and a real working street |
+| `lahoreSkyline` · `lahoreFort` · `lahoreStreet` · `lahoreBadshahi` | About | The city |
 
-Add a `public/favicon.ico`, `icon.png` (512×512) and `apple-icon.png` (180×180) — the logo mark on `#0a0a0a` works.
+Add `public/favicon.ico`, `icon.png` (512×512) and `apple-icon.png` (180×180) — the logo mark on `#0a0a0a` works.
+
+### Campaign photography
+
+`content/work.ts` shows a photograph **only** where one verifiably shows that client's creative on one of our faces — currently Carrefour and Zero Carbon Solar. The other nine render as typographic cards on purpose: pairing a client name with an unrelated board implies creative that isn't theirs.
+
+Drop real campaign photos into `public/media/work/` and add an `image` to those entries to convert them.
+
+### Case studies
+
+`content/work.ts` is deliberately a light model — client, campaign, discipline, year. The source material had no briefs, strategies or measured outcomes, and inventing those for real named clients would be fabrication.
+
+When real write-ups exist, add a `story` field and reinstate a `/work/[slug]` detail route.
 
 ---
 
-## 5. Copy to review
+## 5. Optional
 
-The service copy in `content/services.ts` was written to be industry-accurate and is safe to keep, but check these against how Fangrove actually operates:
-
-- **Specification tables** — sheet sizes, roll widths, gsm ranges, pixel pitches, turnaround times and artwork deadlines are all industry-typical rather than measured from your equipment.
-- **"Six disciplines"** — the site presents Outdoor Media, DOOH, Electronic Media, Print Media, Commercial Printing and Flex Printing. **Outdoor Media was added** because you own static billboards and unipoles; without it the Network page would show inventory the services never mention. **MOPIS was left out** at your instruction. Both are one-entry edits in `content/services.ts`, and the count in the headings is derived, not hard-coded.
-- **Process and principles** in `content/studio.ts` — six steps and four rules, written as commitments. Only keep the ones you will actually honour, particularly "if it did not run, you do not pay for it".
-
----
-
-## 6. Optional
-
-- **Analytics** — nothing is installed. Vercel Analytics is one line in `app/layout.tsx`.
-- **Urdu** — the site is `lang="en-PK"`, English only. Adding Urdu means a locale layer and an RTL pass over the design tokens.
-- **A real form** — the contact page composes a `mailto:` on purpose and stores nothing. If you later want submissions in a database, `QuoteBuilder` already collects the right fields.
+- **Analytics** — nothing installed. Vercel Analytics is one line in `app/layout.tsx`.
+- **Other cities** — the owned estate is Lahore only. `content/company.ts` → `stats.marketsCovered` records that campaigns are bought across Lahore, Islamabad and Karachi. If you own inventory in the other two, add it to `content/sites.ts` and widen the `CITIES` union.
+- **Rate card** — the site publishes dimensions and audience but no prices, which is the right default. If you want indicative rates, add a `grossRate` field to `MediaSite`.
+- **Urdu** — the site is `lang="en-PK"`, English only. Adding Urdu means a locale layer and an RTL pass over the tokens.

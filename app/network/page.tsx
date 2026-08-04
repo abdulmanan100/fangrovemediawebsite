@@ -7,7 +7,6 @@ import { breadcrumbSchema, mediaSiteSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import {
   availableSites,
-  citiesCovered,
   digitalScreens,
   sites,
   totalDailyImpressions,

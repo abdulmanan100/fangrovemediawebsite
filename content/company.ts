@@ -11,10 +11,10 @@ export const company = {
   name: "Fangrove Media",
   shortName: "Fangrove",
   legalName: "Fangrove Media (Pvt.) Ltd.", // TODO: confirm legal entity name
-  founded: 2014, // TODO: confirm founding year
+  founded: 2008,
   tagline: "Pakistan runs on attention. We own the places it happens.",
   description:
-    "Fangrove Media is an out-of-home, broadcast and print media company in Lahore. We own and operate large-format sites across Punjab, buy electronic and press media, and run our own printing floor.",
+    "Fangrove Media is an out-of-home and digital out-of-home media company in Lahore. We own and operate large-format sites across the city, buy electronic and press media, and run our own printing floor. Working with brands across Pakistan since 2008.",
 
   contact: {
     phone: "+92 322 807 2185",
@@ -63,10 +63,19 @@ export const company = {
     facebook: "https://www.facebook.com/fangrovemedia",
   },
 
-  /** Headline capability numbers. Recalculated from sites.ts where possible. */
+  /**
+   * Headline numbers. Site counts come from content/sites.ts; these are the
+   * company-level figures that cannot be derived from inventory.
+   *
+   * The owned estate is Lahore. Campaigns are planned and bought across
+   * Lahore, Islamabad and Karachi — the three largest consumer markets in
+   * Pakistan — so the two figures are deliberately kept separate.
+   */
   stats: {
-    yearsActive: new Date().getFullYear() - 2014,
-    citiesCovered: 5,
+    yearsActive: new Date().getFullYear() - 2008,
+    brandsServed: 250,
+    staff: 30,
+    marketsCovered: ["Lahore", "Islamabad", "Karachi"] as const,
     printCapacitySqFtDay: 40_000, // TODO: confirm daily flex output
   },
 } as const;

@@ -4,24 +4,27 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal, RevealLines } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
 import {
-  cityBreakdown,
-  citiesCovered,
+  areaBreakdown,
   digitalScreens,
+  largestFace,
   totalDailyImpressions,
   totalSites,
 } from "@/content/sites";
 import { BLUR, images } from "@/lib/images";
 
 const metrics = [
-  { value: totalSites, label: "Owned sites", format: "plain" as const },
-  { value: citiesCovered, label: "Cities", format: "plain" as const },
+  { value: totalSites, label: "Sites in Lahore", format: "plain" as const },
+  { value: areaBreakdown().length, label: "Areas covered", format: "plain" as const },
   {
     value: totalDailyImpressions,
-    label: "Daily impressions",
+    label: "Daily audience",
     format: "compact" as const,
   },
   { value: digitalScreens, label: "Digital screens", format: "plain" as const },
 ];
+
+/** Top areas by site count, for the strip under the metrics. */
+const topAreas = areaBreakdown().slice(0, 7);
 
 /**
  * The teaser for the thing no competitor publishes: the actual estate, with
@@ -87,19 +90,26 @@ export function NetworkPreview() {
           ))}
         </dl>
 
-        {/* City breakdown */}
+        {/* Area breakdown */}
         <ul className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4">
-          {cityBreakdown().map((entry, i) => (
-            <li key={entry.city}>
+          {topAreas.map((entry, i) => (
+            <li key={entry.area}>
               <Reveal delay={i * 0.05}>
                 <span className="flex items-baseline gap-2.5">
-                  <span className="text-headline">{entry.city}</span>
+                  <span className="text-headline">{entry.area}</span>
                   <span className="nums text-label text-accent">{entry.count}</span>
                 </span>
               </Reveal>
             </li>
           ))}
         </ul>
+
+        <Reveal delay={0.08}>
+          <p className="text-body mt-9 max-w-xl text-subtle">
+            Largest face in the estate: {largestFace.widthFt} × {largestFace.heightFt} ft at{" "}
+            {largestFace.area}.
+          </p>
+        </Reveal>
 
         <Reveal delay={0.1}>
           <Link

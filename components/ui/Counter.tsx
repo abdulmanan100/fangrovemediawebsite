@@ -44,7 +44,9 @@ export function Counter({
       if (t < 1) frame = requestAnimationFrame(tick);
     };
 
-    setDisplay(0);
+    // No setDisplay(0) here — the first frame runs with t≈0, which resolves to
+    // 0 anyway. Calling setState synchronously in an effect body triggers a
+    // cascading render for no benefit.
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, [inView, reduce, value, durationMs]);

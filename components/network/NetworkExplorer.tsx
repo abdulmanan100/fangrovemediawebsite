@@ -5,11 +5,10 @@ import { useCallback, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { X } from "lucide-react";
 import {
-  CITIES,
   FORMATS,
   ILLUMINATIONS,
+  areaBreakdown,
   sites,
-  type City,
   type Format,
   type Illumination,
   type MediaSite,
@@ -30,11 +29,15 @@ const NetworkMap = dynamic(() => import("@/components/network/NetworkMap"), {
 
 const ALL = "all";
 
+/** Areas with more than one site get a chip; the rest live in the select. */
+const AREAS = areaBreakdown();
+const CHIP_AREAS = AREAS.filter((entry) => entry.count > 1).map((entry) => entry.area);
+
 export function NetworkExplorer() {
   const router = useRouter();
   const params = useSearchParams();
 
-  const city = params.get("city") ?? ALL;
+  const area = params.get("area") ?? ALL;
   const format = params.get("format") ?? ALL;
   const illumination = params.get("illum") ?? ALL;
   const status = params.get("status") ?? ALL;
@@ -60,12 +63,12 @@ export function NetworkExplorer() {
     () =>
       sites.filter(
         (site) =>
-          (city === ALL || site.city === (city as City)) &&
+          (area === ALL || site.area === area) &&
           (format === ALL || site.format === (format as Format)) &&
           (illumination === ALL || site.illumination === (illumination as Illumination)) &&
           (status === ALL || site.status === status),
       ),
-    [city, format, illumination, status],
+    [area, format, illumination, status],
   );
 
   const selected: MediaSite | null =
@@ -74,7 +77,7 @@ export function NetworkExplorer() {
   const activeId = selectedId ?? hoveredId;
 
   const filtersApplied =
-    city !== ALL || format !== ALL || illumination !== ALL || status !== ALL;
+    area !== ALL || format !== ALL || illumination !== ALL || status !== ALL;
 
   const reachTotal = filtered.reduce((sum, site) => sum + site.dailyImpressions, 0);
 
@@ -85,15 +88,15 @@ export function NetworkExplorer() {
         <div className="shell flex flex-col gap-4 py-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex flex-wrap items-center gap-2">
             <fieldset className="flex flex-wrap items-center gap-2">
-              <legend className="sr-only">Filter by city</legend>
-              <Chip active={city === ALL} onClick={() => setParam("city", ALL)}>
-                All cities
+              <legend className="sr-only">Filter by area</legend>
+              <Chip active={area === ALL} onClick={() => setParam("area", ALL)}>
+                All areas
               </Chip>
-              {CITIES.map((option) => (
+              {CHIP_AREAS.map((option) => (
                 <Chip
                   key={option}
-                  active={city === option}
-                  onClick={() => setParam("city", option)}
+                  active={area === option}
+                  onClick={() => setParam("area", option)}
                 >
                   {option}
                 </Chip>
@@ -103,7 +106,13 @@ export function NetworkExplorer() {
 
           <div className="flex flex-wrap items-center gap-3">
             <Select
-              label="Format"
+              label="Areas"
+              value={area}
+              options={AREAS.map((entry) => entry.area)}
+              onChange={(value) => setParam("area", value)}
+            />
+            <Select
+              label="Formats"
               value={format}
               options={FORMATS}
               onChange={(value) => setParam("format", value)}

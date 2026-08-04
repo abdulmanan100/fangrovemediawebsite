@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/content/company";
 import { services } from "@/content/services";
 import { sites } from "@/content/sites";
-import { caseStudies } from "@/content/work";
 
 /** Generated from the content files, so it can never drift out of date. */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -22,12 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-    })),
-    ...caseStudies.map((study) => ({
-      url: url(`/work/${study.slug}`),
-      lastModified: now,
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
     })),
     // Individual sites are the long tail: "billboard on <road name>" queries.
     ...sites.map((site) => ({

@@ -1,12 +1,12 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { WorkCard } from "@/components/work/WorkCard";
-import { caseStudies } from "@/content/work";
+import { CampaignCard } from "@/components/work/CampaignCard";
+import { campaigns } from "@/content/work";
 
-const featured = caseStudies.slice(0, 2);
+const featured = campaigns.slice(0, 2);
 
 /**
- * Two case studies, offset vertically. A symmetrical pair of equal cards would
+ * Two campaigns, offset vertically. A symmetrical pair of equal cards would
  * give both the same weight; the offset creates a reading order.
  */
 export function SelectedWork() {
@@ -25,14 +25,14 @@ export function SelectedWork() {
         </h2>
 
         <div className="mt-[var(--spacing-group)] grid gap-x-12 gap-y-16 lg:grid-cols-2">
-          {featured.map((study, i) => (
+          {featured.map((campaign, i) => (
             <Reveal
-              key={study.slug}
+              key={campaign.slug}
               delay={i * 0.08}
               className={i === 1 ? "lg:mt-28" : undefined}
             >
-              <WorkCard
-                study={study}
+              <CampaignCard
+                campaign={campaign}
                 ratio={i === 0 ? "landscape" : "portrait"}
                 sizes="(min-width: 1024px) 46vw, 92vw"
               />

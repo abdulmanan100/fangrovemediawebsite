@@ -5,12 +5,12 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Reveal } from "@/components/ui/Reveal";
-import { WorkCard } from "@/components/work/WorkCard";
+import { CampaignCard } from "@/components/work/CampaignCard";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { getService, nextService, services } from "@/content/services";
-import { caseStudiesForService } from "@/content/work";
+import { campaignsForService } from "@/content/work";
 import { BLUR, images } from "@/lib/images";
 import { pad2 } from "@/lib/format";
 
@@ -35,7 +35,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = getService(slug);
   if (!service) notFound();
 
-  const related = caseStudiesForService(service.slug).slice(0, 2);
+  const related = campaignsForService(service.slug).slice(0, 2);
   const upNext = nextService(service.slug);
 
   return (
@@ -156,7 +156,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="mt-[var(--spacing-group)] grid gap-x-12 gap-y-14 lg:grid-cols-2">
               {related.map((study, i) => (
                 <Reveal key={study.slug} delay={i * 0.08}>
-                  <WorkCard study={study} sizes="(min-width: 1024px) 46vw, 92vw" />
+                  <CampaignCard campaign={study} sizes="(min-width: 1024px) 46vw, 92vw" />
                 </Reveal>
               ))}
             </div>

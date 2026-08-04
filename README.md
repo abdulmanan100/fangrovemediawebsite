@@ -2,8 +2,10 @@
 
 Marketing site for **Fangrove Media** — an out-of-home, broadcast and print media company based in Lahore, Pakistan.
 
+The media estate, site photography, coordinates, client roster and campaign list are all real — carried over from the company's own inventory deck and previous portfolio during the rebrand from Omelet Advertising.
+
 > ### ⚠ Read `ASSETS.md` before making this site public
-> The site ships with **placeholder content**: invented client names, fictional case studies, illustrative inventory, and all-zero phone numbers. `ASSETS.md` is the checklist of everything that must be replaced.
+> A few things are still assumed rather than confirmed — most importantly the **two email addresses**, which every enquiry link on the site depends on. `ASSETS.md` lists exactly what is real and what still needs replacing.
 
 ---
 
@@ -48,14 +50,20 @@ All copy and data live in `content/`. Nothing else needs to change when you edit
 |---|---|
 | `content/company.ts` | Name, phone, email, address, hours, social, nav |
 | `content/services.ts` | The six services, their copy, capabilities and spec tables |
-| `content/sites.ts` | **The media estate.** Every billboard, screen and structure |
-| `content/work.ts` | Case studies |
+| `content/sites.ts` | **The media estate.** 35 real sites — every billboard, screen and structure |
+| `content/work.ts` | Campaign portfolio |
 | `content/studio.ts` | Client roster, process, principles, team, timeline |
-| `lib/images.ts` | Every image URL on the site, in one place |
+| `lib/images.ts` | Every non-site image URL, in one place |
+
+Site photography lives in `public/media/sites/` and is referenced by each site's `photo` field.
 
 ### Adding a site to the network
 
-Append an object to the `sites` array in `content/sites.ts`. That single edit updates the map, the filters, the homepage counters, the sitemap, and generates a new statically-rendered page at `/network/<id>`.
+Append an object to the `sites` array in `content/sites.ts`. That single edit updates the map, the area filters, the homepage counters, the sitemap, and generates a new statically-rendered page at `/network/<id>`.
+
+Two fields are worth understanding:
+- `pinApprox` — set it when a coordinate is placed on the road rather than geotagged. The site page then says so instead of implying precision it doesn't have.
+- `photo` — a path under `public/media/sites/`, not a `lib/images.ts` key.
 
 ### Adding a service
 

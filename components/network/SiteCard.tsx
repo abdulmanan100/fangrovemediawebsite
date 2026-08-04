@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import type { MediaSite } from "@/content/sites";
-import { BLUR, images } from "@/lib/images";
+import { BLUR } from "@/lib/images";
 import { compactNumber, dimensions } from "@/lib/format";
 
 type Props = {
@@ -31,15 +31,13 @@ export function SiteCard({ site, active, onSelect, onHover }: Props) {
     >
       <div className="relative aspect-4/3 overflow-hidden rounded-[var(--radius-sm)] bg-surface">
         <Image
-          src={images[site.image]}
+          src={site.photo}
           alt=""
           fill
           sizes="112px"
           placeholder="blur"
           blurDataURL={BLUR}
-          // Night photography reads as a black rectangle at 112px, so thumbnails
-          // get a brightness lift the full-size images do not need.
-          className={`object-cover brightness-140 contrast-95 transition-all duration-500 ${
+          className={`object-cover transition-all duration-500 ${
             active ? "grayscale-0" : "grayscale group-hover:grayscale-0"
           }`}
         />
@@ -69,7 +67,7 @@ export function SiteCard({ site, active, onSelect, onHover }: Props) {
 
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-subtle">
           <MapPin className="size-3 shrink-0" aria-hidden="true" />
-          {site.area}, {site.city}
+          {site.area}
         </p>
 
         <dl className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
