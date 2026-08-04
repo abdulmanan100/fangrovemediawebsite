@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowUpRight, Phone, Mail } from "lucide-react";
+import { ArrowUpRight, Phone, Mail, MessageCircle } from "lucide-react";
 import { Reveal, RevealLines } from "@/components/ui/Reveal";
 import { Magnetic } from "@/components/ui/Magnetic";
-import { company } from "@/content/company";
+import { company, whatsapp } from "@/content/company";
 
 /**
  * The closing block on every page. There is no contact form anywhere on this
@@ -36,18 +36,34 @@ export function ContactCTA({ index = "06" }: { index?: string }) {
               <li>
                 <Reveal>
                   <a
+                    href={whatsapp("Hello Fangrove — I would like to enquire about rates.")}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="group flex items-center gap-4 text-ink"
+                  >
+                    <MessageCircle className="size-5 shrink-0 text-subtle transition-colors group-hover:text-accent" aria-hidden="true" />
+                    <span className="nums text-[clamp(1.5rem,3.6vw,2.5rem)] font-medium leading-none tracking-[-0.03em] transition-colors group-hover:text-accent">
+                      {company.contact.phone}
+                    </span>
+                    <span className="text-label shrink-0 text-subtle">WhatsApp</span>
+                  </a>
+                </Reveal>
+              </li>
+              <li>
+                <Reveal delay={0.04}>
+                  <a
                     href={company.contact.phoneHref}
                     className="group flex items-center gap-4 text-ink"
                   >
                     <Phone className="size-5 shrink-0 text-subtle transition-colors group-hover:text-accent" aria-hidden="true" />
-                    <span className="nums text-[clamp(1.5rem,3.6vw,2.5rem)] font-medium leading-none tracking-[-0.03em] transition-colors group-hover:text-accent">
-                      {company.contact.phone}
+                    <span className="text-[clamp(1.25rem,3vw,2.125rem)] font-medium leading-none tracking-[-0.025em] transition-colors group-hover:text-accent">
+                      Call the office
                     </span>
                   </a>
                 </Reveal>
               </li>
               <li>
-                <Reveal delay={0.06}>
+                <Reveal delay={0.08}>
                   <a
                     href={`mailto:${company.contact.email}`}
                     className="group flex items-center gap-4 text-ink"

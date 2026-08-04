@@ -153,7 +153,7 @@ export function NetworkExplorer() {
             <>
               {" · "}
               <span className="nums">{compactNumber(reachTotal)}</span> combined daily
-              impressions
+              audience
             </>
           )}
         </p>
@@ -189,18 +189,26 @@ export function NetworkExplorer() {
               </button>
             </div>
           ) : (
-            <ul>
-              {filtered.map((site) => (
-                <li key={site.id}>
-                  <SiteCard
-                    site={site}
-                    active={activeId === site.id}
-                    onSelect={() => setParam("site", site.id)}
-                    onHover={(hovering) => setHoveredId(hovering ? site.id : null)}
-                  />
-                </li>
-              ))}
-            </ul>
+            <>
+              {/* Gives the h3 in each card an h2 to descend from — without it
+                  the document jumps h1 → h3. Kept outside the <ul>, which may
+                  only contain <li>. */}
+              <h2 id="site-list-heading" className="sr-only">
+                Sites
+              </h2>
+              <ul aria-labelledby="site-list-heading">
+                {filtered.map((site) => (
+                  <li key={site.id}>
+                    <SiteCard
+                      site={site}
+                      active={activeId === site.id}
+                      onSelect={() => setParam("site", site.id)}
+                      onHover={(hovering) => setHoveredId(hovering ? site.id : null)}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </div>
       </div>

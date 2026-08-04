@@ -66,16 +66,16 @@ export function PrintDivision() {
               </p>
             </Reveal>
 
-            <dl className="mt-11 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line">
-              {capabilities.map((item, i) => (
-                <div key={item.label} className="bg-bg p-5">
-                  <Reveal delay={0.1 + i * 0.05}>
+            <Reveal delay={0.1}>
+              <dl className="mt-11 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line">
+                {capabilities.map((item) => (
+                  <div key={item.label} className="bg-bg p-5">
                     <dt className="text-label text-subtle">{item.label}</dt>
                     <dd className="nums mt-2.5 text-lg font-medium">{item.value}</dd>
-                  </Reveal>
-                </div>
-              ))}
-            </dl>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
 
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">

@@ -63,19 +63,21 @@ export function PageHero({
         </div>
       )}
 
+      {/* A <dl> may only contain dt/dd, or div wrappers holding them directly —
+          so the reveal wraps the whole list rather than each cell. */}
       {meta && meta.length > 0 && (
-        <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line md:grid-cols-4">
-          {meta.map((item, i) => (
-            <div key={item.label} className="bg-bg p-5 md:p-6">
-              <Reveal delay={0.1 + i * 0.05}>
+        <Reveal delay={0.1}>
+          <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line md:grid-cols-4">
+            {meta.map((item) => (
+              <div key={item.label} className="bg-bg p-5 md:p-6">
                 <dt className="text-label text-subtle">{item.label}</dt>
                 <dd className="nums mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-[-0.02em] md:text-3xl">
                   {item.value}
                 </dd>
-              </Reveal>
-            </div>
-          ))}
-        </dl>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       )}
     </header>
   );

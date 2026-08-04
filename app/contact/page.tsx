@@ -1,11 +1,11 @@
-import { ArrowUpRight, Phone, Mail, MapPin, Clock } from "lucide-react";
+import { ArrowUpRight, Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { QuoteBuilder } from "@/components/contact/QuoteBuilder";
 import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { company, mapsUrl } from "@/content/company";
+import { company, mapsUrl, whatsapp } from "@/content/company";
 
 export const metadata = buildMetadata({
   title: "Contact — rates in an hour",
@@ -16,25 +16,26 @@ export const metadata = buildMetadata({
 
 const channels = [
   {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: company.contact.phone,
+    href: whatsapp("Hello Fangrove — I would like to enquire about rates."),
+    external: true,
+    note: "The fastest route to a rate, and how most enquiries reach us.",
+  },
+  {
     icon: Phone,
-    label: "Phone",
+    label: "Call",
     value: company.contact.phone,
     href: company.contact.phoneHref,
-    note: "Fastest route to a rate. Mon–Sat, 09:00–18:00 PKT.",
+    note: "Mon–Sat, 09:00–18:00 PKT. Someone picks up.",
   },
   {
     icon: Mail,
-    label: "Sales",
+    label: "Email",
     value: company.contact.salesEmail,
     href: `mailto:${company.contact.salesEmail}`,
     note: "Rates, availability and artwork specifications.",
-  },
-  {
-    icon: Mail,
-    label: "General",
-    value: company.contact.email,
-    href: `mailto:${company.contact.email}`,
-    note: "Everything else, including supplier and press enquiries.",
   },
 ];
 
@@ -51,7 +52,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Get in touch"
         lines={["Tell us the", "corridor."]}
-        lede="Outdoor gets bought over the phone, so there is no contact form on this site. Call and you will get a rate the same day. If you would rather write, the builder below drafts a structured enquiry for you."
+        lede="Outdoor gets bought over the phone, so there is no contact form on this site. Message or call and you will get a rate the same day. If you would rather send something structured, the builder below drafts it for you."
       />
 
       {/* Direct channels */}
@@ -60,7 +61,13 @@ export default function ContactPage() {
           {channels.map((channel, i) => (
             <li key={channel.label} className="bg-bg">
               <Reveal delay={i * 0.06}>
-                <a href={channel.href} className="group flex h-full flex-col p-7 md:p-8">
+                <a
+                  href={channel.href}
+                  {...(channel.external
+                    ? { target: "_blank", rel: "noreferrer noopener" }
+                    : {})}
+                  className="group flex h-full flex-col p-7 md:p-8"
+                >
                   <span className="flex items-center gap-2.5 text-label text-subtle">
                     <channel.icon className="size-3.5" aria-hidden="true" />
                     {channel.label}

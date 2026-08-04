@@ -8,7 +8,7 @@ import { X, ArrowUpRight } from "lucide-react";
 import type { MediaSite } from "@/content/sites";
 import { BLUR } from "@/lib/images";
 import { areaSqFt, dimensions, groupedNumber, mailto } from "@/lib/format";
-import { company } from "@/content/company";
+import { company, whatsapp } from "@/content/company";
 
 type Props = { site: MediaSite | null; onClose: () => void };
 
@@ -156,27 +156,33 @@ export function SiteDrawer({ site, onClose }: Props) {
 
               <div className="mt-auto space-y-3 pt-9">
                 <a
-                  href={mailto(
-                    company.contact.salesEmail,
-                    `Rate enquiry — ${site.name} (${site.id})`,
-                    `Hello Fangrove,\n\nPlease send rates and availability for:\n\n` +
-                      `Site:          ${site.name}\n` +
-                      `Reference:     ${site.id}\n` +
-                      `Location:      ${site.area}, ${site.city}\n` +
-                      `Format:        ${site.format}, ${dimensions(site.widthFt, site.heightFt)}, ${site.illumination}\n\n` +
-                      `Required from:  \nDuration:       \nCompany:        \nContact number: \n\nThank you.`,
+                  href={whatsapp(
+                    `Hello Fangrove — please send rates and availability for ` +
+                      `${site.name} (${site.id}), ${site.format} ` +
+                      `${dimensions(site.widthFt, site.heightFt)}, ${site.area}.`,
                   )}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   className="flex w-full items-center justify-center gap-2.5 rounded-[var(--radius-md)] bg-ink px-6 py-4 text-sm font-medium text-bg transition-colors hover:bg-white"
                 >
-                  Enquire about this site
+                  Enquire on WhatsApp
                 </a>
 
                 <div className="grid grid-cols-2 gap-3">
                   <a
-                    href={company.contact.phoneHref}
+                    href={mailto(
+                      company.contact.salesEmail,
+                      `Rate enquiry — ${site.name} (${site.id})`,
+                      `Hello Fangrove,\n\nPlease send rates and availability for:\n\n` +
+                        `Site:          ${site.name}\n` +
+                        `Reference:     ${site.id}\n` +
+                        `Location:      ${site.area}, ${site.city}\n` +
+                        `Format:        ${site.format}, ${dimensions(site.widthFt, site.heightFt)}, ${site.illumination}\n\n` +
+                        `Required from:  \nDuration:       \nCompany:        \nContact number: \n\nThank you.`,
+                    )}
                     className="flex items-center justify-center rounded-[var(--radius-md)] border border-line-strong px-4 py-3.5 text-sm text-ink transition-colors hover:bg-ink/8"
                   >
-                    Call
+                    Email
                   </a>
                   <Link
                     href={`/network/${site.id}`}

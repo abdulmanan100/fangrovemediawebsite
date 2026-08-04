@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema, mediaSiteSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { getSite, sites } from "@/content/sites";
-import { company } from "@/content/company";
+import { company, whatsapp } from "@/content/company";
 import { BLUR } from "@/lib/images";
 import { areaSqFt, dimensions, groupedNumber, mailto } from "@/lib/format";
 
@@ -115,16 +115,16 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             <Reveal>
               <h2 className="text-label text-subtle">Specification</h2>
             </Reveal>
-            <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:grid-cols-4">
-              {specs.map((spec, i) => (
-                <div key={spec.label} className="bg-bg p-5">
-                  <Reveal delay={Math.min(i * 0.04, 0.2)}>
+            <Reveal>
+              <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:grid-cols-4">
+                {specs.map((spec) => (
+                  <div key={spec.label} className="bg-bg p-5">
                     <dt className="text-label text-subtle">{spec.label}</dt>
                     <dd className="nums mt-2.5 text-sm text-ink">{spec.value}</dd>
-                  </Reveal>
-                </div>
-              ))}
-            </dl>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
 
             <Reveal>
               <h2 className="text-label mt-14 text-subtle">Approach</h2>
@@ -166,16 +166,28 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
                   Rates are quoted per cycle and depend on duration. We answer the phone.
                 </p>
                 <a
-                  href={enquiry}
+                  href={whatsapp(
+                    `Hello Fangrove — please send rates and availability for ` +
+                      `${site.name} (${site.id}), ${site.format} ` +
+                      `${dimensions(site.widthFt, site.heightFt)}, ${site.area}.`,
+                  )}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   className="mt-7 flex w-full items-center justify-center rounded-[var(--radius-md)] bg-ink px-6 py-4 text-sm font-medium text-bg transition-colors hover:bg-white"
                 >
-                  Email about this site
+                  Enquire on WhatsApp
                 </a>
                 <a
                   href={company.contact.phoneHref}
                   className="nums mt-3 flex w-full items-center justify-center rounded-[var(--radius-md)] border border-line-strong px-6 py-4 text-sm text-ink transition-colors hover:bg-ink/8"
                 >
                   {company.contact.phone}
+                </a>
+                <a
+                  href={enquiry}
+                  className="mt-3 flex w-full items-center justify-center rounded-[var(--radius-md)] border border-line px-6 py-3.5 text-sm text-muted transition-colors hover:bg-ink/8 hover:text-ink"
+                >
+                  Email instead
                 </a>
               </div>
             </Reveal>

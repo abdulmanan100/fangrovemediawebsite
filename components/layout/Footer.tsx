@@ -106,14 +106,34 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Oversized wordmark. Decorative — the accessible name is in the header. */}
-      <div className="shell overflow-hidden pb-6" aria-hidden="true">
-        <span
-          className="block w-full select-none font-[family-name:var(--font-display)] font-bold uppercase leading-[0.78] text-[color:var(--color-surface-2)]"
-          style={{ fontSize: "clamp(4rem, 19.5vw, 19rem)", letterSpacing: "-0.045em" }}
+      {/* Oversized wordmark — decorative texture, not content.
+          Drawn as SVG rather than styled text: at this size a fill dark enough
+          to stay subtle can never satisfy the contrast rules that apply to real
+          text, and outlining it keeps the ghost effect while reading as artwork. */}
+      <div className="shell overflow-hidden pb-6">
+        <svg
+          viewBox="0 0 1000 150"
+          className="block w-full"
+          role="presentation"
+          aria-hidden="true"
+          focusable="false"
         >
-          Fangrove
-        </span>
+          <text
+            x="0"
+            y="118"
+            fill="none"
+            stroke="var(--color-line-strong)"
+            strokeWidth="1.5"
+            fontFamily="var(--font-display)"
+            fontSize="150"
+            fontWeight="700"
+            letterSpacing="-6"
+            textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+          >
+            FANGROVE
+          </text>
+        </svg>
       </div>
 
       <div className="rule">

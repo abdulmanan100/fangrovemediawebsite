@@ -99,45 +99,41 @@ export type TeamMember = {
   name: string;
   role: string;
   bio: string;
+  /** Path under /public. Optional — the card falls back to a flat plate. */
+  photo?: string;
 };
 
-/** ⚠ Invented people. Replace with the real team and their photographs. */
-export const team: readonly TeamMember[] = [
-  {
-    name: "Placeholder Name",
-    role: "Founder & Managing Director",
-    bio: "Replace with the founder's background — years in the industry, previous agencies, what they built here.",
-  },
-  {
-    name: "Placeholder Name",
-    role: "Director, Media Operations",
-    bio: "Replace with a short bio covering planning, buying and the client relationships they own.",
-  },
-  {
-    name: "Placeholder Name",
-    role: "Head of Production",
-    bio: "Replace with a bio covering the print floor, substrates, colour management and the mounting crews.",
-  },
-  {
-    name: "Placeholder Name",
-    role: "Head of Broadcast",
-    bio: "Replace with a bio covering channel relationships, planning tools and log reconciliation.",
-  },
-];
+/**
+ * Empty on purpose.
+ *
+ * The About page skips the whole team section while this is empty, which is
+ * better than shipping four cards reading "Placeholder Name". Add real people
+ * and the section reappears with no other changes.
+ */
+export const team: readonly TeamMember[] = [];
 
 /**
- * About-page timeline.
+ * Confirmed company figures, used on the About page.
  *
- * ⚠ Only the 2008 start date and the present-day figures are confirmed. The
- * intermediate years are a plausible reconstruction — replace them with the
- * real milestones (first structure, first LED screen, first national client)
- * before launch. See ASSETS.md.
+ * This replaced an invented year-by-year timeline. Every number here is
+ * verifiable; a reconstructed history was not. If the real milestones become
+ * available, a timeline is a better story than a stat grid — but not at the
+ * cost of making the years up.
  */
-export const milestones: readonly { year: string; text: string }[] = [
-  { year: "2008", text: "Founded in Lahore, working with local brands on roadside outdoor." },
-  { year: "2013", text: "First large-format structures on Main Boulevard Gulberg and Model Town." },
-  { year: "2016", text: "Bridge and underpass panels added along Canal Road and Mall Road." },
-  { year: "2019", text: "Large-format production brought in-house — print and mounting on one schedule." },
-  { year: "2022", text: "First digital LED screens commissioned at Hussain Chowk and Model Town." },
-  { year: "2025", text: "Over 250 local and international brands run since founding." },
+export const facts: readonly { value: string; label: string; note: string }[] = [
+  {
+    value: "2008",
+    label: "Founded",
+    note: "Working with brands in Lahore since, through every shift in how outdoor is bought.",
+  },
+  {
+    value: "250+",
+    label: "Brands",
+    note: "Local and international, from single-face bookings to multi-corridor campaigns.",
+  },
+  {
+    value: "30+",
+    label: "Staff",
+    note: "Sales, planning, media buying, creative design and the production floor.",
+  },
 ];

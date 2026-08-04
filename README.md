@@ -21,7 +21,7 @@ The media estate, site photography, coordinates, client roster and campaign list
 | Icons | `lucide-react` |
 | Fonts | Archivo + Instrument Serif (`next/font/google`), Geist Sans |
 | Content | Typed TypeScript files in `content/` — no CMS, no database |
-| Forms | None. Contact is `tel:` / `mailto:` by design |
+| Forms | None. Enquiries go to WhatsApp / `tel:` / `mailto:` by design |
 | Hosting | Vercel |
 
 ## Getting started
@@ -109,7 +109,11 @@ radius 2–4px             ← near-square on purpose; this is a signage company
 
 Type utilities: `text-hero` · `text-display` · `text-section` · `text-headline` · `text-subhead` · `text-body` · `text-label` · `text-editorial`. Layout utilities: `shell` · `section-y` · `rule` · `nums`.
 
-Every colour pair above clears WCAG AA on the base background.
+Every colour pair above clears WCAG AA on the base background. Lighthouse on `/network`: **Accessibility 97+, Best Practices 100, SEO 100**.
+
+Two accessibility constraints that are easy to regress:
+- A `<dl>` may contain only `dt`/`dd`, or `div` wrappers holding them **directly** — so scroll-reveal wrappers go around the whole list, never around each cell.
+- A `<ul>` may contain only `<li>`. Section headings that give card `h3`s something to descend from must sit outside the list.
 
 ### Motion
 

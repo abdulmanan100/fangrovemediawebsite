@@ -1,25 +1,28 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { services } from "@/content/services";
-import { CITIES } from "@/content/sites";
-import { company } from "@/content/company";
+import { areaBreakdown } from "@/content/sites";
+import { company, whatsapp } from "@/content/company";
 import { mailto } from "@/lib/format";
+
+/** Areas we hold inventory in, plus an escape hatch for everything else. */
+const AREAS = [...areaBreakdown().map((entry) => entry.area), "Elsewhere in Lahore", "Another city"];
 
 const DURATIONS = ["1 month", "3 months", "6 months", "12 months", "Not sure yet"] as const;
 
 /**
  * There is no form backend on this site — by choice. This composes a
- * structured enquiry and hands it to the visitor's own mail client, so the
- * message arrives from their real address and lands in a thread they own.
+ * structured enquiry and hands it to WhatsApp or the visitor's own mail
+ * client, so it arrives from a real identity in a thread they own.
  *
  * The full body is shown on screen before they send it. Nothing is submitted
  * anywhere, and nothing is stored.
  */
 export function QuoteBuilder() {
   const [selected, setSelected] = useState<string[]>([services[0]!.slug]);
-  const [city, setCity] = useState<string>(CITIES[0]);
+  const [area, setArea] = useState<string>(AREAS[0]!);
   const [duration, setDuration] = useState<string>(DURATIONS[1]);
   const [organisation, setOrganisation] = useState("");
   const [notes, setNotes] = useState("");
@@ -45,7 +48,7 @@ export function QuoteBuilder() {
         "We would like a quote.",
         "",
         `Services:   ${serviceNames.length > 0 ? serviceNames.join(", ") : "—"}`,
-        `City:       ${city}`,
+        `Area:       ${area}`,
         `Duration:   ${duration}`,
         `Company:    ${organisation || "—"}`,
         "",
@@ -56,12 +59,12 @@ export function QuoteBuilder() {
         "",
         "Thank you.",
       ].join("\n"),
-    [serviceNames, city, duration, organisation, notes],
+    [serviceNames, area, duration, organisation, notes],
   );
 
   const subject = `Quote request — ${serviceNames[0] ?? "Media"}${
     serviceNames.length > 1 ? ` +${serviceNames.length - 1}` : ""
-  }, ${city}`;
+  }, ${area}`;
 
   const href = mailto(company.contact.salesEmail, subject, body);
 
@@ -94,13 +97,13 @@ export function QuoteBuilder() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <label className="block">
-            <span className="text-label text-subtle">City</span>
+            <span className="text-label text-subtle">Area</span>
             <select
-              value={city}
-              onChange={(event) => setCity(event.target.value)}
+              value={area}
+              onChange={(event) => setArea(event.target.value)}
               className="mt-3 w-full cursor-pointer rounded-[var(--radius-md)] border border-line-strong bg-bg px-4 py-3.5 text-sm text-ink transition-colors hover:border-ink/40"
             >
-              {CITIES.map((option) => (
+              {AREAS.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
@@ -156,7 +159,10 @@ export function QuoteBuilder() {
 
           <div className="px-6 py-5">
             <p className="text-xs text-subtle">
-              To: <span className="text-muted">{company.contact.salesEmail}</span>
+              To:{" "}
+              <span className="nums text-muted">{company.contact.phone}</span>
+              <span className="mx-1.5">or</span>
+              <span className="text-muted">{company.contact.salesEmail}</span>
             </p>
             <p className="mt-2 text-xs text-subtle">
               Subject: <span className="text-muted">{subject}</span>
@@ -166,17 +172,26 @@ export function QuoteBuilder() {
             </pre>
           </div>
 
-          <div className="border-t border-line p-6">
+          <div className="space-y-3 border-t border-line p-6">
+            <a
+              href={whatsapp(body)}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex w-full items-center justify-center gap-2.5 rounded-[var(--radius-md)] bg-ink px-6 py-4 text-sm font-medium text-bg transition-colors hover:bg-white"
+            >
+              <MessageCircle className="size-4" aria-hidden="true" />
+              Send on WhatsApp
+            </a>
             <a
               href={href}
-              className="flex w-full items-center justify-center gap-2.5 rounded-[var(--radius-md)] bg-ink px-6 py-4 text-sm font-medium text-bg transition-colors hover:bg-white"
+              className="flex w-full items-center justify-center gap-2.5 rounded-[var(--radius-md)] border border-line-strong px-6 py-4 text-sm text-ink transition-colors hover:bg-ink/8"
             >
               <Mail className="size-4" aria-hidden="true" />
               Open in your email app
             </a>
-            <p className="mt-4 text-xs text-subtle">
-              This opens your own mail client with the message above. Nothing is submitted
-              or stored by this website.
+            <p className="pt-1 text-xs text-subtle">
+              Both options hand the message above to an app you already use. Nothing is
+              submitted to or stored by this website.
             </p>
           </div>
         </div>

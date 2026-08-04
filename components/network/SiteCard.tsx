@@ -70,23 +70,19 @@ export function SiteCard({ site, active, onSelect, onHover }: Props) {
           {site.area}
         </p>
 
-        <dl className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
+        {/* Separators are pseudo-elements, not spans: a <dl> may only contain
+            dt/dd or div wrappers holding them directly. */}
+        <dl className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted [&>div+div]:before:mr-3 [&>div+div]:before:text-line-strong [&>div+div]:before:content-['/']">
           <div className="flex gap-1.5">
             <dt className="sr-only">Format</dt>
             <dd>{site.format}</dd>
           </div>
-          <span className="text-line-strong" aria-hidden="true">
-            /
-          </span>
-          <div className="flex gap-1.5">
+          <div className="flex items-center gap-1.5">
             <dt className="sr-only">Dimensions</dt>
             <dd className="nums">{dimensions(site.widthFt, site.heightFt)}</dd>
           </div>
-          <span className="text-line-strong" aria-hidden="true">
-            /
-          </span>
-          <div className="flex gap-1.5">
-            <dt className="sr-only">Daily impressions</dt>
+          <div className="flex items-center gap-1.5">
+            <dt className="sr-only">Daily audience</dt>
             <dd className="nums">{compactNumber(site.dailyImpressions)} daily</dd>
           </div>
         </dl>

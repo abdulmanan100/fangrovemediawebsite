@@ -16,8 +16,9 @@ Most of the original placeholder content has now been replaced with the company'
 | **Client roster** — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Car First, Condis by Spain, Zero Carbon Solar, Asghar Ali Perfumes | Previous portfolio |
 | **Campaigns** — the 11 above | Previous portfolio |
 | **Founded 2008 · 250+ brands · 30+ staff** | Previous about and portfolio pages |
-| **Phone** — +92 322 807 2185 | Client |
+| **Phone / WhatsApp** — +92 322 807 2185 | Client |
 | **Address** — 10D Commercial, Pak Arab Society, Lahore | Client |
+| **Icons** — favicon and apple-touch icon, generated from the logo mark | Built |
 
 ---
 
@@ -26,26 +27,32 @@ Most of the original placeholder content has now been replaced with the company'
 ### Email addresses
 **File:** `content/company.ts`
 
-`hello@fangrovemedia.com` and `sales@fangrovemedia.com` are assumed, not confirmed. They appear on the contact page, in the footer, and in **every** "Enquire about this site" mailto link across 35 site pages and the drawer. If those mailboxes do not exist, every enquiry on the site silently fails.
+`hello@fangrovemedia.com` and `sales@fangrovemedia.com` are assumed, not confirmed.
+
+This is **no longer able to lose you an enquiry** — WhatsApp on the confirmed mobile is now the primary route everywhere (site drawer, site pages, contact page, quote builder, and the CTA on every page), with email as the secondary option. But the addresses are still printed on the contact page and in the footer, so they need to either exist or be removed.
 
 ### Domain
 **File:** `content/company.ts` → `siteConfig.url`
 
 Currently `https://fangrovemedia.com`. Drives canonical URLs, Open Graph tags, `sitemap.xml` and every JSON-LD `@id`.
 
-### Team
-**File:** `content/studio.ts` → `team`
-
-Four entries, all `Placeholder Name`, with instructions in each `bio`. The About page renders a flat plate where a portrait goes rather than a stock photo of somebody who does not work here — replace both.
-
 ---
 
 ## 2. Needs checking
 
-### Timeline
-**File:** `content/studio.ts` → `milestones`
+### Team — currently omitted
+**File:** `content/studio.ts` → `team`
 
-Only the **2008** start date and the present-day figures are confirmed. The intermediate years are a plausible reconstruction. Replace with real milestones — first structure, first LED screen, first national client.
+The array is **empty on purpose**, and the About page skips the whole team section while it is. That is better than shipping four cards reading "Placeholder Name".
+
+Add real people — `name`, `role`, `bio`, and optionally `photo` (a path under `public/`) — and the section reappears with no other changes.
+
+### Timeline — replaced with confirmed figures
+**File:** `content/studio.ts` → `facts`
+
+An invented year-by-year timeline was removed and replaced with three verifiable numbers: founded 2008, 250+ brands, 30+ staff.
+
+If the real milestones become available — first structure, first LED screen, first national client — a timeline tells a better story than a stat grid. But not at the cost of making the years up.
 
 ### Process and principles
 **File:** `content/studio.ts`

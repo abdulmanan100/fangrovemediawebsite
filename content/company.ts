@@ -19,6 +19,8 @@ export const company = {
   contact: {
     phone: "+92 322 807 2185",
     phoneHref: "tel:+923228072185",
+    /** Same number, WhatsApp. The primary enquiry route — see whatsapp() below. */
+    whatsapp: "923228072185",
     email: "hello@fangrovemedia.com", // TODO: confirm mailbox exists
     salesEmail: "sales@fangrovemedia.com", // TODO: confirm mailbox exists
   },
@@ -79,6 +81,18 @@ export const company = {
     printCapacitySqFtDay: 40_000, // TODO: confirm daily flex output
   },
 } as const;
+
+/**
+ * WhatsApp click-to-chat on the confirmed mobile number.
+ *
+ * This is the primary enquiry route rather than email, for two reasons: it is
+ * how B2B enquiries actually arrive in Pakistan, and it runs on a number we
+ * know is real. The email addresses are still assumed — see ASSETS.md — so
+ * nothing critical should depend on them alone.
+ */
+export function whatsapp(message: string): string {
+  return `https://wa.me/${company.contact.whatsapp}?text=${encodeURIComponent(message)}`;
+}
 
 /**
  * Single, address-based Google Maps target used everywhere on the site.

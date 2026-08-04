@@ -75,20 +75,18 @@ export function NetworkPreview() {
         </div>
 
         {/* Metrics */}
-        <dl className="mt-[var(--spacing-group)] grid grid-cols-2 gap-px overflow-hidden border border-line bg-line lg:grid-cols-4">
-          {metrics.map((metric, i) => (
-            <div key={metric.label} className="bg-bg p-7 md:p-9">
-              <Reveal delay={i * 0.06}>
+        <Reveal>
+          <dl className="mt-[var(--spacing-group)] grid grid-cols-2 gap-px overflow-hidden border border-line bg-line lg:grid-cols-4">
+            {metrics.map((metric) => (
+              <div key={metric.label} className="bg-bg p-7 md:p-9">
                 <dt className="text-label text-subtle">{metric.label}</dt>
-                <dd
-                  className="mt-5 font-[family-name:var(--font-display)] text-[clamp(2.25rem,5vw,3.75rem)] font-semibold leading-none tracking-[-0.03em]"
-                >
+                <dd className="mt-5 font-[family-name:var(--font-display)] text-[clamp(2.25rem,5vw,3.75rem)] font-semibold leading-none tracking-[-0.03em]">
                   <Counter value={metric.value} format={metric.format} />
                 </dd>
-              </Reveal>
-            </div>
-          ))}
-        </dl>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
 
         {/* Area breakdown */}
         <ul className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4">

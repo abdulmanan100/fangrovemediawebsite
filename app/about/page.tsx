@@ -7,7 +7,7 @@ import { Reveal, RevealLines } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { milestones, principles, team } from "@/content/studio";
+import { facts, principles, team } from "@/content/studio";
 import { company } from "@/content/company";
 import { citiesCovered, totalSites } from "@/content/sites";
 import { BLUR, images } from "@/lib/images";
@@ -113,68 +113,78 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Confirmed figures */}
       <section className="rule">
         <div className="shell section-y">
           <Reveal>
-            <h2 className="text-section max-w-[12ch]">Since 2014.</h2>
+            <h2 className="text-section max-w-[14ch]">Since {company.founded}.</h2>
           </Reveal>
 
-          <ol className="mt-[var(--spacing-group)]">
-            {milestones.map((milestone, i) => (
-              <li key={milestone.year}>
-                <Reveal delay={Math.min(i * 0.05, 0.25)}>
-                  <div className="grid grid-cols-1 gap-x-12 gap-y-2 border-t border-line py-7 md:grid-cols-12">
-                    <span className="nums font-[family-name:var(--font-display)] text-2xl font-semibold tracking-[-0.02em] text-accent md:col-span-2">
-                      {milestone.year}
-                    </span>
-                    <p className="text-subhead text-muted md:col-span-9">{milestone.text}</p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
+          <Reveal>
+            <dl className="mt-[var(--spacing-group)]">
+              {facts.map((fact) => (
+                <div
+                  key={fact.label}
+                  className="grid grid-cols-1 gap-x-12 gap-y-3 border-t border-line py-9 md:grid-cols-12"
+                >
+                  <dt className="text-label text-subtle md:col-span-3">{fact.label}</dt>
+                  <dd className="nums font-[family-name:var(--font-display)] text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-none tracking-[-0.03em] text-accent md:col-span-3 md:col-start-1 md:row-start-2">
+                    {fact.value}
+                  </dd>
+                  <dd className="text-subhead text-muted md:col-span-7 md:col-start-5 md:row-start-2 md:self-end">
+                    {fact.note}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
       </section>
 
       <Process />
 
-      {/* Team */}
-      <section className="rule">
-        <div className="shell section-y">
-          <Reveal>
-            <p className="text-label text-accent">The team</p>
-          </Reveal>
-          <RevealLines
-            lines={["Four people", "you will", "actually speak to."]}
-            as="h2"
-            className="text-section mt-7 max-w-[18ch]"
-            delay={0.05}
-          />
+      {/* Team — rendered only when there are real people to show. An empty
+          roster is better than four cards reading "Placeholder Name". */}
+      {team.length > 0 && (
+        <section className="rule">
+          <div className="shell section-y">
+            <Reveal>
+              <p className="text-label text-accent">The team</p>
+            </Reveal>
+            <RevealLines
+              lines={["The people you", "will actually", "speak to."]}
+              as="h2"
+              className="text-section mt-7 max-w-[18ch]"
+              delay={0.05}
+            />
 
-          <ul className="mt-[var(--spacing-group)] grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((member, i) => (
-              <li key={member.role}>
-                <Reveal delay={Math.min(i * 0.06, 0.24)}>
-                  {/* Portraits go here once the real team photography exists —
-                      see ASSETS.md. Until then the slot stays a flat plate
-                      rather than a stock photograph of somebody who does not
-                      work here. */}
-                  <div
-                    className="flex aspect-4/5 items-end rounded-[var(--radius-md)] border border-line bg-surface p-5"
-                    aria-hidden="true"
-                  >
-                    <span className="text-label text-subtle">Portrait</span>
-                  </div>
-                  <h3 className="mt-5 text-lg font-medium text-ink">{member.name}</h3>
-                  <p className="text-label mt-2 text-accent">{member.role}</p>
-                  <p className="text-body mt-3 text-muted">{member.bio}</p>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+            <ul className="mt-[var(--spacing-group)] grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+              {team.map((member, i) => (
+                <li key={member.role}>
+                  <Reveal delay={Math.min(i * 0.06, 0.24)}>
+                    <div className="media-reveal relative aspect-4/5 overflow-hidden rounded-[var(--radius-md)] border border-line bg-surface">
+                      {member.photo && (
+                        <Image
+                          src={member.photo}
+                          alt={`${member.name}, ${member.role}`}
+                          fill
+                          sizes="(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw"
+                          placeholder="blur"
+                          blurDataURL={BLUR}
+                          className="object-cover"
+                        />
+                      )}
+                    </div>
+                    <h3 className="mt-5 text-lg font-medium text-ink">{member.name}</h3>
+                    <p className="text-label mt-2 text-accent">{member.role}</p>
+                    <p className="text-body mt-3 text-muted">{member.bio}</p>
+                  </Reveal>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <Clients />
       <ContactCTA index="07" />

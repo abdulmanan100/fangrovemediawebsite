@@ -39,7 +39,7 @@ export default function NetworkPage() {
       <PageHero
         eyebrow="The estate"
         lines={["Every site.", "Every number."]}
-        lede="Filter by city, format, illumination or availability. Dimensions, direction of approach and modelled daily impressions are published for all of it — before you enquire, and without a phone call."
+        lede="Filter by area, format, illumination or availability. Face dimensions, direction of approach and daily audience are published for every structure — before you enquire, and without a phone call."
         meta={[
           { label: "Owned sites", value: String(totalSites) },
           { label: "Available now", value: String(availableSites) },
@@ -65,10 +65,11 @@ export default function NetworkPage() {
           <h2 className="text-section lg:col-span-5">How to read a site.</h2>
           <div className="space-y-5 lg:col-span-6 lg:col-start-7">
             <p className="text-body text-muted">
-              <strong className="font-medium text-ink">Daily impressions</strong> are
-              modelled from traffic counts, approach speed and dwell time at the nearest
-              signal — not from a rate card. They are an estimate, and we will show you
-              the working if you ask for it.
+              <strong className="font-medium text-ink">Daily audience</strong> is the
+              figure we hold against each structure in our own inventory records. It is an
+              estimate of vehicles and pedestrians passing the face, not a guaranteed
+              impression count — ask and we will talk you through how a given site was
+              assessed.
             </p>
             <p className="text-body text-muted">
               <strong className="font-medium text-ink">Direction of approach</strong>{" "}
@@ -81,9 +82,9 @@ export default function NetworkPage() {
               medium in December, and it is priced that way.
             </p>
             <p className="text-body text-subtle">
-              Booked sites are shown rather than hidden. Availability changes monthly and
-              cycles usually open on the 1st and the 16th — worth asking about a site even
-              when it reads as taken.
+              Booked sites are shown rather than hidden, and availability moves constantly.
+              It is always worth asking about a face that reads as taken — the cycle behind
+              it may be days from ending.
             </p>
           </div>
         </div>
