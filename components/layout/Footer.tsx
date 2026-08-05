@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LogoMark } from "@/components/brand/Logo";
 import { company, navigation, siteConfig } from "@/content/company";
 import { services } from "@/content/services";
-import { citiesCovered, totalSites } from "@/content/sites";
+import { areaBreakdown, totalSites } from "@/content/sites";
 
 const year = new Date().getFullYear();
 
@@ -16,7 +16,7 @@ export function Footer() {
             <LogoMark className="h-9 w-auto text-ink" />
             <p className="text-subhead mt-7 max-w-xs text-muted">
               Out-of-home, broadcast and print. {totalSites} owned sites across{" "}
-              {citiesCovered} cities.
+              {areaBreakdown().length} areas of Lahore.
             </p>
             <address className="mt-8 not-italic text-sm leading-relaxed text-subtle">
               {company.address.line1}
@@ -88,16 +88,16 @@ export function Footer() {
               <li className="pt-1 text-sm text-subtle">{company.hours.label}</li>
             </ul>
 
-            <ul className="mt-8 flex gap-5">
+            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
               {Object.entries(company.social).map(([label, href]) => (
                 <li key={label}>
                   <a
                     href={href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="link-underline text-label text-subtle transition-colors hover:text-ink"
+                    className="link-underline text-label capitalize text-subtle transition-colors hover:text-ink"
                   >
-                    {label.slice(0, 2)}
+                    {label}
                   </a>
                 </li>
               ))}

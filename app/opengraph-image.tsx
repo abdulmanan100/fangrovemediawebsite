@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { company } from "@/content/company";
-import { citiesCovered, totalSites } from "@/content/sites";
+import { areaBreakdown, totalSites } from "@/content/sites";
 
 export const alt = `${company.name} — Out-of-Home, Broadcast & Print · Lahore`;
 export const size = { width: 1200, height: 630 };
@@ -81,7 +81,7 @@ export default async function Image() {
           {/* Satori requires a single text child unless display is explicit,
               so the sentence is assembled in JS rather than in JSX. */}
           <div style={{ marginTop: 34, fontSize: 27, color: "#a8a69e", maxWidth: 900 }}>
-            {`Out-of-home, broadcast and print. ${totalSites} owned sites across ${citiesCovered} Pakistani cities.`}
+            {`Out-of-home, broadcast and print. ${totalSites} owned sites across ${areaBreakdown().length} areas of Lahore.`}
           </div>
         </div>
 

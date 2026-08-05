@@ -9,7 +9,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { facts, principles, team } from "@/content/studio";
 import { company } from "@/content/company";
-import { citiesCovered, totalSites } from "@/content/sites";
+import { areaBreakdown, totalSites } from "@/content/sites";
 import { BLUR, images } from "@/lib/images";
 import { pad2 } from "@/lib/format";
 
@@ -37,7 +37,7 @@ export default function AboutPage() {
         meta={[
           { label: "Founded", value: String(company.founded) },
           { label: "Owned sites", value: String(totalSites) },
-          { label: "Cities", value: String(citiesCovered) },
+          { label: "Areas of Lahore", value: String(areaBreakdown().length) },
           { label: "Print floor", value: "In-house" },
         ]}
       />

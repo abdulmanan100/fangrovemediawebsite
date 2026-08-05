@@ -7,7 +7,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { ArrowDown } from "lucide-react";
 import { BLUR, images } from "@/lib/images";
 import { company } from "@/content/company";
-import { citiesCovered, totalSites } from "@/content/sites";
+import { areaBreakdown, totalSites } from "@/content/sites";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const LINES = ["Attention", "is a place."] as const;
@@ -129,9 +129,9 @@ export function Hero() {
             transition={{ duration: 0.7, ease: EASE, delay: 0.5 }}
             className="text-subhead max-w-xl text-muted lg:col-span-6"
           >
-            Fangrove owns {totalSites} large-format sites across {citiesCovered} Pakistani
-            cities — and the print floor that dresses them. Out-of-home, broadcast and
-            press, run from Lahore.
+            Fangrove owns {totalSites} large-format sites across {areaBreakdown().length}{" "}
+            areas of Lahore — and the print floor that dresses them. Out-of-home,
+            broadcast and press, since {company.founded}.
           </motion.p>
 
           <motion.div
