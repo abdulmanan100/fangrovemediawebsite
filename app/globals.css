@@ -291,6 +291,15 @@ html.lenis body {
     filter: grayscale(0%) contrast(1);
     transform: scale(1.06);
   }
+
+  /* Campaign posters opt out of the desaturation and keep the scale.
+     The client's creative is the thing being shown, so greying it out hides
+     the work — and on a touch device there is no hover to bring it back. */
+  .media-reveal-colour img,
+  .media-reveal-colour:hover img,
+  .media-reveal-colour:focus-within img {
+    filter: none;
+  }
 }
 
 /* ==========================================================================
@@ -326,6 +335,30 @@ html.lenis body {
   }
 }
 
+/* Film dialog. Entry only — the iframe unmounts the moment close() fires, so
+   an exit transition would fade out an already-empty box. */
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.985);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+dialog[open] {
+  animation: dialog-in 0.34s var(--ease-out-expo) both;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-in 0.34s ease-out both;
+}
+
 /* ==========================================================================
    REDUCED MOTION — hard stop. Non-negotiable.
    ========================================================================== */
@@ -333,7 +366,8 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
-  *::after {
+  *::after,
+  *::backdrop {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

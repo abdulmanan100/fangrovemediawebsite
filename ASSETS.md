@@ -15,6 +15,8 @@ Most of the original placeholder content has now been replaced with the company'
 | **Site photography** | The company's own site photography, cropped from the deck |
 | **Client roster** — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Car First, Condis by Spain, Zero Carbon Solar, Asghar Ali Perfumes | Previous portfolio |
 | **Campaigns** — the 11 above | Previous portfolio |
+| **Campaign films** — all 11 play the real YouTube reels | Previous portfolio video gallery |
+| **Campaign posters** — a frame from each reel, or our own photo of the same creative | The reels themselves |
 | **Founded 2008 · 250+ brands · 30+ staff** | Previous about and portfolio pages |
 | **Phone / WhatsApp** — +92 322 807 2185 | Client |
 | **Address** — 10D Commercial, Pak Arab Society, Lahore | Client |
@@ -113,11 +115,16 @@ Site photography (`public/media/sites/`) is yours. The remaining 15 images are U
 
 Add `public/favicon.ico`, `icon.png` (512×512) and `apple-icon.png` (180×180) — the logo mark on `#0a0a0a` works.
 
-### Campaign photography
+### Campaign films
 
-`content/work.ts` shows a photograph **only** where one verifiably shows that client's creative on one of our faces — currently Carrefour and Zero Carbon Solar. The other nine render as typographic cards on purpose: pairing a client name with an unrelated board implies creative that isn't theirs.
+All 11 campaigns are the real reels, played from YouTube. `content/work.ts` holds the video ID, the publish date and a 16:9 poster in `public/media/work/`.
 
-Drop real campaign photos into `public/media/work/` and add an `image` to those entries to convert them.
+Nothing here needs replacing, but two things are worth knowing:
+
+- **The reels carry the Omelet watermark.** It is burnt into the footage, so it cannot be removed without re-editing the films. `/work` carries one line acknowledging the former trading name — delete it from `app/work/page.tsx` if you would rather not mention it, but the mark will still be on screen.
+- **Nine posters are frames from the reels; two are ours.** Carrefour and Zero Carbon Solar use our own site photography, because YouTube only kept a 640px letterboxed still for those two. If you have the original masters, replacing any poster is a drop-in — same filename, 16:9, WebP.
+
+To add a campaign, append to `content/work.ts` with a `youtubeId`, an `uploaded` date and a poster. The player, the `/work` grid, the service cross-links and the `VideoObject` schema all follow from that one entry.
 
 ### Case studies
 
