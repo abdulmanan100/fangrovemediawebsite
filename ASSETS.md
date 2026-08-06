@@ -15,8 +15,7 @@ Most of the original placeholder content has now been replaced with the company'
 | **Site photography** | The company's own site photography, cropped from the deck |
 | **Client roster** — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Car First, Condis by Spain, Zero Carbon Solar, Asghar Ali Perfumes | Previous portfolio |
 | **Campaigns** — the 11 above | Previous portfolio |
-| **Campaign films** — all 11 play the real YouTube reels | Previous portfolio video gallery |
-| **Campaign posters** — a frame from each reel, or our own photo of the same creative | The reels themselves |
+| **Campaign photography** — all 11, each showing that client's creative on the face that ran it | Frames from the campaign reels, plus our own site photography |
 | **Founded 2008 · 250+ brands · 30+ staff** | Previous about and portfolio pages |
 | **Phone / WhatsApp** — +92 322 807 2185 | Client |
 | **Address** — 10D Commercial, Pak Arab Society, Lahore | Client |
@@ -115,16 +114,31 @@ Site photography (`public/media/sites/`) is yours. The remaining 15 images are U
 
 Add `public/favicon.ico`, `icon.png` (512×512) and `apple-icon.png` (180×180) — the logo mark on `#0a0a0a` works.
 
-### Campaign films
+### Campaign photography
 
-All 11 campaigns are the real reels, played from YouTube. `content/work.ts` holds the video ID, the publish date and a 16:9 poster in `public/media/work/`.
+All 11 campaigns are real, each with a photograph of that client's creative on the face that carried it. `content/work.ts` holds the entry; `public/media/work/` holds a 21:9 WebP poster.
 
-Nothing here needs replacing, but two things are worth knowing:
+**Why 21:9 and not 16:9.** Nine of these frames come from the campaign reels, and six of those carry the old Omelet mark in the top-right corner. Cropping the top strip removes it at full width, so no part of the board is lost. Every poster uses the same crop so the grid stays consistent. Two posters (Carrefour, Zero Carbon Solar) are our own site photography of the same creative.
 
-- **The reels carry the Omelet watermark.** It is burnt into the footage, so it cannot be removed without re-editing the films. `/work` carries one line acknowledging the former trading name — delete it from `app/work/page.tsx` if you would rather not mention it, but the mark will still be on screen.
-- **Nine posters are frames from the reels; two are ours.** Carrefour and Zero Carbon Solar use our own site photography, because YouTube only kept a 640px letterboxed still for those two. If you have the original masters, replacing any poster is a drop-in — same filename, 16:9, WebP.
+**The reels are not shown.** The mark is burnt into the footage — six carry the corner bug throughout, and the IGI Life film opens on a full-screen Omelet logo. Only Zero Carbon Solar and Asghar Ali Perfumes are clean. There is no way to show the others without showing the old brand, so the site has no video player at all.
 
-To add a campaign, append to `content/work.ts` with a `youtubeId`, an `uploaded` date and a poster. The player, the `/work` grid, the service cross-links and the `VideoObject` schema all follow from that one entry.
+**If you re-cut the films without the mark**, they can go back in — the source URLs are kept below for that. Nothing else in the codebase depends on them.
+
+| Campaign | Reel |
+|---|---|
+| Packages Shopping Festival | `youtu.be/7UDmdtTGXJs` |
+| Carrefour | `youtu.be/vDmk15Meh0o` |
+| IGI Life | `youtu.be/BvHdqUTIaUs` |
+| Metro Cash & Carry trolley | `youtu.be/borOLmcHJ9Q` |
+| Condis by Spain | `youtu.be/WBMc4ZKZx7E` |
+| Packages Mall | `youtu.be/VEh5s57c6Yk` |
+| Zero Carbon Solar *(clean)* | `youtu.be/MecCW7sopBo` |
+| ACCA | `youtu.be/F5RveF-J80U` |
+| Car First | `youtu.be/MYEvUZMM8CE` |
+| Asghar Ali Perfumes *(clean)* | `youtu.be/a7Vz0q-_yE0` |
+| Al Fatah Superstore | `youtu.be/5bYEcOJGQBM` |
+
+To add a campaign, append to `content/work.ts` with a poster path. The `/work` grid and the service cross-links follow from that one entry.
 
 ### Case studies
 

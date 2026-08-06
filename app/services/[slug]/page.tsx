@@ -5,9 +5,9 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Reveal } from "@/components/ui/Reveal";
-import { FilmCard } from "@/components/work/FilmCard";
+import { CampaignCard } from "@/components/work/CampaignCard";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbSchema, serviceSchema, videoSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { getService, nextService, services } from "@/content/services";
 import { campaignsForService } from "@/content/work";
@@ -48,9 +48,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           { name: service.title, path: `/services/${service.slug}` },
         ])}
       />
-      {related.map((film) => (
-        <JsonLd key={film.slug} data={videoSchema(film)} />
-      ))}
 
       <PageHero
         eyebrow={`${service.index} — ${service.eyebrow}`}
@@ -159,7 +156,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="mt-[var(--spacing-group)] grid gap-x-12 gap-y-14 lg:grid-cols-2">
               {related.map((study, i) => (
                 <Reveal key={study.slug} delay={i * 0.08}>
-                  <FilmCard film={study} sizes="(min-width: 1024px) 46vw, 92vw" />
+                  <CampaignCard campaign={study} sizes="(min-width: 1024px) 46vw, 92vw" />
                 </Reveal>
               ))}
             </div>

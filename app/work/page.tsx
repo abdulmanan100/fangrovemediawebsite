@@ -3,11 +3,11 @@ import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Reveal } from "@/components/ui/Reveal";
-import { FilmCard } from "@/components/work/FilmCard";
+import { CampaignCard } from "@/components/work/CampaignCard";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbSchema, videoSchema } from "@/lib/schema";
+import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { campaigns, totalFilms } from "@/content/work";
+import { campaigns, totalCampaigns } from "@/content/work";
 import { company } from "@/content/company";
 import { sites } from "@/content/sites";
 import { BLUR } from "@/lib/images";
@@ -16,8 +16,8 @@ import { BLUR } from "@/lib/images";
 const gallery = sites.filter((site) => site.format === "Billboard").slice(0, 12);
 
 export const metadata = buildMetadata({
-  title: "Work — campaign films from the Lahore network",
-  description: `${totalFilms} out-of-home and DOOH campaign films from Fangrove Media — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Condis and others, shot on our own sites across Lahore.`,
+  title: "Work — campaigns built for traffic",
+  description: `${totalCampaigns} out-of-home and DOOH campaigns from Fangrove Media — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Condis and others, shot on our own sites across Lahore.`,
   path: "/work",
 });
 
@@ -30,25 +30,22 @@ export default function WorkPage() {
           { name: "Work", path: "/work" },
         ])}
       />
-      {campaigns.map((film) => (
-        <JsonLd key={film.slug} data={videoSchema(film)} />
-      ))}
 
       <PageHero
         eyebrow="Selected work"
         lines={["Built to hold up", "in traffic."]}
-        lede={`Outdoor is judged at forty kilometres an hour, in bad light, by somebody who is not looking for it. Every campaign below was planned for that constraint and filmed on the faces that carried it — part of the ${company.stats.brandsServed}+ brands we have run since ${company.founded}.`}
+        lede={`Outdoor is judged at forty kilometres an hour, in bad light, by somebody who is not looking for it. Every campaign below was planned for that constraint and photographed on the face that carried it — part of the ${company.stats.brandsServed}+ brands we have run since ${company.founded}.`}
         meta={[
-          { label: "Campaign films", value: String(totalFilms) },
+          { label: "Campaigns", value: String(totalCampaigns) },
           { label: "Shot on", value: "Our own sites" },
         ]}
       />
 
       <section className="shell pb-[var(--spacing-section)]">
         <div className="grid gap-x-12 gap-y-16 lg:grid-cols-2">
-          {campaigns.map((film, i) => (
+          {campaigns.map((campaign, i) => (
             <Reveal
-              key={film.slug}
+              key={campaign.slug}
               delay={(i % 2) * 0.08}
               className={i % 2 === 1 ? "lg:mt-24" : undefined}
             >
@@ -56,20 +53,10 @@ export default function WorkPage() {
                   hero, so the LCP element is the heading — preloading the first
                   poster only competes with it and the browser ends up picking a
                   different srcset entry than the one that was preloaded. */}
-              <FilmCard film={film} sizes="(min-width: 1024px) 46vw, 92vw" />
+              <CampaignCard campaign={campaign} sizes="(min-width: 1024px) 46vw, 92vw" />
             </Reveal>
           ))}
         </div>
-
-        {/* The reels carry our previous trading name burnt into the footage.
-            Saying so is cheaper than explaining it later, and a decade of
-            continuity is worth more than a clean watermark. */}
-        <Reveal>
-          <p className="mt-[var(--spacing-group)] max-w-2xl border-t border-line pt-8 text-sm leading-relaxed text-subtle">
-            Campaigns produced under our former trading name, Omelet Advertising. Same
-            company, same sites, same crew — the films still carry the old mark.
-          </p>
-        </Reveal>
       </section>
 
       {/* Real site photography, labelled as inventory rather than as any one

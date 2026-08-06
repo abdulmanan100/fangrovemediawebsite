@@ -2,9 +2,8 @@
  * Studio content: client roster, working process, team, and the numbers that
  * appear on the About page.
  *
- * ⚠ The client roster and team below are PLACEHOLDERS — invented names so the
- * layout can be reviewed with realistic content. Replace both before launch.
- * See ASSETS.md.
+ * The client roster is real — every name has a campaign in content/work.ts to
+ * point at. `team` is empty on purpose; see the note above it.
  */
 
 /**

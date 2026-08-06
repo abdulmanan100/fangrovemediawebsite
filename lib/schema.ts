@@ -1,7 +1,6 @@
 import { company, siteConfig } from "@/content/company";
 import { services } from "@/content/services";
 import type { MediaSite } from "@/content/sites";
-import type { Campaign } from "@/content/work";
 
 /**
  * JSON-LD builders.
@@ -94,26 +93,6 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
       name: crumb.name,
       item: `${siteConfig.url}${crumb.path}`,
     })),
-  };
-}
-
-/**
- * VideoObject per campaign reel.
- *
- * `contentUrl` is deliberately omitted and `embedUrl` given instead — the reels
- * are hosted on YouTube, so there is no file of ours to point at, and Google
- * accepts either one.
- */
-export function videoSchema(film: Campaign) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    name: `${film.client} — ${film.title}`,
-    description: film.posterAlt,
-    thumbnailUrl: `${siteConfig.url}${film.poster}`,
-    uploadDate: film.uploaded,
-    embedUrl: `https://www.youtube-nocookie.com/embed/${film.youtubeId}`,
-    publisher: { "@id": ORG_ID },
   };
 }
 
