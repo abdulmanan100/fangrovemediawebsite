@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { NetworkExplorer } from "@/components/network/NetworkExplorer";
 import { ContactCTA } from "@/components/sections/ContactCTA";
@@ -9,15 +10,16 @@ import {
   availableSites,
   digitalScreens,
   sites,
+  sitesByArea,
   totalDailyImpressions,
   totalSites,
 } from "@/content/sites";
-import { compactNumber } from "@/lib/format";
+import { compactNumber, dimensions } from "@/lib/format";
 
 export const metadata = buildMetadata({
-  title: "The Network — every site, published",
+  title: `${totalSites} billboard & LED sites in Lahore, on a map`,
   description:
-    "Browse Fangrove's owned media estate: billboards, unipoles, gantries and digital LED across Lahore, Islamabad, Karachi, Faisalabad and Multan. Filter by city, format and illumination, with dimensions and daily impressions for every site.",
+    "Every Fangrove billboard, LED screen and bridge panel in Lahore on one map — face size, lighting and daily audience for each. Filter by area and format.",
   path: "/network",
 });
 
@@ -86,6 +88,41 @@ export default function NetworkPage() {
               It is always worth asking about a face that reads as taken — the cycle behind
               it may be days from ending.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* The same estate as plain links. The explorer above is interactive and
+          renders client-side, so this index is the crawlable route from this
+          page to every site's own page — and a quicker scan for anyone who
+          already knows the road they want. */}
+      <section className="rule">
+        <div className="shell section-y">
+          <h2 className="text-section max-w-[16ch]">Every site, by area.</h2>
+
+          <div className="mt-[var(--spacing-group)] gap-x-12 md:columns-2 lg:columns-3">
+            {sitesByArea().map((group) => (
+              <div key={group.area} className="mb-10 break-inside-avoid">
+                <h3 className="text-label flex items-baseline justify-between border-t border-line pt-5 text-subtle">
+                  {group.area}
+                  <span className="nums">{group.sites.length}</span>
+                </h3>
+                <ul className="mt-3">
+                  {group.sites.map((site) => (
+                    <li key={site.id}>
+                      <Link href={`/network/${site.id}`} className="group block py-2.5">
+                        <span className="block text-sm text-ink transition-colors group-hover:text-accent">
+                          {site.name}
+                        </span>
+                        <span className="nums mt-1 block text-xs text-subtle">
+                          {site.format} · {dimensions(site.widthFt, site.heightFt)}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

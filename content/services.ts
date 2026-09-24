@@ -20,6 +20,8 @@ export type Service = {
   capabilities: readonly Capability[];
   specs: readonly Spec[];
   image: ImageKey;
+  /** Search title: the phrase people actually type, not the section name. */
+  metaTitle: string;
   metaDescription: string;
 };
 
@@ -38,13 +40,13 @@ export const services: readonly Service[] = [
     body: [
       "A billboard is infrastructure before it is advertising. The steel has to survive a Punjab summer, the lighting has to hold at 2 a.m., and the face has to be reachable by a crew at short notice. Sites that fail any of those three quietly cost their advertiser a third of the campaign.",
       "Our estate is built around commuter arteries — Ferozepur Road, Canal Bank, the Ring Road interchanges, Main Boulevard Gulberg — where dwell time is long, speeds are low, and the same audience passes twice a day, five days a week. Frequency is what makes outdoor work, and frequency is a function of where the structure stands.",
-      "Every site in our network is documented: exact coordinates, face dimensions, illumination type, direction of approach, and an independently modelled daily impression count. You can inspect all of it before you commit to a single rupee.",
+      "Every site in our network is documented: map location, face dimensions, illumination type, direction of approach, and the daily audience figure we hold for it. You can inspect all of it before you commit to a single rupee.",
     ],
     capabilities: [
       {
         title: "Unipoles & billboards",
         description:
-          "Single- and double-face structures from 20 × 10 up to 60 × 20 ft, front-lit or back-lit, on owned land and rooftop leases.",
+          "Single- and double-face structures up to 90 × 30 ft, front-lit or back-lit, on owned land and rooftop leases.",
       },
       {
         title: "Gantries & bridge panels",
@@ -73,7 +75,7 @@ export const services: readonly Service[] = [
       },
     ],
     specs: [
-      { label: "Face sizes", value: "20 × 10 ft — 60 × 20 ft" },
+      { label: "Face sizes", value: "Up to 90 × 30 ft" },
       { label: "Illumination", value: "Front-lit · Back-lit · Non-lit" },
       { label: "Substrate", value: "Star flex 440–650 gsm · cast vinyl" },
       { label: "Booking cycle", value: "Monthly, from the 1st or 16th" },
@@ -81,8 +83,9 @@ export const services: readonly Service[] = [
       { label: "Mounting window", value: "Overnight, 11 p.m. — 5 a.m." },
     ],
     image: "billboardBlank",
+    metaTitle: "Billboard & outdoor advertising in Lahore",
     metaDescription:
-      "Owned billboard, unipole, gantry and street-furniture sites across Lahore and Punjab. Verified locations, documented impressions, overnight mounting.",
+      "Owned billboards, bridge panels, underpass faces and streamers across Lahore, each with published size, location and daily audience. Mounted overnight.",
   },
 
   {
@@ -142,6 +145,7 @@ export const services: readonly Service[] = [
       { label: "Reporting", value: "Weekly play log · monthly impression summary" },
     ],
     image: "digitalPanel",
+    metaTitle: "Digital billboards & LED screens in Lahore",
     metaDescription:
       "Digital out-of-home in Lahore: roadside LED screens with dayparting, dynamic creative, stated share of voice and weekly play-log reporting.",
   },
@@ -203,6 +207,7 @@ export const services: readonly Service[] = [
       { label: "Reporting", value: "Post-campaign log reconciliation" },
     ],
     image: "broadcastStudio",
+    metaTitle: "TV, radio & cinema advertising in Pakistan",
     metaDescription:
       "TV, radio and cinema planning and buying from Lahore. Ratings-led plans, direct channel negotiation, PEMRA clearance and full log reconciliation.",
   },
@@ -264,6 +269,7 @@ export const services: readonly Service[] = [
       { label: "Proof", value: "Scanned tear sheet within 48 hours" },
     ],
     image: "pressNewsprint",
+    metaTitle: "Newspaper advertising in Pakistan",
     metaDescription:
       "Newspaper and magazine advertising placed from Lahore. National and Urdu dailies, Punjab regional editions, negotiated positions and tear-sheet proof.",
   },
@@ -325,6 +331,7 @@ export const services: readonly Service[] = [
       { label: "Standard lead time", value: "5 working days · 48h rush available" },
     ],
     image: "paperStock",
+    metaTitle: "Offset & digital printing in Lahore",
     metaDescription:
       "Offset and digital commercial printing in Lahore. Packaging, catalogues, corporate stationery and in-house finishing with managed colour.",
   },
@@ -386,6 +393,7 @@ export const services: readonly Service[] = [
       { label: "Turnaround", value: "24 hours print · same-night mounting" },
     ],
     image: "pressOffset",
+    metaTitle: "Flex & panaflex printing in Lahore",
     metaDescription:
       "Large-format flex printing in Lahore: panaflex, backlit, mesh, vinyl and one-way vision, printed and mounted by the same team.",
   },

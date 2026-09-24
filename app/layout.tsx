@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Cursor } from "@/components/layout/Cursor";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { company, siteConfig } from "@/content/company";
+import { totalSites } from "@/content/sites";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 
@@ -28,13 +29,17 @@ const instrument = Instrument_Serif({
   display: "swap",
 });
 
+/* Search-snippet length (~155 characters). company.description is the long
+   form, used in structured data where nothing truncates it. */
+const description = `Fangrove Media owns ${totalSites} billboard, LED and bridge-panel sites across Lahore and runs its own flex print floor. Outdoor, DOOH, TV, radio and press since ${company.founded}.`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${company.name} — Out-of-Home, Broadcast & Print · Lahore`,
+    default: `${company.name} — Billboard & Outdoor Advertising in Lahore`,
     template: `%s · ${company.name}`,
   },
-  description: company.description,
+  description,
   applicationName: company.name,
   authors: [{ name: company.name, url: siteConfig.url }],
   creator: company.name,
@@ -57,8 +62,8 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: company.name,
     locale: siteConfig.locale,
-    title: `${company.name} — Out-of-Home, Broadcast & Print`,
-    description: company.description,
+    title: `${company.name} — Billboard & Outdoor Advertising in Lahore`,
+    description,
   },
   twitter: {
     card: "summary_large_image",

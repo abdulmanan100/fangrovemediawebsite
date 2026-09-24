@@ -1,4 +1,4 @@
-import { company, siteConfig } from "@/content/company";
+import { company, mapsUrl, siteConfig } from "@/content/company";
 import { services } from "@/content/services";
 import type { MediaSite } from "@/content/sites";
 
@@ -19,6 +19,9 @@ export function organizationSchema() {
     name: company.name,
     legalName: company.legalName,
     url: siteConfig.url,
+    // The 512 px app icon (mark on black) and the site-wide social card.
+    logo: `${siteConfig.url}/icon.png`,
+    image: `${siteConfig.url}/opengraph-image`,
     description: company.description,
     foundingDate: String(company.founded),
     telephone: company.contact.phone,
@@ -32,15 +35,19 @@ export function organizationSchema() {
     },
     // No `geo` block by design — see the note in content/company.ts. Google
     // geocodes `address` itself, and a guessed coordinate would override it.
+    hasMap: mapsUrl,
     openingHoursSpecification: company.hours.schema.map((slot) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: slot.days,
       opens: slot.opens,
       closes: slot.closes,
     })),
-    areaServed: ["Lahore", "Islamabad", "Karachi", "Faisalabad", "Multan", "Punjab", "Pakistan"].map(
-      (name) => ({ "@type": "AdministrativeArea", name }),
-    ),
+    // The markets campaigns are planned and bought in (the owned estate is
+    // Lahore alone), plus the country for broadcast and national press.
+    areaServed: [
+      ...company.stats.marketsCovered.map((name) => ({ "@type": "City", name })),
+      { "@type": "Country", name: "Pakistan" },
+    ],
     sameAs: Object.values(company.social),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -102,6 +109,7 @@ export function mediaSiteSchema(site: MediaSite) {
     "@type": "Place",
     name: site.name,
     url: `${siteConfig.url}/network/${site.id}`,
+    image: `${siteConfig.url}${site.photo}`,
     description: `${site.format}, ${site.widthFt} × ${site.heightFt} ft, ${site.illumination}. ${site.facing}.`,
     address: {
       "@type": "PostalAddress",

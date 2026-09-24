@@ -20,6 +20,12 @@ export function dimensions(widthFt: number, heightFt: number): string {
   return `${widthFt} × ${heightFt} ft`;
 }
 
+/** 640 → "640 m" · 2380 → "2.4 km" */
+export function distance(metres: number): string {
+  if (metres < 1_000) return `${Math.round(metres / 10) * 10} m`;
+  return `${(metres / 1_000).toFixed(1)} km`;
+}
+
 /** Total face area, used for sorting and for the print-cost intuition. */
 export function areaSqFt(widthFt: number, heightFt: number): number {
   return widthFt * heightFt;

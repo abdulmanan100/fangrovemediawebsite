@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Reveal } from "@/components/ui/Reveal";
+import { Enter } from "@/components/ui/Enter";
 import { CampaignCard } from "@/components/work/CampaignCard";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
@@ -24,9 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return buildMetadata({ title: "Service not found", description: "" });
 
   return buildMetadata({
-    title: `${service.title} in Lahore`,
+    title: service.metaTitle,
     description: service.metaDescription,
     path: `/services/${service.slug}`,
+    image: `/services/${service.slug}/opengraph-image`,
   });
 }
 
@@ -62,7 +64,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       {/* Hero image */}
       <section className="shell">
-        <Reveal>
+        {/* <Enter>, not <Reveal>: this image is the page's largest paint. */}
+        <Enter>
           <div className="relative aspect-16/9 overflow-hidden rounded-[var(--radius-lg)] bg-surface md:aspect-21/9">
             <Image
               src={images[service.image]}
@@ -75,7 +78,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               className="object-cover"
             />
           </div>
-        </Reveal>
+        </Enter>
       </section>
 
       {/* Body */}

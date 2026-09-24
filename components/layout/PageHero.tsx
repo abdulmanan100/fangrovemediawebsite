@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Reveal, RevealLines } from "@/components/ui/Reveal";
+import { Enter, EnterLines } from "@/components/ui/Enter";
 
 type Crumb = { label: string; href: string };
 
@@ -19,6 +19,9 @@ type PageHeroProps = {
  * Shared opener for every page except home. The top padding clears the fixed
  * header; the rest is the same grid as SectionHeader so inner pages and home
  * sections share one rhythm.
+ *
+ * Always on screen at load, so it uses the CSS <Enter> rather than <Reveal>:
+ * the heading and lede are usually the page's largest paint.
  */
 export function PageHero({
   eyebrow,
@@ -31,7 +34,7 @@ export function PageHero({
   return (
     <header className={`shell ${compact ? "pt-32 pb-12" : "pt-36 pb-[var(--spacing-group)]"} md:pt-44`}>
       {breadcrumbs && breadcrumbs.length > 0 && (
-        <Reveal>
+        <Enter>
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex flex-wrap items-center gap-2 text-label text-subtle">
               {breadcrumbs.map((crumb) => (
@@ -46,27 +49,27 @@ export function PageHero({
               ))}
             </ol>
           </nav>
-        </Reveal>
+        </Enter>
       )}
 
-      <Reveal>
+      <Enter>
         <p className="text-label text-accent">{eyebrow}</p>
-      </Reveal>
+      </Enter>
 
-      <RevealLines lines={lines} as="h1" className="text-display mt-7 max-w-[15ch]" delay={0.05} />
+      <EnterLines lines={lines} as="h1" className="text-display mt-7 max-w-[15ch]" delay={0.05} />
 
       {lede && (
         <div className="mt-9 grid lg:grid-cols-12">
-          <Reveal delay={0.12} className="lg:col-span-6">
+          <Enter delay={0.12} className="lg:col-span-6">
             <p className="text-subhead text-muted">{lede}</p>
-          </Reveal>
+          </Enter>
         </div>
       )}
 
       {/* A <dl> may only contain dt/dd, or div wrappers holding them directly —
           so the reveal wraps the whole list rather than each cell. */}
       {meta && meta.length > 0 && (
-        <Reveal delay={0.1}>
+        <Enter delay={0.1}>
           <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line md:grid-cols-4">
             {meta.map((item) => (
               <div key={item.label} className="bg-bg p-5 md:p-6">
@@ -77,7 +80,7 @@ export function PageHero({
               </div>
             ))}
           </dl>
-        </Reveal>
+        </Enter>
       )}
     </header>
   );

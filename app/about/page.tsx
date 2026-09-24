@@ -14,9 +14,8 @@ import { BLUR, images } from "@/lib/images";
 import { pad2 } from "@/lib/format";
 
 export const metadata = buildMetadata({
-  title: "Studio — an OOH company that owns its steel",
-  description:
-    "Fangrove Media has run out-of-home, broadcast and print from Lahore since 2014. Owned structures, an in-house print floor, and published numbers.",
+  title: `About — outdoor media in Lahore since ${company.founded}`,
+  description: `Fangrove Media has run out-of-home, broadcast and print from Lahore since ${company.founded}. Owned structures, an in-house print floor, and published numbers.`,
   path: "/about",
 });
 

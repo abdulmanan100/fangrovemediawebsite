@@ -119,7 +119,8 @@ Two accessibility constraints that are easy to regress:
 
 One reveal, everywhere: 24px rise, 600ms, `cubic-bezier(0.16, 1, 0.3, 1)`, 60ms stagger. Headings use a line-mask variant. `prefers-reduced-motion: reduce` disables Lenis, the custom cursor and every transform — this is enforced in `globals.css` and in each component, and must not be regressed.
 
-Two implementation notes worth keeping:
+Implementation notes worth keeping:
+- **The first screen uses `Enter`, not `Reveal`.** `components/ui/Enter.tsx` is the same curve as plain CSS, so it starts on first paint. `Reveal` waits for hydration, and on a mid-range phone that held the largest paint (LCP) back by 2–3.5 s. Use `Enter`/`EnterLines` only for content visible on load, and `Reveal` below the fold.
 - **`RevealLines` observes the heading, not the masked spans.** `IntersectionObserver` accounts for ancestor clipping, so a span translated fully outside its `overflow-hidden` parent never reports as visible.
 - **Full-bleed background images use `z-0`, not `-z-10`.** `body` paints an opaque background; anything behind it disappears.
 
@@ -133,7 +134,8 @@ Before going live, set the real domain in `content/company.ts` → `siteConfig.u
 
 ## SEO
 
-- Per-page metadata via `lib/seo.ts`
+- Per-page metadata via `lib/seo.ts`. Titles lead with the search phrase ("Billboard & outdoor advertising in Lahore"), not the section name. Services carry a separate `metaTitle` for this.
 - JSON-LD: `AdvertisingAgency` + `LocalBusiness`, `WebSite`, `Service` per service, `BreadcrumbList`, and a `Place` record per network site
-- `sitemap.xml` and `robots.txt` generated from the content files
-- Dynamic Open Graph image at `/opengraph-image`
+- `sitemap.xml` (with image entries) and `robots.txt` generated from the content files
+- Social cards from one design in `lib/og.tsx`: site-wide at `/opengraph-image`, plus one per site and per service. `buildMetadata` always sets the image, because a page's `openGraph` replaces the layout's instead of merging with it.
+- Every site page must stay reachable by a plain link. The explorer on `/network` is client-rendered, so the server-rendered "Every site, by area" index below it and the "Nearest sites" list on each site page are the crawl paths. Don't remove both.

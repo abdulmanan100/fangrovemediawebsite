@@ -11,7 +11,7 @@ import { services } from "@/content/services";
 import { BLUR, images } from "@/lib/images";
 
 export const metadata = buildMetadata({
-  title: "Services — outdoor, DOOH, broadcast, press and print",
+  title: "Advertising services in Lahore",
   description:
     "Six disciplines run from one building in Lahore: outdoor media, digital out-of-home, electronic media, print media, commercial printing and large-format flex.",
   path: "/services",

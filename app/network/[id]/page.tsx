@@ -5,13 +5,14 @@ import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Reveal } from "@/components/ui/Reveal";
+import { Enter } from "@/components/ui/Enter";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema, mediaSiteSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { getSite, sites } from "@/content/sites";
+import { getSite, nearestSites, sites } from "@/content/sites";
 import { company, whatsapp } from "@/content/company";
 import { BLUR } from "@/lib/images";
-import { areaSqFt, dimensions, groupedNumber, mailto } from "@/lib/format";
+import { areaSqFt, dimensions, distance, groupedNumber, mailto } from "@/lib/format";
 
 export function generateStaticParams() {
   return sites.map((site) => ({ id: site.id }));
@@ -22,10 +23,22 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const site = getSite(id);
   if (!site) return buildMetadata({ title: "Site not found", description: "" });
 
+  // Specs first, then whichever of the approach or the note still fits a
+  // search snippet (~160 characters) — a complete sentence rather than one
+  // Google cuts off halfway.
+  const specs = `${site.format} in ${site.area}, ${site.city}. ${dimensions(site.widthFt, site.heightFt)}, ${site.illumination.toLowerCase()}, approximately ${groupedNumber(site.dailyImpressions)} daily impressions.`;
+  const extra = [`${site.facing}.`, site.note].find(
+    (sentence) => sentence && specs.length + 1 + sentence.length <= 160,
+  );
+
+  // Place first, format second: "Jinnah Flyover — Billboard in Lahore". Names
+  // already carry their own dash, so it becomes a comma here to keep one.
   return buildMetadata({
-    title: `${site.name} — ${site.area}, Lahore`,
-    description: `${site.format} in ${site.area}, ${site.city}. ${dimensions(site.widthFt, site.heightFt)}, ${site.illumination.toLowerCase()}, approximately ${groupedNumber(site.dailyImpressions)} daily impressions. ${site.facing}.`,
+    title: `${site.name.replaceAll(" — ", ", ")} — ${site.format} in ${site.city}`,
+    description: extra ? `${specs} ${extra}` : specs,
     path: `/network/${site.id}`,
+    image: `/network/${site.id}/opengraph-image`,
+    brand: false,
   });
 }
 
@@ -35,9 +48,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   if (!site) notFound();
 
   const available = site.status === "available";
-  const nearby = sites.filter((other) => other.area === site.area)
-    .filter((other) => other.id !== site.id)
-    .slice(0, 3);
+  const nearby = nearestSites(site, 4);
 
   const specs = [
     { label: "Format", value: site.format },
@@ -84,7 +95,8 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
       />
 
       <section className="shell pb-[var(--spacing-section)]">
-        <Reveal>
+        {/* <Enter>, not <Reveal>: this photo is the page's largest paint. */}
+        <Enter>
           <div className="relative aspect-16/9 overflow-hidden rounded-[var(--radius-lg)] bg-surface">
             <Image
               src={site.photo}
@@ -108,7 +120,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
               {available ? "Available" : "Booked"}
             </span>
           </div>
-        </Reveal>
+        </Enter>
 
         <div className="mt-[var(--spacing-group)] grid gap-x-16 gap-y-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
@@ -195,9 +207,9 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             {nearby.length > 0 && (
               <Reveal delay={0.08}>
                 <div className="mt-9">
-                  <h2 className="text-label text-subtle">Also in {site.area}</h2>
+                  <h2 className="text-label text-subtle">Nearest sites</h2>
                   <ul className="mt-5">
-                    {nearby.map((other) => (
+                    {nearby.map(({ site: other, metres }) => (
                       <li key={other.id}>
                         <Link
                           href={`/network/${other.id}`}
@@ -207,8 +219,9 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
                             <span className="block truncate text-sm text-ink transition-colors group-hover:text-accent">
                               {other.name}
                             </span>
-                            <span className="mt-1 block text-xs text-subtle">
-                              {other.format} · {dimensions(other.widthFt, other.heightFt)}
+                            <span className="nums mt-1 block text-xs text-subtle">
+                              {other.format} · {dimensions(other.widthFt, other.heightFt)} ·{" "}
+                              {distance(metres)}
                             </span>
                           </span>
                           <ArrowUpRight

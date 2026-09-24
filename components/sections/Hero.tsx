@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "lucide-react";
 import { BLUR, images } from "@/lib/images";
+import { enterStyle } from "@/components/ui/Enter";
 import { company } from "@/content/company";
 import { areaBreakdown, totalSites } from "@/content/sites";
 
-const EASE = [0.16, 1, 0.3, 1] as const;
 const LINES = ["Attention", "is a place."] as const;
 
 /** Lahore local time, PKT. Renders blank until mounted so SSR and client agree. */
@@ -82,13 +82,14 @@ export function Hero() {
         <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-bg/70 to-transparent" />
       </motion.div>
 
+      {/* Entrances below are CSS (.enter / .enter-line), not motion: they
+          start on first paint rather than after hydration. The paragraph is
+          this page's LCP element, and a JS-driven fade held it back ~3.5 s. */}
       <div className="shell relative z-10 pb-12 md:pb-16">
         {/* Eyebrow */}
-        <motion.div
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-label text-muted"
+        <div
+          className="enter mb-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-label text-muted"
+          style={enterStyle({ delay: 0.15, y: 0 })}
         >
           <span className="flex items-center gap-2">
             <span className="relative flex size-1.5">
@@ -103,42 +104,35 @@ export function Hero() {
           <LahoreClock />
           <span className="hidden sm:inline">{company.address.line2}</span>
           <span className="hidden md:inline">Est. {company.founded}</span>
-        </motion.div>
+        </div>
 
-        {/* Headline — animates on mount, not on scroll, so it never blocks LCP
-            behind an intersection observer. */}
+        {/* Headline — animates on load, not on scroll. */}
         <h1 className="text-hero max-w-[16ch]">
           {LINES.map((line, i) => (
             <span key={line} className="block overflow-hidden pb-[0.06em]">
-              <motion.span
-                className="block"
-                initial={reduce ? false : { y: "108%" }}
-                animate={{ y: "0%" }}
-                transition={{ duration: 1, ease: EASE, delay: 0.1 + i * 0.09 }}
+              <span
+                className="enter-line"
+                style={enterStyle({ delay: 0.1 + i * 0.09, duration: 1 })}
               >
                 {line}
-              </motion.span>
+              </span>
             </span>
           ))}
         </h1>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.5 }}
-            className="text-subhead max-w-xl text-muted lg:col-span-6"
+          <p
+            className="enter text-subhead max-w-xl text-muted lg:col-span-6"
+            style={enterStyle({ delay: 0.5, duration: 0.7, y: 20 })}
           >
             Fangrove owns {totalSites} large-format sites across {areaBreakdown().length}{" "}
             areas of Lahore — and the print floor that dresses them. Out-of-home,
             broadcast and press, since {company.founded}.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.62 }}
-            className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:col-span-5 lg:col-start-8 lg:justify-end"
+          <div
+            className="enter flex flex-wrap items-center gap-x-8 gap-y-4 lg:col-span-5 lg:col-start-8 lg:justify-end"
+            style={enterStyle({ delay: 0.62, duration: 0.7, y: 20 })}
           >
             <Link
               href="/network"
@@ -153,20 +147,18 @@ export function Hero() {
             >
               Request rates
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll cue */}
-        <motion.div
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-14 hidden items-center gap-3 text-label text-subtle md:flex"
+        <div
+          className="enter mt-14 hidden items-center gap-3 text-label text-subtle md:flex"
+          style={enterStyle({ delay: 0.9, y: 0 })}
           aria-hidden="true"
         >
           <ArrowDown className="size-3.5" />
           Scroll
-        </motion.div>
+        </div>
       </div>
     </section>
   );

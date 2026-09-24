@@ -16,8 +16,8 @@ import { BLUR } from "@/lib/images";
 const gallery = sites.filter((site) => site.format === "Billboard").slice(0, 12);
 
 export const metadata = buildMetadata({
-  title: "Work — campaigns built for traffic",
-  description: `${totalCampaigns} out-of-home and DOOH campaigns from Fangrove Media — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Condis and others, shot on our own sites across Lahore.`,
+  title: "Work — billboard campaigns in Lahore",
+  description: `${totalCampaigns} billboard and DOOH campaigns for Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, Al Fatah and more — shot on our own Lahore sites.`,
   path: "/work",
 });
 

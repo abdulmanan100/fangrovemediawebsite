@@ -748,3 +748,38 @@ export function areaBreakdown(): { area: string; count: number }[] {
     .map(([area, count]) => ({ area, count }))
     .sort((a, b) => b.count - a.count);
 }
+
+/** Every site grouped under its area, in areaBreakdown() order. */
+export function sitesByArea(): { area: string; sites: MediaSite[] }[] {
+  return areaBreakdown().map(({ area }) => ({
+    area,
+    sites: sites.filter((site) => site.area === area),
+  }));
+}
+
+/** Straight-line distance between two pins, in metres (haversine). */
+function metresBetween([lat1, lng1]: [number, number], [lat2, lng2]: [number, number]): number {
+  const rad = Math.PI / 180;
+  const dLat = (lat2 - lat1) * rad;
+  const dLng = (lng2 - lng1) * rad;
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLng / 2) ** 2;
+  return 2 * 6_371_000 * Math.asin(Math.sqrt(h));
+}
+
+/**
+ * The closest other sites to this one, nearest first. Unlike a same-area
+ * list this is never empty, so every site page links onward — and is linked
+ * to — even when it is the only structure in its area.
+ */
+export function nearestSites(
+  site: MediaSite,
+  count: number,
+): { site: MediaSite; metres: number }[] {
+  return sites
+    .filter((other) => other.id !== site.id)
+    .map((other) => ({ site: other, metres: metresBetween(site.coords, other.coords) }))
+    .sort((a, b) => a.metres - b.metres)
+    .slice(0, count);
+}

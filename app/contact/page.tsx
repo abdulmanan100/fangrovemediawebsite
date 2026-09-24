@@ -8,9 +8,8 @@ import { buildMetadata } from "@/lib/seo";
 import { company, mapsUrl, whatsapp } from "@/content/company";
 
 export const metadata = buildMetadata({
-  title: "Contact — rates in an hour",
-  description:
-    "Call or email Fangrove Media in Lahore for outdoor, DOOH, broadcast, press and printing rates. Office at Main Boulevard, Gulberg III.",
+  title: "Contact — billboard rates in Lahore",
+  description: `Call or WhatsApp Fangrove Media for billboard, DOOH, broadcast, press and printing rates in Lahore. Office at ${company.address.line1}, ${company.address.line2}.`,
   path: "/contact",
 });
 
