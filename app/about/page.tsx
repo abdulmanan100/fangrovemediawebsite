@@ -14,7 +14,7 @@ import { BLUR, images } from "@/lib/images";
 import { pad2 } from "@/lib/format";
 
 export const metadata = buildMetadata({
-  title: `About — outdoor media in Lahore since ${company.founded}`,
+  title: `About — Lahore advertising agency since ${company.founded}`,
   description: `Fangrove Media has run out-of-home, broadcast and print from Lahore since ${company.founded}. Owned structures, an in-house print floor, and published numbers.`,
   path: "/about",
 });

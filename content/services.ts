@@ -44,7 +44,7 @@ export const services: readonly Service[] = [
     ],
     capabilities: [
       {
-        title: "Unipoles & billboards",
+        title: "Billboards, hoardings & unipoles",
         description:
           "Single- and double-face structures up to 90 × 30 ft, front-lit or back-lit, on owned land and rooftop leases.",
       },
@@ -83,9 +83,9 @@ export const services: readonly Service[] = [
       { label: "Mounting window", value: "Overnight, 11 p.m. — 5 a.m." },
     ],
     image: "billboardBlank",
-    metaTitle: "Billboard & outdoor advertising in Lahore",
+    metaTitle: "Billboard & hoarding advertising in Lahore",
     metaDescription:
-      "Owned billboards, bridge panels, underpass faces and streamers across Lahore, each with published size, location and daily audience. Mounted overnight.",
+      "Owned billboards and hoardings, bridge panels, underpass faces and streamers across Lahore, each with published size, location and daily audience.",
   },
 
   {
@@ -108,7 +108,7 @@ export const services: readonly Service[] = [
       {
         title: "Roadside LED",
         description:
-          "P6–P10 outdoor screens at signalised junctions, calibrated for daylight legibility and dimmed after dusk.",
+          "P6–P10 outdoor screens — what most of Lahore calls SMD screens — at signalised junctions, calibrated for daylight legibility and dimmed after dusk.",
       },
       {
         title: "Dayparting",
@@ -145,9 +145,9 @@ export const services: readonly Service[] = [
       { label: "Reporting", value: "Weekly play log · monthly impression summary" },
     ],
     image: "digitalPanel",
-    metaTitle: "Digital billboards & LED screens in Lahore",
+    metaTitle: "SMD screens & digital billboards in Lahore",
     metaDescription:
-      "Digital out-of-home in Lahore: roadside LED screens with dayparting, dynamic creative, stated share of voice and weekly play-log reporting.",
+      "SMD and LED screen advertising in Lahore: roadside digital screens with dayparting, dynamic creative, stated share of voice and weekly play logs.",
   },
 
   {

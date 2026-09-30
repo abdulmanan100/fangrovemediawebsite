@@ -31,12 +31,16 @@ const instrument = Instrument_Serif({
 
 /* Search-snippet length (~155 characters). company.description is the long
    form, used in structured data where nothing truncates it. */
-const description = `Fangrove Media owns ${totalSites} billboard, LED and bridge-panel sites across Lahore and runs its own flex print floor. Outdoor, DOOH, TV, radio and press since ${company.founded}.`;
+const description = `Lahore advertising agency with ${totalSites} owned billboard and LED screen sites and its own flex print floor. Outdoor, DOOH, TV, radio and press since ${company.founded}.`;
+
+/* Search phrase first, brand last: results show the site name on its own
+   line, so a truncated brand costs nothing and a truncated "Lahore" would. */
+const title = `Billboard & Outdoor Advertising Agency in Lahore · ${company.name}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${company.name} — Billboard & Outdoor Advertising in Lahore`,
+    default: title,
     template: `%s · ${company.name}`,
   },
   description,
@@ -62,7 +66,7 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: company.name,
     locale: siteConfig.locale,
-    title: `${company.name} — Billboard & Outdoor Advertising in Lahore`,
+    title,
     description,
   },
   twitter: {

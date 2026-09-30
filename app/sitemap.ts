@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       images: campaigns.map((campaign) => url(campaign.poster)),
     },
+    { url: url("/rates"), changeFrequency: "monthly", priority: 0.8 },
     { url: url("/about"), changeFrequency: "yearly", priority: 0.6 },
     { url: url("/contact"), changeFrequency: "yearly", priority: 0.7 },
 

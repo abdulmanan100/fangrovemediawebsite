@@ -8,7 +8,9 @@ import { buildMetadata } from "@/lib/seo";
 import { company, mapsUrl, whatsapp } from "@/content/company";
 
 export const metadata = buildMetadata({
-  title: "Contact — billboard rates in Lahore",
+  // "Billboard rates" now belongs to /rates; two pages chasing one phrase
+  // split it. This one takes the address, for local and brand searches.
+  title: `Contact — ${company.address.line2}, ${company.address.city}`,
   description: `Call or WhatsApp Fangrove Media for billboard, DOOH, broadcast, press and printing rates in Lahore. Office at ${company.address.line1}, ${company.address.line2}.`,
   path: "/contact",
 });

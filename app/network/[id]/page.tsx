@@ -175,7 +175,11 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
               <div className="border border-line p-7">
                 <p className="text-label text-subtle">Enquire</p>
                 <p className="text-body mt-4 text-muted">
-                  Rates are quoted per cycle and depend on duration. We answer the phone.
+                  Rates are quoted per cycle and depend on duration.{" "}
+                  <Link href="/rates" className="link-underline text-ink">
+                    How rates work
+                  </Link>
+                  .
                 </p>
                 <a
                   href={whatsapp(

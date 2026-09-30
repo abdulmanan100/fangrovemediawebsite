@@ -52,7 +52,9 @@ export function Footer() {
               Company
             </h2>
             <ul className="mt-6 space-y-3.5">
-              {navigation.map((item) => (
+              {/* Rates lives here rather than in the header, where it would sit
+                  beside the "Request rates" button and read as a duplicate. */}
+              {[...navigation, { label: "Rates", href: "/rates" }].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

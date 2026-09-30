@@ -19,7 +19,7 @@ import { compactNumber, dimensions } from "@/lib/format";
 export const metadata = buildMetadata({
   title: `${totalSites} billboard & LED sites in Lahore, on a map`,
   description:
-    "Every Fangrove billboard, LED screen and bridge panel in Lahore on one map — face size, lighting and daily audience for each. Filter by area and format.",
+    "Every Fangrove billboard, hoarding, SMD screen and bridge panel in Lahore on one map — size, lighting and daily audience for each. Filter by area and format.",
   path: "/network",
 });
 
@@ -87,6 +87,13 @@ export default function NetworkPage() {
               Booked sites are shown rather than hidden, and availability moves constantly.
               It is always worth asking about a face that reads as taken — the cycle behind
               it may be days from ending.
+            </p>
+            <p className="text-body text-subtle">
+              What turns these numbers into a price is on the{" "}
+              <Link href="/rates" className="link-underline text-ink">
+                rates page
+              </Link>
+              .
             </p>
           </div>
         </div>

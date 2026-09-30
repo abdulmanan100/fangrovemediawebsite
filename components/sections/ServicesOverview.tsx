@@ -28,7 +28,7 @@ export function ServicesOverview() {
           index="01"
           eyebrow="What we run"
           lines={["Six disciplines,", "one schedule."]}
-          lede="Media is bought, printed and mounted inside the same business. That is the whole advantage — nothing waits in a third party's queue."
+          lede="A media owner and an advertising agency in one building: media is bought, printed and mounted inside the same business. That is the whole advantage — nothing waits in a third party's queue."
           link={{ href: "/services", label: "All services" }}
         />
         <h2 id="services-heading" className="sr-only">

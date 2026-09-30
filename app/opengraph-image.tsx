@@ -2,7 +2,7 @@ import { company } from "@/content/company";
 import { areaBreakdown, totalSites } from "@/content/sites";
 import { OG_CONTENT_TYPE, OG_SIZE, ogCard } from "@/lib/og";
 
-export const alt = `${company.name} — Billboard & Outdoor Advertising in Lahore`;
+export const alt = `Billboard & Outdoor Advertising Agency in Lahore · ${company.name}`;
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
