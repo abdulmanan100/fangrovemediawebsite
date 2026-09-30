@@ -12,7 +12,14 @@ import { buildMetadata } from "@/lib/seo";
 import { getSite, nearestSites, sites } from "@/content/sites";
 import { company, whatsapp } from "@/content/company";
 import { BLUR } from "@/lib/images";
-import { areaSqFt, dimensions, distance, groupedNumber, mailto } from "@/lib/format";
+import {
+  areaSqFt,
+  compactNumber,
+  dimensions,
+  distance,
+  groupedNumber,
+  mailto,
+} from "@/lib/format";
 
 export function generateStaticParams() {
   return sites.map((site) => ({ id: site.id }));
@@ -23,11 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const site = getSite(id);
   if (!site) return buildMetadata({ title: "Site not found", description: "" });
 
-  // Specs first, then whichever of the approach or the note still fits a
+  // Specs first, then whichever of the note or the approach still fits a
   // search snippet (~160 characters) — a complete sentence rather than one
-  // Google cuts off halfway.
-  const specs = `${site.format} in ${site.area}, ${site.city}. ${dimensions(site.widthFt, site.heightFt)}, ${site.illumination.toLowerCase()}, approximately ${groupedNumber(site.dailyImpressions)} daily impressions.`;
-  const extra = [`${site.facing}.`, site.note].find(
+  // Google cuts off halfway. The note comes first because it is written per
+  // site: faces on the same junction share specs and approach, and without it
+  // their descriptions came out identical.
+  const specs = `${site.format} in ${site.area}, ${site.city}. ${dimensions(site.widthFt, site.heightFt)}, ${site.illumination.toLowerCase()}, about ${compactNumber(site.dailyImpressions)} daily impressions.`;
+  const extra = [site.note, `${site.facing}.`].find(
     (sentence) => sentence && specs.length + 1 + sentence.length <= 160,
   );
 
