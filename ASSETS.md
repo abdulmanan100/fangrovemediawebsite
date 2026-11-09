@@ -19,7 +19,7 @@ Most of the original placeholder content has now been replaced with the company'
 | **Founded 2008 · 250+ brands · 30+ staff** | Previous about and portfolio pages |
 | **Phone / WhatsApp** — +92 322 807 2185 | Client |
 | **Address** — 10D Commercial, Pak Arab Society, Lahore | Client |
-| **Domain** — `https://fangrovemedia.org`, set in `content/company.ts` → `siteConfig.url` | Client |
+| **Domain** — `https://www.fangrovemedia.org` (the bare domain redirects to www), set in `content/company.ts` → `siteConfig.url` | Client |
 | **Icons** — favicon and apple-touch icon, generated from the logo mark | Built |
 
 ---

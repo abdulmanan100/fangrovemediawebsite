@@ -109,11 +109,14 @@ export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 )}`;
 
 export const siteConfig = {
-  // The production domain. Drives canonicals, OG URLs, sitemap.xml, the
-  // feed, llms.txt and every JSON-LD @id.
-  url: "https://fangrovemedia.org",
+  // The production domain, www included: Vercel redirects the bare domain
+  // here, so canonicals must name this host. Drives canonicals, OG URLs,
+  // sitemap.xml, the feed, llms.txt and every JSON-LD @id.
+  url: "https://www.fangrovemedia.org",
   locale: "en_PK",
   twitter: "@fangrovemedia",
+  /** Search Console ownership token (HTML tag method). Keep it, even after verifying. */
+  googleSiteVerification: "aKkX0MS2FFFlYfbbZWXyF93zqGQwo7n6O0Zy8qnq3U0",
 } as const;
 
 export const navigation = [
