@@ -10,7 +10,9 @@ import { enterStyle } from "@/components/ui/Enter";
 import { company } from "@/content/company";
 import { areaBreakdown, totalSites } from "@/content/sites";
 
-const LINES = ["Attention", "is a place."] as const;
+/* The page's H1, so it carries the search phrase. The old line, "Attention
+   is a place.", lives on in the eyebrow above it. */
+const LINES = ["Billboards &", "outdoor media", "in Lahore."] as const;
 
 /** Lahore local time, PKT. Renders blank until mounted so SSR and client agree. */
 function LahoreClock() {
@@ -99,7 +101,7 @@ export function Hero() {
               />
               <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
             </span>
-            Billboards &amp; outdoor media · Lahore
+            Attention is a place.
           </span>
           <LahoreClock />
           <span className="hidden sm:inline">{company.address.line2}</span>
