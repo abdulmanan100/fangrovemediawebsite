@@ -19,6 +19,7 @@ Most of the original placeholder content has now been replaced with the company'
 | **Founded 2008 · 250+ brands · 30+ staff** | Previous about and portfolio pages |
 | **Phone / WhatsApp** — +92 322 807 2185 | Client |
 | **Address** — 10D Commercial, Pak Arab Society, Lahore | Client |
+| **Domain** — `https://fangrovemedia.org`, set in `content/company.ts` → `siteConfig.url` | Client |
 | **Icons** — favicon and apple-touch icon, generated from the logo mark | Built |
 
 ---
@@ -28,14 +29,9 @@ Most of the original placeholder content has now been replaced with the company'
 ### Email addresses
 **File:** `content/company.ts`
 
-`hello@fangrovemedia.com` and `sales@fangrovemedia.com` are assumed, not confirmed.
+`hello@fangrovemedia.org` and `sales@fangrovemedia.org` are assumed, not confirmed. They were moved from `.com` to `.org` to match the site's domain.
 
 This is **no longer able to lose you an enquiry** — WhatsApp on the confirmed mobile is now the primary route everywhere (site drawer, site pages, contact page, quote builder, and the CTA on every page), with email as the secondary option. But the addresses are still printed on the contact page and in the footer, so they need to either exist or be removed.
-
-### Domain
-**File:** `content/company.ts` → `siteConfig.url`
-
-Currently `https://fangrovemedia.com`. Drives canonical URLs, Open Graph tags, `sitemap.xml` and every JSON-LD `@id`.
 
 ---
 

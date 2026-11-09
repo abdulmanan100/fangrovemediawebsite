@@ -21,8 +21,8 @@ export const company = {
     phoneHref: "tel:+923228072185",
     /** Same number, WhatsApp. The primary enquiry route — see whatsapp() below. */
     whatsapp: "923228072185",
-    email: "hello@fangrovemedia.com", // TODO: confirm mailbox exists
-    salesEmail: "sales@fangrovemedia.com", // TODO: confirm mailbox exists
+    email: "hello@fangrovemedia.org", // TODO: confirm mailbox exists
+    salesEmail: "sales@fangrovemedia.org", // TODO: confirm mailbox exists
   },
 
   address: {
@@ -109,8 +109,9 @@ export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 )}`;
 
 export const siteConfig = {
-  // TODO: point this at the real production domain before launch
-  url: "https://fangrovemedia.com",
+  // The production domain. Drives canonicals, OG URLs, sitemap.xml, the
+  // feed, llms.txt and every JSON-LD @id.
+  url: "https://fangrovemedia.org",
   locale: "en_PK",
   twitter: "@fangrovemedia",
 } as const;
