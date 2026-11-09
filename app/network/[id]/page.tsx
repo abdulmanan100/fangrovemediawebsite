@@ -10,6 +10,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema, mediaSiteSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { getSite, nearestSites, sites } from "@/content/sites";
+import { postsForSite } from "@/content/blog";
+import { FurtherReading } from "@/components/blog/FurtherReading";
 import { company, whatsapp } from "@/content/company";
 import { BLUR } from "@/lib/images";
 import {
@@ -264,6 +266,8 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           </aside>
         </div>
       </section>
+
+      <FurtherReading posts={postsForSite(site)} heading="Before you book." />
 
       <ContactCTA index="02" />
     </>

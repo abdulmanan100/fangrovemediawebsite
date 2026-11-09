@@ -6,14 +6,16 @@ import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Logo } from "@/components/brand/Logo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
-import { company, navigation } from "@/content/company";
+import { company } from "@/content/company";
+import type { NavItem } from "@/lib/navigation";
 
 /**
  * Sticky header that retracts on scroll-down and returns on scroll-up, so the
  * hero and every full-bleed image gets the whole viewport while you're moving
  * forward, and navigation is one flick away when you want it back.
  */
-export function Header() {
+/** `items` comes from primaryNav() in the root layout; see lib/navigation.ts. */
+export function Header({ items }: { items: readonly NavItem[] }) {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
@@ -49,7 +51,7 @@ export function Header() {
           </Link>
 
           <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
-            {navigation.map((item) => {
+            {items.map((item) => {
               const active = pathname.startsWith(item.href);
               return (
                 <Link
@@ -96,7 +98,7 @@ export function Header() {
         </div>
       </motion.header>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu items={items} open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

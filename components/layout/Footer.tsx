@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/brand/Logo";
-import { company, navigation, siteConfig } from "@/content/company";
+import { company, siteConfig } from "@/content/company";
+import { primaryNav } from "@/lib/navigation";
 import { services } from "@/content/services";
 import { areaBreakdown, totalSites } from "@/content/sites";
 
@@ -54,7 +55,7 @@ export function Footer() {
             <ul className="mt-6 space-y-3.5">
               {/* Rates lives here rather than in the header, where it would sit
                   beside the "Request rates" button and read as a duplicate. */}
-              {[...navigation, { label: "Rates", href: "/rates" }].map((item) => (
+              {[...primaryNav(), { label: "Rates", href: "/rates" }].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

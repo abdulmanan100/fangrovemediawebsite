@@ -31,6 +31,16 @@ export function areaSqFt(widthFt: number, heightFt: number): number {
   return widthFt * heightFt;
 }
 
+/** "2026-11-09" → "9 November 2026". Read as UTC so the day never shifts. */
+export function longDate(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 /** "01", "02" … used for section index numerals. */
 export function pad2(n: number): string {
   return String(n).padStart(2, "0");

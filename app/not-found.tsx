@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { navigation } from "@/content/company";
+import { primaryNav } from "@/lib/navigation";
 
 export default function NotFound() {
   return (
@@ -13,7 +13,7 @@ export default function NotFound() {
       </p>
 
       <ul className="mt-12 max-w-md">
-        {navigation.map((item) => (
+        {primaryNav().map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}

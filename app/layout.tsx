@@ -11,6 +11,9 @@ import { company, siteConfig } from "@/content/company";
 import { totalSites } from "@/content/sites";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { primaryNav } from "@/lib/navigation";
+import { FEED_PATH } from "@/lib/seo";
+import { publishedPosts } from "@/content/blog";
 
 /* Display face. The width axis is what gives headings their signage feel. */
 const archivo = Archivo({
@@ -60,7 +63,13 @@ export const metadata: Metadata = {
     "media buying Lahore",
     "advertising agency Lahore",
   ],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    // The journal feed, once there is a published post to put in it.
+    ...(publishedPosts().length > 0 && {
+      types: { "application/rss+xml": [{ url: FEED_PATH, title: `${company.name} Journal` }] },
+    }),
+  },
   openGraph: {
     type: "website",
     url: siteConfig.url,
@@ -114,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <SmoothScroll>
           <Cursor />
-          <Header />
+          <Header items={primaryNav()} />
           <main id="main">{children}</main>
           <Footer />
         </SmoothScroll>

@@ -12,6 +12,8 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { getService, nextService, services } from "@/content/services";
 import { campaignsForService } from "@/content/work";
+import { postsForService } from "@/content/blog";
+import { FurtherReading } from "@/components/blog/FurtherReading";
 import { BLUR, images } from "@/lib/images";
 import { pad2 } from "@/lib/format";
 
@@ -166,6 +168,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
+
+      <FurtherReading posts={postsForService(service.slug)} />
 
       {/* Next service */}
       <section className="rule">

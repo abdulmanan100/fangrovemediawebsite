@@ -5,14 +5,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { X } from "lucide-react";
-import { company, navigation } from "@/content/company";
+import { company } from "@/content/company";
+import type { NavItem } from "@/lib/navigation";
 import { pad2 } from "@/lib/format";
 
 const EASE = [0.76, 0, 0.24, 1] as const;
 
-type Props = { open: boolean; onClose: () => void };
+type Props = { items: readonly NavItem[]; open: boolean; onClose: () => void };
 
-export function MobileMenu({ open, onClose }: Props) {
+export function MobileMenu({ items, open, onClose }: Props) {
   const pathname = usePathname();
   const reduce = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -93,7 +94,7 @@ export function MobileMenu({ open, onClose }: Props) {
 
           <nav aria-label="Mobile" className="shell flex flex-1 flex-col justify-center">
             <ul>
-              {navigation.map((item, i) => (
+              {items.map((item, i) => (
                 <motion.li
                   key={item.href}
                   initial={reduce ? false : { opacity: 0, y: 28 }}

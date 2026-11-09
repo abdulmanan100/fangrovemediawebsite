@@ -69,6 +69,41 @@ Two fields are worth understanding:
 
 Append to the `services` array in `content/services.ts`. A page appears at `/services/<slug>`, plus footer and index entries.
 
+### Writing a journal post
+
+The journal (`/blog`) exists to rank for the questions buyers search for, and to be quoted by AI answer engines (ChatGPT, Perplexity, Google AI Overviews). A post takes two pieces:
+
+1. **The body:** `content/blog/<slug>.mdx`, in Markdown. Don't put an H1 in the body, because the page renders it from the title. Start with an intro paragraph, then use `##` sections.
+2. **The metadata:** an entry in the `posts` array in `content/blog.ts`, holding the title, description, the 40–60 word `summary`, category, dates, author, related services/sites and the FAQ.
+
+The page, social card, `BlogPosting` + `FAQPage` + breadcrumb JSON-LD, contents list, reading time, sitemap entry, RSS item (`/blog/feed.xml`), `llms.txt` line and the "Further reading" links on related service and site pages are all generated from those two files.
+
+**Drafts.** New posts use `status: "draft"`. Drafts appear in `npm run dev` and on Vercel preview deploys, carry `noindex`, and are left out of production builds completely: no route, sitemap, feed or nav link. To publish a draft, set `status: "published"` and set `published` to the real go-live date. Set `updated` whenever you make a substantive edit later. `BLOG_DRAFTS=show` or `BLOG_DRAFTS=hide` overrides the default, e.g. `BLOG_DRAFTS=show npm run build` to review drafts in a production build. The "Journal" nav link only appears once there is a visible post.
+
+**Live data in posts.** Never type a figure the site already holds. Use the components registered in `mdx-components.tsx` instead:
+
+| Component | Renders |
+|---|---|
+| `<SiteTable area="Gulberg" />` · `ids={[...]}` · `format="Digital LED"` · `top={8}` | Sites with size, lighting and daily audience, each linked |
+| `<AreaTable />` · `<FormatTable />` | The estate by area, or by format with size ranges |
+| `<Stat name="totalSites" />` | One derived figure (`digitalScreens`, `areas`, `largestFace`, …) |
+| `<Spec service="dooh" label="Loop" />` · `<SpecList service="flex-printing" />` | Values from a service's spec table |
+| `<NoteList set="rateFactors" />` · `<ProcessSteps />` | Lists from `content/rates.ts` and `content/studio.ts` |
+| `<Callout title="…">` | An aside. Leave blank lines inside it so its text renders as Markdown |
+
+In `content/blog.ts` (summaries and FAQ answers), use template strings with values from `content/sites.ts`, as the existing posts do.
+
+**Writing checklist (SEO + GEO):**
+- Phrase the title as the search or the question.
+- The `summary` answers the title outright in 40–60 words. It is shown first as "In short".
+- Phrase `##` headings as questions where it reads naturally. Keep paragraphs short, and include at least one table or list of concrete specs.
+- Name the entity in full with its place, "Fangrove Media, Lahore", at least once.
+- Give 4–6 FAQ entries. They render on the page and as `FAQPage` data.
+- Link to at least two service or network pages, and to related posts.
+- **Write nothing the site's own data cannot back up.** No invented prices, statistics or client results. Cite a source for any outside fact.
+
+**Authors.** Posts are credited to "Fangrove Media Editorial", which maps to the company's Organization schema. To credit a real person, add an entry to `authors` in `content/blog.ts` with `kind: "Person"`, `role` and LinkedIn in `sameAs`. A named expert is a strong trust signal for search.
+
 ---
 
 ## Architecture
@@ -80,8 +115,9 @@ app/
   services/               index + [slug]  (6 static pages)
   network/                explorer + [id] (26 static pages)  ← the differentiator
   work/                   index + [slug]  (6 static pages)
+  blog/                   journal index + [slug] (MDX posts), feed.xml
   about/ · contact/
-  sitemap.ts · robots.ts · opengraph-image.tsx · not-found.tsx
+  sitemap.ts · robots.ts · llms.txt/ · opengraph-image.tsx · not-found.tsx
   globals.css             design tokens + type scale
 
 components/
@@ -90,10 +126,12 @@ components/
   sections/  the eight homepage sections, reused across inner pages
   network/   NetworkExplorer · NetworkMap · SiteCard · SiteDrawer
   contact/   QuoteBuilder
+  blog/      PostCard · EstateTables · Facts · Toc · FurtherReading
   brand/     Logo
 
-content/     all copy and data
-lib/         seo · schema · format · images
+content/     all copy and data · blog.ts + blog/*.mdx (journal)
+lib/         seo · schema · format · images · blog · navigation
+mdx-components.tsx   how post Markdown renders
 ```
 
 ## Design system
@@ -135,7 +173,8 @@ Before going live, set the real domain in `content/company.ts` → `siteConfig.u
 ## SEO
 
 - Per-page metadata via `lib/seo.ts`. Titles lead with the search phrase ("Billboard & outdoor advertising in Lahore"), not the section name. Services carry a separate `metaTitle` for this.
-- JSON-LD: `AdvertisingAgency` + `LocalBusiness`, `WebSite`, `Service` per service, `BreadcrumbList`, and a `Place` record per network site
+- JSON-LD: `AdvertisingAgency` + `LocalBusiness`, `WebSite`, `Service` per service, `BreadcrumbList`, a `Place` record per network site, and `Blog` / `BlogPosting` / `FAQPage` for the journal
+- GEO: `/llms.txt` (generated from `content/`) maps the site for AI assistants. `robots.ts` deliberately allows AI crawlers. Journal posts lead with a direct-answer summary and are server-rendered at full opacity, with no scroll reveal on the body text.
 - `sitemap.xml` (with image entries) and `robots.txt` generated from the content files
 - Social cards from one design in `lib/og.tsx`: site-wide at `/opengraph-image`, plus one per site and per service. `buildMetadata` always sets the image, because a page's `openGraph` replaces the layout's instead of merging with it.
 - Every site page must stay reachable by a plain link. The explorer on `/network` is client-rendered, so the server-rendered "Every site, by area" index below it and the "Nearest sites" list on each site page are the crawl paths. Don't remove both.

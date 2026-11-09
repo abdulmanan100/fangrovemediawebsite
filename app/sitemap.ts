@@ -3,6 +3,7 @@ import { siteConfig } from "@/content/company";
 import { services } from "@/content/services";
 import { sites } from "@/content/sites";
 import { campaigns } from "@/content/work";
+import { lastModified, publishedPosts } from "@/content/blog";
 
 /**
  * Generated from the content files, so it can never drift out of date.
@@ -11,11 +12,16 @@ import { campaigns } from "@/content/work";
  * everything changed on every deploy, and it learns to ignore the field for
  * the whole domain. Leaving it out is neutral; an inaccurate one is not.
  *
+ * The exception is the journal: each post carries the date it was last
+ * really edited, which is exactly what the field is for.
+ *
  * `images` lists the real photography on each page, which is what surfaces a
  * site in image search for "billboard <road name>".
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (path: string) => `${siteConfig.url}${path}`;
+  const posts = publishedPosts();
+  const newest = posts[0];
 
   return [
     { url: url("/"), changeFrequency: "monthly", priority: 1 },
@@ -35,6 +41,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: url(`/services/${service.slug}`),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    // The journal appears with its first published post. Drafts never do.
+    ...(newest
+      ? [
+          {
+            url: url("/blog"),
+            lastModified: lastModified(newest),
+            changeFrequency: "weekly" as const,
+            priority: 0.7,
+          },
+        ]
+      : []),
+    ...posts.map((post) => ({
+      url: url(`/blog/${post.slug}`),
+      lastModified: lastModified(post),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
     // Individual sites are the long tail: "billboard on <road name>" queries.
     ...sites.map((site) => ({
