@@ -42,6 +42,17 @@ const components: MDXComponents = {
     <blockquote className="my-9 border-l-2 border-line-strong pl-6 text-subhead text-ink [&>p]:text-ink" {...props} />
   ),
   hr: () => <hr className="my-14 border-line" />,
+  // Markdown images: campaign posters and site photographs from /public.
+  img: ({ alt = "", ...props }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className="my-9 w-full rounded-[var(--radius-lg)] bg-surface"
+      {...props}
+    />
+  ),
   code: (props) => (
     <code className="rounded-[var(--radius-sm)] bg-surface-2 px-1.5 py-0.5 text-[0.9em] text-ink" {...props} />
   ),

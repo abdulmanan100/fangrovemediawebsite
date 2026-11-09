@@ -115,6 +115,373 @@ const largest = dimensions(largestFace.widthFt, largestFace.heightFt);
 
 export const posts: readonly Post[] = [
   {
+    slug: "what-is-outdoor-media",
+    title: "What is outdoor media? A guide to OOH advertising in Pakistan",
+    metaTitle: "What is outdoor media? OOH advertising in Pakistan",
+    description:
+      "Outdoor media explained: billboards, hoardings, bridge panels, SMD screens and streamers, how each is bought in Pakistan, and where outdoor fits in a campaign.",
+    summary:
+      "Outdoor media, also called out-of-home or OOH, is advertising people see outside the home: billboards, hoardings, bridge and underpass panels, digital screens and runs of streamers or cutouts. It works through repetition on the roads people travel daily. Printed faces are rented by the month; digital screens are bought as slots in a loop.",
+    category: "Formats",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media", "dooh", "media-campaigns"],
+    allSites: true,
+    faq: [
+      {
+        q: "What is outdoor media?",
+        a: "Outdoor media is paid advertising in public space: billboards, hoardings, unipoles, bridge and underpass panels, digital LED screens, streamers, pole panels and cutouts. It is also called out-of-home (OOH) advertising.",
+      },
+      {
+        q: "What is the difference between OOH and DOOH?",
+        a: "OOH (out-of-home) covers all outdoor advertising. DOOH (digital out-of-home) is the screen-based part of it: LED or SMD screens that play a rotating loop of advertisers instead of one printed face.",
+      },
+      {
+        q: "How is outdoor advertising bought in Pakistan?",
+        a: "Static faces such as billboards are rented by the month; on Fangrove Media's sites cycles start on the 1st or the 16th. Digital screens are bought as slots in a loop. Small formats such as streamers are sold as runs of many units.",
+      },
+      {
+        q: "Is a hoarding the same as a billboard?",
+        a: "In Pakistan the words are used almost interchangeably for large roadside advertising faces. Panaflex, or flex, is the printed material the face is made of rather than a separate format.",
+      },
+      {
+        q: "Who owns outdoor media in Lahore?",
+        a: "Some companies own and maintain their own structures; others resell space on structures owned by someone else. Fangrove Media owns its sites in Lahore and prints and mounts the faces itself.",
+      },
+    ],
+  },
+
+  {
+    slug: "is-billboard-advertising-worth-it",
+    title: "Is billboard advertising worth it? An honest answer",
+    metaTitle: "Is billboard advertising worth it? An honest answer",
+    description:
+      "When billboards pay off and when they don't: what outdoor does well, what it can't do, which businesses it suits, and five checks that remove most of the risk.",
+    summary:
+      "Billboard advertising is worth it when your audience drives past the same place often and your message can be read in one glance. It is a poor buy when you need an instant click or the site was chosen on price. Most risk is removed by checking each site's daily audience, approach and lighting, and paying only for proven delivery.",
+    category: "Guides",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media", "media-campaigns"],
+    faq: [
+      {
+        q: "Does billboard advertising still work?",
+        a: "Yes, when the site is right. A billboard reaches everyone on the road, cannot be skipped or blocked, and builds frequency because commuters pass the same face twice a day. It fails mostly when the site faces the wrong traffic or the message is too long to read at a glance.",
+      },
+      {
+        q: "What kind of business benefits most from billboards?",
+        a: "Businesses whose customers live or travel in a defined part of the city: retailers, malls, restaurants, car showrooms, real estate, schools, universities and hospitals. National brands use billboards as the frequency layer under TV and digital.",
+      },
+      {
+        q: "What are the disadvantages of billboard advertising?",
+        a: "No click-through, room for only a short message, lead time for printed faces (artwork is due 72 hours before the mount), and the risk of a poorly chosen site.",
+      },
+      {
+        q: "How long should a billboard run?",
+        a: "Outdoor works through repetition, so one cycle on one face rarely shows what the medium can do. Static faces are booked in monthly cycles from the 1st or the 16th.",
+      },
+    ],
+  },
+
+  {
+    slug: "smd-screen-advertising-lahore",
+    title: "SMD screen advertising in Lahore: how it works",
+    metaTitle: "SMD screen advertising in Lahore: how it works",
+    description:
+      "How SMD and LED screen advertising works in Lahore: loops and slots, pixel pitch, where the screens are, what creative to supply, dayparting and play-log proof.",
+    summary:
+      "SMD screen advertising means buying slots in the loop of an outdoor LED screen. In Lahore, Fangrove Media's screens run an 80-second loop with at most ten advertisers and 8-second slots as standard. Creative is a file, not a print, so it can change by time of day and go live within four working hours, with a weekly play log as proof.",
+    category: "Formats",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["dooh", "media-campaigns"],
+    siteIds: ["lhr-hussain-led", "lhr-modeltown-digital-streamers", "lhr-modeltown-linkrd-market"],
+    formats: ["Digital LED"],
+    faq: [
+      {
+        q: "What is an SMD screen?",
+        a: "An outdoor LED screen built from surface-mounted (SMD) LEDs. In Lahore, SMD screen has become the everyday name for any roadside digital billboard.",
+      },
+      {
+        q: "How long is an ad slot on an SMD screen?",
+        a: "On Fangrove Media's screens, 8 seconds is standard, with 10 and 15-second slots available, in an 80-second loop shared by at most ten advertisers.",
+      },
+      {
+        q: "What file format do SMD screens need?",
+        a: "MP4 or JPG at the screen's native resolution, no larger than 40 MB. Roadside screens are silent, so the creative should work without sound.",
+      },
+      {
+        q: "How quickly can an ad go live on an SMD screen?",
+        a: "Within four working hours of approval, and creative can be pulled or replaced within two hours in an emergency.",
+      },
+      {
+        q: "Where are SMD screens in Lahore?",
+        a: "Fangrove Media's digital sites are the large LED screen at Hussain Chowk in Gulberg and digital streamers on Model Town Main Boulevard and at the Model Town Link Road commercial market.",
+      },
+    ],
+  },
+
+  {
+    slug: "billboard-design-tips",
+    title: "How to design a billboard that reads from the road",
+    metaTitle: "Billboard design: how to make artwork that reads",
+    description:
+      "Billboard design rules for Lahore roads: one idea, few words, a big brand name, contrast that survives the lighting, and the 1:10 CMYK file setup printers need.",
+    summary:
+      "A billboard is read in a glance, often while driving, so design it around one idea, very few words, a brand name large enough to read from the road and strong contrast that works under the face's lighting at night. Build the file for the exact face, at 1:10 scale in CMYK at 150 dpi, and deliver it 72 hours before the mount.",
+    category: "Guides",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media", "flex-printing", "dooh"],
+    allSites: true,
+    faq: [
+      {
+        q: "How many words should a billboard have?",
+        a: "As few as possible: a short headline and the brand name is usually enough. A driver has seconds, and a billboard carries one message well and three badly.",
+      },
+      {
+        q: "What resolution should billboard artwork be?",
+        a: "For Fangrove Media's flex printing, build the file at 1:10 scale, in CMYK, at 150 dpi at that scale.",
+      },
+      {
+        q: "Does lighting affect billboard design?",
+        a: "Yes. Front-lit and back-lit faces render colour and dark areas differently, so colour should be proofed against the lighting the face will have. Non-lit faces are not seen after dark.",
+      },
+      {
+        q: "Can one design work on every billboard size?",
+        a: "Not without adapting it. Faces range from wide landscape boards to tall portrait faces, so design a master layout and rebuild it for each face's proportions rather than stretching one file.",
+      },
+    ],
+  },
+
+  {
+    slug: "360-media-campaign-pakistan",
+    title: "What is a 360 media campaign, and when do you need one?",
+    metaTitle: "360 media campaigns in Pakistan: how to plan one",
+    description:
+      "A 360 media campaign runs one message across billboards, digital screens, TV, radio and press. What each medium does, when it's worth it, and how to plan one.",
+    summary:
+      "A 360 media campaign runs one message across several media, typically billboards and digital screens, TV, radio and newspapers, so the same audience meets it through the day. In Pakistan it suits launches, national audiences and long decisions. Give each medium one job, sequence them to the launch date, cost every line, and get proof that each placement ran.",
+    category: "Planning",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["media-campaigns", "electronic-media", "outdoor-media"],
+    faq: [
+      {
+        q: "What is a 360 campaign in advertising?",
+        a: "A campaign that carries one idea across several media at once, such as outdoor, digital screens, television, radio, press and online, planned so the media support each other rather than being bought separately.",
+      },
+      {
+        q: "Do small businesses need a 360 campaign?",
+        a: "Usually not. If the audience lives in one part of one city and the message is simple, two or three well-chosen billboards may do more than a thin spread across many media.",
+      },
+      {
+        q: "Which media work best together?",
+        a: "Outdoor and radio pair naturally because they reach the same commute. Television adds national reach, digital screens let messages change by time of day, and press adds authority with decision-makers.",
+      },
+      {
+        q: "How far ahead should a 360 campaign be planned?",
+        a: "Work back from the launch date using the longest lead time. On Fangrove Media campaigns, TV needs 10 working days from brief to first air, press bookings close 48 hours before publication, and billboard artwork is due 72 hours before the mount.",
+      },
+    ],
+  },
+
+  {
+    slug: "media-buying-pakistan",
+    title: "How media buying works in Pakistan",
+    metaTitle: "Media buying in Pakistan: how each medium is bought",
+    description:
+      "How billboards, digital screens, TV, radio and newspapers are bought in Pakistan, what to ask a media buying agency, and where money leaks out of media budgets.",
+    summary:
+      "Media buying in Pakistan works differently by medium: billboards are rented in monthly cycles, digital screens sold as slots in a loop, TV and radio bought by time belt and reconciled against transmission logs, and newspapers bought by insertion and page position with tear-sheet proof. A good buyer negotiates the position and proves every placement ran.",
+    category: "Planning",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["media-campaigns", "electronic-media", "print-media"],
+    faq: [
+      {
+        q: "What does a media buying agency do?",
+        a: "It secures advertising space and airtime at the right price and position, books it, and checks afterwards that every placement ran as bought, recovering anything that did not.",
+      },
+      {
+        q: "What is the difference between media planning and media buying?",
+        a: "Planning decides which media, sites, channels and timing to use. Buying turns the plan into booked placements, negotiates rates and positions, and reconciles what ran.",
+      },
+      {
+        q: "What is log reconciliation in TV advertising?",
+        a: "Checking every booked spot against the channel's transmission log. Spots that did not run in the belt they were bought in should be recovered as make-goods.",
+      },
+      {
+        q: "What is a tear sheet?",
+        a: "Proof of a newspaper advertisement as it actually appeared in print. Fangrove Media supplies a scanned tear sheet within 48 hours of each insertion.",
+      },
+      {
+        q: "Should I buy outdoor media from an owner or a reseller?",
+        a: "An owner builds and maintains its own structures, so one company is responsible for the face, print, crew and permits. A reseller depends on another company to fix problems.",
+      },
+    ],
+  },
+
+  {
+    slug: "billboard-campaign-examples-lahore",
+    title: "Billboard campaign examples from Lahore",
+    metaTitle: "Billboard campaign examples from Lahore",
+    description:
+      "Real billboard and digital screen campaigns from Lahore roads, for Carrefour, Packages Mall, Al Fatah, IGI Life, ACCA, Car First and more, and what they share.",
+    summary:
+      "These are real campaigns that ran on Fangrove Media's billboards and screens in Lahore, for Carrefour, Al Fatah, Condis by Spain, Packages Mall, IGI Life, ACCA, Car First, Zero Carbon Solar, Asghar Ali Perfumes and Metro Cash & Carry. What they share: one message per face, sites chosen for the audience, and static and digital used together where the message changed.",
+    category: "Guides",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media", "media-campaigns", "dooh"],
+    siteIds: ["lhr-hussain-led"],
+    faq: [
+      {
+        q: "Which brands advertise on billboards in Lahore?",
+        a: "Campaigns on Fangrove Media's network include Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Car First, Condis by Spain, Zero Carbon Solar and Asghar Ali Perfumes.",
+      },
+      {
+        q: "What makes a good billboard campaign?",
+        a: "One message per face that can be read at a glance, sites chosen because the target audience passes them, and proof that every face ran.",
+      },
+      {
+        q: "Can billboards and digital screens be used in the same campaign?",
+        a: "Yes. Campaigns such as the Packages Shopping Festival and Condis by Spain ran on both static and digital faces; screens suit messages that need to change.",
+      },
+      {
+        q: "Where can I see more billboard campaigns?",
+        a: "The work page on fangrovemedia.org shows each campaign as it ran, and the network map shows every site with its photograph, size and daily audience.",
+      },
+    ],
+  },
+
+  {
+    slug: "measure-billboard-campaign",
+    title: "How to measure a billboard campaign",
+    metaTitle: "How to measure billboard advertising results",
+    description:
+      "Measure billboard advertising in two parts: proof it ran (photos, play logs, audience figures) and response (dedicated numbers, offer codes, before-and-after baselines).",
+    summary:
+      "Measure a billboard campaign in two parts. Delivery: the site's published daily audience, a dated photograph of every face and a play log for every screen. Response: a dedicated phone or WhatsApp number, an offer code, or a before-and-after baseline of enquiries, searches and footfall. Set up the response measure before the board goes up.",
+    category: "Planning",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media", "media-campaigns", "dooh"],
+    allSites: true,
+    faq: [
+      {
+        q: "How do you measure billboard ROI?",
+        a: "Compare the campaign's cost with the response it produced, counted through a dedicated phone or WhatsApp number, an offer code, or a before-and-after baseline of enquiries, searches, footfall or sales.",
+      },
+      {
+        q: "How are billboard impressions calculated?",
+        a: "From the number of people who pass the face each day, multiplied across the faces and days booked. Fangrove Media publishes the daily audience for every site, and campaign plans show the impression model line by line.",
+      },
+      {
+        q: "How do I know my billboard actually went up?",
+        a: "Ask for a dated photograph of every static face and a play log for every digital screen. On Fangrove Media campaigns, if a placement did not run, you do not pay for it.",
+      },
+      {
+        q: "How long before billboard results show?",
+        a: "Outdoor works through repetition, so judge it over the whole run rather than the first weeks, and allow for longer delays on considered purchases such as cars, property or education.",
+      },
+    ],
+  },
+
+  {
+    slug: "billboard-advertising-gulberg-lahore",
+    title: "Billboard advertising in Gulberg, Lahore: every site",
+    metaTitle: "Billboards in Gulberg, Lahore: Main Boulevard to MM Alam",
+    description:
+      "Every Fangrove billboard and LED screen in Gulberg: Main Boulevard, Hussain Chowk, Kasoori Road, Jinnah Flyover and MM Alam Road, with size, approach and audience.",
+    summary:
+      "Gulberg's billboards sit on Lahore's main commercial roads: Main Boulevard, Hussain Chowk, Kasoori Road, the Jinnah Flyover and MM Alam Road. Fangrove Media's Gulberg estate includes front-lit faces in both directions of Main Boulevard, three faces and a large LED screen on Hussain Chowk, and two faces on MM Alam Road, all booked monthly from the 1st or 16th.",
+    category: "Guides",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media", "dooh"],
+    siteIds: [
+      "lhr-kasoori-alfatah",
+      "lhr-mainblvd-kalma",
+      "lhr-mainblvd-jail",
+      "lhr-hussain-a",
+      "lhr-hussain-b",
+      "lhr-hussain-c",
+      "lhr-jinnah-flyover",
+      "lhr-hussain-led",
+      "lhr-mmalam-vogue",
+      "lhr-mmalam-bluemall",
+    ],
+    faq: [
+      {
+        q: "Where are the billboards in Gulberg, Lahore?",
+        a: "Fangrove Media's Gulberg sites are on Main Boulevard (Kalma Chowk and Jail Road approaches), Hussain Chowk (three static faces and an LED screen), Kasoori Road opposite Al-Fatah, the Jinnah Flyover, and MM Alam Road at Vogue Tower and Blue Mall.",
+      },
+      {
+        q: "Is there a digital billboard in Gulberg?",
+        a: "Yes. The Hussain Chowk LED screen is Fangrove Media's flagship digital site, on the busiest roundabout in Gulberg with two-road exposure.",
+      },
+      {
+        q: "Are the Gulberg billboards lit?",
+        a: "Yes. Every static face in Fangrove Media's Gulberg estate is front-lit, so it keeps working through the evening commute.",
+      },
+      {
+        q: "Can I book both directions of Main Boulevard?",
+        a: "Yes. The Kalma Chowk approach and the Jail Road approach faces are designed to be booked as a pair, covering both directions of the same commute.",
+      },
+    ],
+  },
+
+  {
+    slug: "billboard-advertising-dha-lahore",
+    title: "Billboard advertising in DHA, Lahore: every site",
+    metaTitle: "Billboards in DHA Lahore: Phase 8, Airport Road & more",
+    description:
+      `Billboards serving DHA Lahore: the ${largest} Phase 8 face, Khayaban-e-Iqbal Road, Airport Road, the Ring Road and cutouts in DHA and PHA, with approach and audience.`,
+    summary:
+      "Fangrove Media's billboards serving DHA Lahore include the largest face on its network at DHA Phase 8 Commercial, a face on Khayaban-e-Iqbal Road towards Packages Mall, boards on Airport Road and the Ring Road towards the newer phases, and shaped cutouts inside DHA and PHA. Static faces are booked monthly, from the 1st or 16th.",
+    category: "Guides",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media"],
+    siteIds: [
+      "lhr-dha8-freeways",
+      "lhr-dha-khayaban-iqbal",
+      "lhr-airport-garrison",
+      "lhr-ringroad-airport",
+      "lhr-dha-pha-cutouts",
+    ],
+    faq: [
+      {
+        q: "What is the biggest billboard in DHA Lahore?",
+        a: `On Fangrove Media's network it is the ${largest} front-lit face at DHA Phase 8 Commercial, at the Freeways 1st roundabout, the largest face in the estate.`,
+      },
+      {
+        q: "Where are the billboards in DHA?",
+        a: "Fangrove Media's DHA-area sites are at DHA Phase 8 Commercial, on Khayaban-e-Iqbal Road, on Airport Road by the Garrison Golf Club and on the Ring Road towards DHA Phases 6 and 8, plus cutouts across DHA and PHA.",
+      },
+      {
+        q: "Who should advertise on billboards in DHA?",
+        a: "Brands selling to high-income households: property, cars, private schools and hospitals, premium retail and financial services. The Ring Road also suits B2B and automotive brands.",
+      },
+      {
+        q: "What are cutouts?",
+        a: "Shaped advertising pieces rather than flat faces, placed at locations inside DHA and PHA and used for launches that need a physical presence on the ground.",
+      },
+    ],
+  },
+
+  {
     slug: "plan-outdoor-media-campaign-lahore",
     title: "How to plan an outdoor media campaign in Lahore",
     metaTitle: "How to plan an outdoor media campaign in Lahore",
