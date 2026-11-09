@@ -115,6 +115,44 @@ const largest = dimensions(largestFace.widthFt, largestFace.heightFt);
 
 export const posts: readonly Post[] = [
   {
+    slug: "plan-outdoor-media-campaign-lahore",
+    title: "How to plan an outdoor media campaign in Lahore",
+    metaTitle: "How to plan an outdoor media campaign in Lahore",
+    description:
+      "Planning a billboard and outdoor media campaign in Lahore: choosing corridors, mixing formats, adding radio or press, setting dates, and checking that every face ran.",
+    summary:
+      "Plan an outdoor media campaign in Lahore by starting with where your audience travels, holding two or three corridors rather than scattering single boards, and mixing static billboards for frequency with digital screens where the message must change. Book static faces in monthly cycles from the 1st or 16th, and insist on dated proof of every placement.",
+    category: "Planning",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["media-campaigns", "outdoor-media", "dooh"],
+    allSites: true,
+    faq: [
+      {
+        q: "What is an outdoor media campaign?",
+        a: "A set of outdoor placements, such as billboards, hoardings, bridge panels and digital screens, booked together so the same audience sees one message repeatedly over a period. It is often run alongside radio, TV or press.",
+      },
+      {
+        q: "How many billboards does a campaign in Lahore need?",
+        a: "It depends on the audience, not a fixed number. Holding two or three corridors that your audience drives every day usually works better than single faces spread across the city. Some briefs are met with two well-placed boards.",
+      },
+      {
+        q: "How long should an outdoor campaign run?",
+        a: "Static sites are booked by the month, in cycles starting on the 1st or the 16th. Outdoor works through repetition, so plan for at least one full cycle; longer bookings are priced differently from a single month.",
+      },
+      {
+        q: "Can one agency plan billboards, digital screens, radio and press together?",
+        a: "Yes. Fangrove Media plans and buys outdoor, digital out-of-home, TV, radio, cinema and press from Lahore, across Lahore, Islamabad and Karachi, with broadcast and national press across Pakistan, as one schedule.",
+      },
+      {
+        q: "How do I know my outdoor campaign actually ran?",
+        a: "Ask for proof. Fangrove Media supplies a dated photograph of every static face, weekly play logs for digital screens, tear sheets for press and transmission reconciliation for broadcast.",
+      },
+    ],
+  },
+
+  {
     slug: "billboard-advertising-rates-lahore",
     title: "What decides billboard rates in Lahore?",
     metaTitle: "Billboard advertising rates in Lahore: what sets the price",

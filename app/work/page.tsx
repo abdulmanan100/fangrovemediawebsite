@@ -16,7 +16,7 @@ import { BLUR } from "@/lib/images";
 const gallery = sites.filter((site) => site.format === "Billboard").slice(0, 12);
 
 export const metadata = buildMetadata({
-  title: "Work — billboard campaigns in Lahore",
+  title: "Work — billboard & outdoor media campaigns in Lahore",
   description: `${totalCampaigns} billboard and DOOH campaigns for Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, Al Fatah and more — shot on our own Lahore sites.`,
   path: "/work",
 });

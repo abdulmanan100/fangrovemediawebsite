@@ -34,11 +34,11 @@ const instrument = Instrument_Serif({
 
 /* Search-snippet length (~155 characters). company.description is the long
    form, used in structured data where nothing truncates it. */
-const description = `Lahore advertising agency with ${totalSites} owned billboard and LED screen sites and its own flex print floor. Outdoor, DOOH, TV, radio and press since ${company.founded}.`;
+const description = `Billboards and outdoor media in Lahore: ${totalSites} owned billboard and LED screen sites, our own flex print floor, and media campaigns since ${company.founded}.`;
 
 /* Search phrase first, brand last: results show the site name on its own
    line, so a truncated brand costs nothing and a truncated "Lahore" would. */
-const title = `Billboard & Outdoor Advertising Agency in Lahore · ${company.name}`;
+const title = `Billboard & Outdoor Media Agency in Lahore · ${company.name}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -52,8 +52,18 @@ export const metadata: Metadata = {
   creator: company.name,
   publisher: company.legalName,
   keywords: [
-    "outdoor advertising Lahore",
+    "billboards Lahore",
+    "billboard advertising Lahore",
     "billboard advertising Pakistan",
+    "outdoor media Lahore",
+    "outdoor media Pakistan",
+    "outdoor advertising Lahore",
+    "OOH advertising Pakistan",
+    "hoardings Lahore",
+    "SMD screens Lahore",
+    "media campaigns Pakistan",
+    "advertising campaign Lahore",
+    "media planning Pakistan",
     "DOOH Pakistan",
     "digital out of home Lahore",
     "flex printing Lahore",

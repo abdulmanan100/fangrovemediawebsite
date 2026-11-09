@@ -11,9 +11,9 @@ import { services } from "@/content/services";
 import { BLUR, images } from "@/lib/images";
 
 export const metadata = buildMetadata({
-  title: "Advertising services in Lahore",
+  title: "Outdoor media & advertising services in Lahore",
   description:
-    "Six disciplines run from one building in Lahore: outdoor media, digital out-of-home, electronic media, print media, commercial printing and large-format flex.",
+    "Billboards and outdoor media, digital screens, TV and radio, press, printing, flex and full media campaigns, all run from one building in Lahore.",
   path: "/services",
 });
 
@@ -29,7 +29,7 @@ export default function ServicesPage() {
 
       <PageHero
         eyebrow="What we run"
-        lines={["Six disciplines,", "one schedule."]}
+        lines={["Seven disciplines,", "one schedule."]}
         lede="Planning, buying, printing and mounting sit inside the same business. Nothing is brokered out, so nothing waits in a third party's queue — and nobody can blame a supplier you have never met."
       />
 
@@ -39,7 +39,7 @@ export default function ServicesPage() {
             <li
               key={service.slug}
               // Alternating vertical offset breaks the grid into a reading
-              // order rather than six items of identical weight.
+              // order rather than seven items of identical weight.
               className={i % 2 === 1 ? "md:mt-20" : undefined}
             >
               <Reveal delay={Math.min((i % 2) * 0.08, 0.16)}>

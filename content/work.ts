@@ -42,7 +42,7 @@ export const campaigns: readonly Campaign[] = [
     title: "Packages Shopping Festival",
     category: "Retail · Seasonal",
     year: 2020,
-    serviceSlugs: ["outdoor-media", "dooh"],
+    serviceSlugs: ["outdoor-media", "dooh", "media-campaigns"],
     poster: "/media/work/packages-shopping-festival.webp",
     posterAlt:
       "Packages Shopping Festival creative on a large-format board at Johar Town, opposite the Expo Centre, Lahore",
@@ -84,7 +84,7 @@ export const campaigns: readonly Campaign[] = [
     client: "Condis by Spain",
     title: "Condis by Spain OOH Campaign",
     category: "Retail · Out-of-Home",
-    serviceSlugs: ["outdoor-media", "dooh"],
+    serviceSlugs: ["outdoor-media", "dooh", "media-campaigns"],
     poster: "/media/work/condis-ooh.webp",
     posterAlt: "Condis by Spain creative on the Hussain Chowk LED screen, Gulberg, Lahore",
   },

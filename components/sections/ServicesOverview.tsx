@@ -27,7 +27,7 @@ export function ServicesOverview() {
         <SectionHeader
           index="01"
           eyebrow="What we run"
-          lines={["Six disciplines,", "one schedule."]}
+          lines={["Seven disciplines,", "one schedule."]}
           lede="A media owner and an advertising agency in one building: media is bought, printed and mounted inside the same business. That is the whole advantage — nothing waits in a third party's queue."
           link={{ href: "/services", label: "All services" }}
         />

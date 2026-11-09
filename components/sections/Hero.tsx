@@ -99,7 +99,7 @@ export function Hero() {
               />
               <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
             </span>
-            Lahore
+            Billboards &amp; outdoor media · Lahore
           </span>
           <LahoreClock />
           <span className="hidden sm:inline">{company.address.line2}</span>
@@ -125,9 +125,9 @@ export function Hero() {
             className="enter text-subhead max-w-xl text-muted lg:col-span-6"
             style={enterStyle({ delay: 0.5, duration: 0.7, y: 20 })}
           >
-            Fangrove owns {totalSites} large-format sites across {areaBreakdown().length}{" "}
-            areas of Lahore — and the print floor that dresses them. Out-of-home,
-            broadcast and press, since {company.founded}.
+            Fangrove owns {totalSites} billboard and LED screen sites across{" "}
+            {areaBreakdown().length} areas of Lahore — and the print floor that dresses
+            them. Outdoor media, broadcast and press campaigns, since {company.founded}.
           </p>
 
           <div

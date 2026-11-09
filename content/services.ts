@@ -83,9 +83,9 @@ export const services: readonly Service[] = [
       { label: "Mounting window", value: "Overnight, 11 p.m. — 5 a.m." },
     ],
     image: "billboardBlank",
-    metaTitle: "Billboard & hoarding advertising in Lahore",
+    metaTitle: "Outdoor media & billboard advertising in Lahore",
     metaDescription:
-      "Owned billboards and hoardings, bridge panels, underpass faces and streamers across Lahore, each with published size, location and daily audience.",
+      "Outdoor media in Lahore: owned billboards, hoardings, bridge panels and underpass faces, each with published size, location and daily audience.",
   },
 
   {
@@ -396,6 +396,67 @@ export const services: readonly Service[] = [
     metaTitle: "Flex & panaflex printing in Lahore",
     metaDescription:
       "Large-format flex printing in Lahore: panaflex, backlit, mesh, vinyl and one-way vision, printed and mounted by the same team.",
+  },
+  {
+    slug: "media-campaigns",
+    index: "07",
+    title: "Media Campaigns",
+    shortTitle: "Campaigns",
+    eyebrow: "Planning & buying",
+    summary:
+      "Billboards, digital screens, broadcast and press planned as one media campaign: costed line by line, verified at the end.",
+    lede:
+      "Most campaigns in Pakistan are bought in pieces: boards from one vendor, airtime from another, print from a third. We plan and run the whole media campaign in one place, from the brief to the proof that it ran.",
+    headingLines: ["Media", "Campaigns"],
+    body: [
+      "A media campaign is a schedule, not a list of placements. The billboard on the commute, the radio spot in the same drive time, the digital screen that changes message at rush hour and the press insertion on launch day should be planned against each other, because the audience meets them in sequence.",
+      "Every plan starts with an audit of what the last campaign cost and what it returned, then is built from corridors, formats, belts and cycles, costed line by line. You see the impression model and the assumptions behind it, not a total at the bottom of a page.",
+      "Outdoor media usually carries the frequency: the same audience passes the same face twice a day, five days a week. Fangrove's owned billboard and LED estate is in Lahore, and campaigns are planned and bought across Lahore, Islamabad and Karachi, with broadcast and national press across Pakistan. At the end you receive dated photographs, play logs, tear sheets and transmission reconciliation. If it did not run, you do not pay for it.",
+    ],
+    capabilities: [
+      {
+        title: "Media planning",
+        description:
+          "Reach, frequency and budget split across outdoor, digital, broadcast and press, with the impression model shown line by line.",
+      },
+      {
+        title: "Outdoor media campaigns",
+        description:
+          "Billboards, hoardings, bridge panels and LED screens booked as corridor- or area-wide runs, not one face at a time.",
+      },
+      {
+        title: "Media buying",
+        description:
+          "Owned outdoor sites in Lahore, plus TV, radio, cinema and newspaper space bought directly across Pakistan.",
+      },
+      {
+        title: "Multi-media launches",
+        description:
+          "Outdoor, digital screens, broadcast and press sequenced to one launch date, from one schedule and one invoice.",
+      },
+      {
+        title: "Production & mounting",
+        description:
+          "Artwork proofed, faces printed on our own floor and mounted by our own crews overnight. Nothing brokered out.",
+      },
+      {
+        title: "Verification & reporting",
+        description:
+          "Dated photographs, digital play logs, press tear sheets and broadcast log reconciliation in a monthly pack.",
+      },
+    ],
+    specs: [
+      { label: "Markets", value: "Lahore · Islamabad · Karachi" },
+      { label: "Media", value: "Billboards · DOOH · TV · radio · press" },
+      { label: "Plan", value: "Costed line by line, with impression model" },
+      { label: "Outdoor cycle", value: "Monthly, from the 1st or 16th" },
+      { label: "Digital go-live", value: "Within 4 working hours of approval" },
+      { label: "Reporting", value: "Monthly verification pack" },
+    ],
+    image: "lahoreStreet",
+    metaTitle: "Media campaign planning & buying in Pakistan",
+    metaDescription:
+      "Billboard, outdoor media, digital screen, TV, radio and press campaigns planned and bought as one schedule from Lahore, costed line by line and verified.",
   },
 ] as const;
 

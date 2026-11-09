@@ -50,6 +50,20 @@ export function organizationSchema() {
       { "@type": "Country", name: "Pakistan" },
     ],
     sameAs: Object.values(company.social),
+    // What the business is an authority on, in the words people search with.
+    knowsAbout: [
+      "Billboard advertising",
+      "Outdoor media",
+      "Out-of-home advertising",
+      "Digital out-of-home advertising",
+      "SMD screen advertising",
+      "Hoardings",
+      "Media campaigns",
+      "Media planning and buying",
+      "TV and radio advertising",
+      "Newspaper advertising",
+      "Flex printing",
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Media services",
