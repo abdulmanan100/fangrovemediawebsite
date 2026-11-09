@@ -2,7 +2,7 @@
 
 Marketing site for **Fangrove Media** — an out-of-home, broadcast and print media company based in Lahore, Pakistan.
 
-The media estate, site photography, coordinates, client roster and campaign list are all real — carried over from the company's own inventory deck and previous portfolio during the rebrand from Omelet Advertising.
+The media estate, site photography, coordinates, client roster and campaign list are all real — carried over from the company's own inventory deck and its earlier portfolio.
 
 > ### ⚠ Read `ASSETS.md` before making this site public
 > A few things are still assumed rather than confirmed — most importantly the **two email addresses**, which every enquiry link on the site depends on. `ASSETS.md` lists exactly what is real and what still needs replacing.

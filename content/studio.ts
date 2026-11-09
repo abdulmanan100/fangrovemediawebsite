@@ -8,7 +8,7 @@
 
 /**
  * Client roster — real brands the company has run campaigns for, carried over
- * from the previous Omelet Advertising portfolio.
+ * from the company's earlier portfolio.
  *
  * Add to this list only where there is a campaign to point at. The marquee is
  * the most-scanned credibility signal on the site.

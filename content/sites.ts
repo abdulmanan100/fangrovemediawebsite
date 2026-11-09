@@ -5,8 +5,8 @@
  * transcribed from the company's own OOH inventory deck. Photography is the
  * company's own site photography from the same deck, cropped to the frame.
  *
- * Coordinates come from the company's "OMELET MEDIA LAHORE" Google My Maps
- * export. Six bridge and underpass panels were not in that export; those are
+ * Coordinates come from the company's own Google My Maps export of its Lahore
+ * sites. Six bridge and underpass panels were not in that export; those are
  * placed on the correct road from their facing description and flagged with
  * `pinApprox` so the UI can say so rather than imply false precision.
  *

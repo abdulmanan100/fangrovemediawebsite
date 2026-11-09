@@ -1,17 +1,17 @@
 /**
  * Campaign portfolio — real work.
  *
- * These are the company's own campaigns, carried over during the rebrand from
- * Omelet Advertising to Fangrove Media. Each poster is a frame from that
- * campaign's own reel, so nothing here pairs a client with creative that isn't
- * theirs. Two (Carrefour, Zero Carbon Solar) come from our own site
- * photography of the same creative on the same face.
+ * These are the company's own campaigns, carried over from its earlier
+ * portfolio. Each poster is a frame from that campaign's own reel, so nothing
+ * here pairs a client with creative that isn't theirs. Two (Carrefour, Zero
+ * Carbon Solar) come from our own site photography of the same creative on
+ * the same face.
  *
- * The reels themselves are not shown. Six of them carry the old Omelet mark in
- * the top-right corner and one opens on a full-screen Omelet logo, all burnt
- * into the footage and unremovable without re-editing the films. The posters
- * are cropped 21:9 from the top for the same reason — see CampaignCard. If the
- * films are ever re-cut without the mark, add playback back.
+ * The reels themselves are not shown. Six of them carry an old logo in the
+ * top-right corner and one opens on a full-screen logo, all burnt into the
+ * footage and unremovable without re-editing the films. The posters are
+ * cropped 21:9 from the top for the same reason — see CampaignCard. If the
+ * films are ever re-cut without the logo, add playback back.
  *
  * Deliberately a light model. The source gives client, campaign and discipline
  * — it does not give briefs, strategies or measured outcomes, and inventing

@@ -2,7 +2,7 @@
 
 What on this site is real, and what still needs replacing. Work top to bottom.
 
-Most of the original placeholder content has now been replaced with the company's own material, carried over from the previous Omelet Advertising site during the rebrand.
+Most of the original placeholder content has now been replaced with the company's own material, carried over from its earlier website.
 
 ---
 
@@ -11,7 +11,7 @@ Most of the original placeholder content has now been replaced with the company'
 | What | Source |
 |---|---|
 | **Media estate** — 35 sites: names, areas, face sizes, illumination, approach directions and daily audience figures | The company's own OOH inventory deck |
-| **Site coordinates** | The company's own "OMELET MEDIA LAHORE" Google My Maps export |
+| **Site coordinates** | The company's own Google My Maps export of its Lahore sites |
 | **Site photography** | The company's own site photography, cropped from the deck |
 | **Client roster** — Carrefour, Packages Mall, Metro Cash & Carry, IGI Life, ACCA, Al Fatah, Car First, Condis by Spain, Zero Carbon Solar, Asghar Ali Perfumes | Previous portfolio |
 | **Campaigns** — the 11 above | Previous portfolio |
@@ -114,11 +114,11 @@ Add `public/favicon.ico`, `icon.png` (512×512) and `apple-icon.png` (180×180) 
 
 All 11 campaigns are real, each with a photograph of that client's creative on the face that carried it. `content/work.ts` holds the entry; `public/media/work/` holds a 21:9 WebP poster.
 
-**Why 21:9 and not 16:9.** Nine of these frames come from the campaign reels, and six of those carry the old Omelet mark in the top-right corner. Cropping the top strip removes it at full width, so no part of the board is lost. Every poster uses the same crop so the grid stays consistent. Two posters (Carrefour, Zero Carbon Solar) are our own site photography of the same creative.
+**Why 21:9 and not 16:9.** Nine of these frames come from the campaign reels, and six of those carry an old logo in the top-right corner. Cropping the top strip removes it at full width, so no part of the board is lost. Every poster uses the same crop so the grid stays consistent. Two posters (Carrefour, Zero Carbon Solar) are our own site photography of the same creative.
 
-**The reels are not shown.** The mark is burnt into the footage — six carry the corner bug throughout, and the IGI Life film opens on a full-screen Omelet logo. Only Zero Carbon Solar and Asghar Ali Perfumes are clean. There is no way to show the others without showing the old brand, so the site has no video player at all.
+**The reels are not shown.** The mark is burnt into the footage — six carry the corner bug throughout, and the IGI Life film opens on a full-screen logo. Only Zero Carbon Solar and Asghar Ali Perfumes are clean. There is no way to show the others without showing that old logo, so the site has no video player at all.
 
-**If you re-cut the films without the mark**, they can go back in — the source URLs are kept below for that. Nothing else in the codebase depends on them.
+**If you re-cut the films without the logo**, they can go back in — the source URLs are kept below for that. Nothing else in the codebase depends on them.
 
 | Campaign | Reel |
 |---|---|

@@ -18,12 +18,12 @@ type Props = {
  * that carried it.
  *
  * Every poster is cropped 21:9 from the top. That framing is not decorative —
- * the campaign reels these frames come from carry the company's former Omelet
- * mark in the top-right corner, and dropping the top strip removes it while
- * keeping the full width, so nothing of the board itself is lost.
+ * the campaign reels these frames come from carry an old logo in the top-right
+ * corner, and dropping the top strip removes it while keeping the full width,
+ * so nothing of the board itself is lost.
  *
  * Deliberately not a link and not a player. There are no written case studies
- * behind these, and the reels cannot be shown because the old mark is burnt
+ * behind these, and the reels cannot be shown because the old logo is burnt
  * into the footage.
  */
 export function CampaignCard({
