@@ -27,6 +27,7 @@ import {
   type Format,
 } from "@/content/sites";
 import { compactNumber, dimensions } from "@/lib/format";
+import { company } from "@/content/company";
 
 /* ── Authors ───────────────────────────────────────────────────────────── */
 
@@ -114,6 +115,81 @@ const areaCount = areaBreakdown().length;
 const largest = dimensions(largestFace.widthFt, largestFace.heightFt);
 
 export const posts: readonly Post[] = [
+  {
+    slug: "best-billboard-company-lahore",
+    title: "The best billboard company in Lahore: how to choose one",
+    metaTitle: "Best billboard company in Lahore: how to choose",
+    description:
+      "How to choose the best billboard or outdoor media company in Lahore: ownership, published audiences, print, permits, proof of every face, and a shortlist checklist.",
+    summary:
+      "The best billboard company in Lahore is the one whose faces stand on the roads your customers drive and which can prove every face ran. Look for a company that owns its structures, publishes each site's daily audience, approach and lighting, prints and mounts in-house, handles PHA permits, and gives a dated photograph of every face.",
+    category: "Guides",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["outdoor-media", "dooh", "flex-printing"],
+    allSites: true,
+    faq: [
+      {
+        q: "Which is the best billboard company in Lahore?",
+        a: `It depends on where your customers drive and what proof you need. Compare companies on ownership, published audience per site, in-house printing and mounting, permits and proof of every face. Fangrove Media owns ${totalSites} sites across ${areaCount} areas of Lahore and publishes each one's size, lighting, approach and daily audience.`,
+      },
+      {
+        q: "What is the difference between a billboard owner and an advertising agency?",
+        a: "A billboard owner builds and maintains its own structures; an agency or reseller sells space on structures owned by others. Buying from an owner means one company is responsible for the face, print, crew and permits.",
+      },
+      {
+        q: "How do I check a billboard company is reliable?",
+        a: "Ask for the daily audience of each site, photographs of the actual faces, who prints and mounts, who handles permits, and whether you will receive a dated photograph of every face. Ask to see real campaigns on their own boards.",
+      },
+      {
+        q: "Who handles billboard permits in Lahore?",
+        a: "On an owned site, the company should. Fangrove Media handles PHA and cantonment paperwork for its own sites end to end, so the advertiser never applies for it.",
+      },
+      {
+        q: "How quickly can a billboard company give a quote?",
+        a: "With the site (or road), the start cycle and the number of cycles, Fangrove Media can usually return a rate the same day by WhatsApp or phone.",
+      },
+    ],
+  },
+
+  {
+    slug: "best-media-company-lahore",
+    title: "The best media company in Lahore: how to choose an agency",
+    metaTitle: "Best media company in Lahore: how to choose an agency",
+    description:
+      "How to choose the best media or advertising agency in Lahore: owner vs agency, which media they buy, line-by-line plans, proof for every placement, and a checklist.",
+    summary:
+      "The best media company in Lahore plans your budget across the right media, buys good positions and proves every placement ran. Check what kind of company it is, which media it buys directly, whether it shows the plan line by line, and whether it supplies photographs, play logs, transmission logs and tear sheets for everything it bought.",
+    category: "Planning",
+    status: "published",
+    published: "2026-11-09",
+    author: "editorial",
+    serviceSlugs: ["media-campaigns", "electronic-media", "print-media"],
+    faq: [
+      {
+        q: "Which is the best media company in Lahore?",
+        a: `The best one for you buys the media your brief needs, shows the plan line by line and proves every placement ran. Fangrove Media has worked with brands since ${company.founded}, owns its outdoor sites in Lahore, and plans and buys TV, radio, cinema and press across Pakistan.`,
+      },
+      {
+        q: "What is the difference between a media agency and an advertising agency?",
+        a: "A creative or advertising agency makes the advertising; a media agency decides where it runs and buys the space and airtime. Some companies, including Fangrove Media, combine media buying with owned media and production.",
+      },
+      {
+        q: "What should a media agency report after a campaign?",
+        a: "Proof for every placement: dated photographs of outdoor faces, play logs for digital screens, transmission log reconciliation for TV and radio, and tear sheets for press.",
+      },
+      {
+        q: "Do I need an agency that covers all media?",
+        a: "Only if the brief needs them. A good agency recommends media by the job each one does, and will say when two billboards will do more than a spread across six media.",
+      },
+      {
+        q: "Does Fangrove Media work outside Lahore?",
+        a: `Its owned outdoor estate is in Lahore. Campaigns are planned and bought across ${company.stats.marketsCovered.join(", ")}, with broadcast and national press across Pakistan.`,
+      },
+    ],
+  },
+
   {
     slug: "what-is-outdoor-media",
     title: "What is outdoor media? A guide to OOH advertising in Pakistan",

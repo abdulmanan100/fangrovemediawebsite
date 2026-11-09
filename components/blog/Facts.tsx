@@ -8,6 +8,7 @@ import {
   totalSites,
 } from "@/content/sites";
 import { getService } from "@/content/services";
+import { company } from "@/content/company";
 import { afterBooking, rateFactors, rateRequest } from "@/content/rates";
 import { process as workflow } from "@/content/studio";
 import { compactNumber, dimensions, pad2 } from "@/lib/format";
@@ -27,6 +28,10 @@ const stats = {
   largestFace: () => dimensions(largestFace.widthFt, largestFace.heightFt),
   largestFaceSite: () => largestFace.name,
   largestFaceArea: () => largestFace.area,
+  founded: () => String(company.founded),
+  brandsServed: () => `${company.stats.brandsServed}+`,
+  staff: () => `${company.stats.staff}+`,
+  markets: () => company.stats.marketsCovered.join(", "),
 } as const;
 
 export function Stat({ name }: { name: keyof typeof stats }) {
