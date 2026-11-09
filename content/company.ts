@@ -29,6 +29,8 @@ export const company = {
     line1: "10D Commercial",
     line2: "Pak Arab Society",
     city: "Lahore",
+    /** Confirmed by the client; matches the Business Profile listing. */
+    postalCode: "54600",
     region: "Punjab",
     country: "Pakistan",
     countryCode: "PK",

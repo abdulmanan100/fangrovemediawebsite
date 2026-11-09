@@ -25,7 +25,7 @@ export function GET() {
     `> ${company.description}`,
     "",
     "Key facts:",
-    `- Location: ${address.line1}, ${address.line2}, ${address.city}, ${address.country}`,
+    `- Location: ${address.line1}, ${address.line2}, ${address.city} ${address.postalCode}, ${address.country}`,
     `- Phone and WhatsApp: ${contact.phone} (${hours.label})`,
     `- Owned media estate: ${totalSites} sites across ${areas.length} areas of Lahore, ${digitalScreens} of them digital LED screens. Each site's size, lighting, direction of approach and daily audience is published on its own page.`,
     `- Campaigns planned and bought in: ${company.stats.marketsCovered.join(", ")}; broadcast and national press across Pakistan.`,

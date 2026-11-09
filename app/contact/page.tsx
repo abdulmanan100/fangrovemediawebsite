@@ -95,7 +95,7 @@ export default function ContactPage() {
               <br />
               {company.address.line2}
               <br />
-              {company.address.city}
+              {company.address.city} {company.address.postalCode}
               <br />
               {company.address.country}
             </address>

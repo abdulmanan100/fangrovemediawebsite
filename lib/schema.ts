@@ -32,6 +32,7 @@ export function organizationSchema() {
       streetAddress: `${company.address.line1}, ${company.address.line2}`,
       addressLocality: company.address.city,
       addressRegion: company.address.region,
+      postalCode: company.address.postalCode,
       addressCountry: company.address.countryCode,
     },
     // No `geo` block by design — see the note in content/company.ts. Google
