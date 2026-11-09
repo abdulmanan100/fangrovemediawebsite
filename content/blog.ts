@@ -123,7 +123,7 @@ export const posts: readonly Post[] = [
     summary:
       "A billboard rate in Lahore comes down to five things: the daily audience the site carries, the size of the face, whether it is lit, how many booking cycles you take, and, on a digital screen, your share of the loop. Fangrove Media quotes static sites per monthly cycle, starting on the 1st or the 16th.",
     category: "Planning",
-    status: "draft",
+    status: "published",
     published: "2026-11-09",
     author: "editorial",
     serviceSlugs: ["outdoor-media", "dooh"],
@@ -160,7 +160,7 @@ export const posts: readonly Post[] = [
     summary:
       "Buy a static billboard when one message should own a face around the clock for a month or more. Buy digital out-of-home (DOOH) when you need to change creative quickly, run different messages by time of day, or want timestamped proof of play. On a screen you share an 80-second loop with up to nine other advertisers.",
     category: "Formats",
-    status: "draft",
+    status: "published",
     published: "2026-11-09",
     author: "editorial",
     serviceSlugs: ["dooh", "outdoor-media", "flex-printing"],
@@ -199,7 +199,7 @@ export const posts: readonly Post[] = [
     summary:
       "The strongest billboard locations in Lahore sit on slow, heavily used commuter routes that the same people pass twice a day: Main Boulevard and Hussain Chowk in Gulberg, MM Alam Road, the Canal Road bridges and underpasses, Mall Road, Jail Road, Ferozepur Road and the Model Town roundabouts. Which is best depends on whom you need to reach.",
     category: "Guides",
-    status: "draft",
+    status: "published",
     published: "2026-11-09",
     author: "editorial",
     serviceSlugs: ["outdoor-media", "dooh"],
@@ -231,7 +231,7 @@ export const posts: readonly Post[] = [
       "Billboard, bridge panel, underpass, LED screen, streamer, moppie and cutout sizes, with the real dimensions of every face on Fangrove Media's Lahore network.",
     summary: `There is no single standard billboard size in Pakistan. On Fangrove Media's Lahore network, roadside billboards run from ${sizeRange("Billboard")}, bridge panels are ${sizeRange("Bridge Panel")}, underpass panels ${sizeRange("Underpass")}, and LED screens range from ${sizeRange("Digital LED")}. Streamers, moppies and cutouts are smaller street-level formats sold in runs.`,
     category: "Formats",
-    status: "draft",
+    status: "published",
     published: "2026-11-09",
     author: "editorial",
     serviceSlugs: ["outdoor-media", "flex-printing", "dooh"],
@@ -270,7 +270,7 @@ export const posts: readonly Post[] = [
     summary:
       "Billboard flex at Fangrove Media is star flex between 440 and 650 gsm, heavier where wind load is real. Backlit stock is for internally lit boxes, mesh for exposed structures and building wraps, and vinyl for glass and curved surfaces. Supply artwork at 1:10 scale, CMYK, 150 dpi at scale, and proof it under the light it will hang in.",
     category: "Print",
-    status: "draft",
+    status: "published",
     published: "2026-11-09",
     author: "editorial",
     serviceSlugs: ["flex-printing", "outdoor-media", "printing"],
@@ -306,7 +306,7 @@ export const posts: readonly Post[] = [
     summary:
       "To book a billboard in Lahore with Fangrove Media, choose a site (or just name a road), pick a start cycle, either the 1st or the 16th, and a number of months, then confirm. Artwork is due 72 hours before the mount, flex is printed on our own floor, crews mount overnight, and you receive a dated photograph of every face.",
     category: "Planning",
-    status: "draft",
+    status: "published",
     published: "2026-11-09",
     author: "editorial",
     serviceSlugs: ["outdoor-media", "flex-printing", "dooh"],
